@@ -1,0 +1,161 @@
+---
+theme: default
+title: I. Cinemática de cuerpo rígido
+---
+
+# I. Cinemática de cuerpo rígido
+
+## Análisis de mecanismos
+
+Universidad Politécnica de Guanajuato
+
+Ingeniería Mecatrónica
+
+<div class="absolute bottom-4 right-6 text-sm opacity-60">
+Pedro Jorge De Los Santos
+</div>
+
+---
+
+# ¿Qué aprenderemos?
+
+Al finalizar la unidad, el estudiante deberá ser capaz de identificar el tipo de movimiento de un cuerpo rígido, relacionar la velocidad y la aceleración de distintos puntos del cuerpo y plantear y resolver ecuaciones vectoriales para problemas de movimiento plano general.
+
+<v-click>
+<img src="https://grabcad.com/screenshots/pics/0b4b55e825b38bc59f5a137740018502/large.gif" width="400px"/>
+</v-click>
+
+---
+
+# ¿Qué deberíamos saber?
+
+- Posición, velocidad y aceleración de partículas
+- Derivación respecto al tiempo
+- Vectores en coordenadas cartesianas
+- Producto cruz
+- Trigonometría básica
+- Movimiento circular
+- Componentes tangencial y normal de la aceleración
+
+---
+
+# Cinemática vs cinética
+
+| **Cinemática**   | **Cinética**      |
+| --------------- | ------------------ |
+| ¿Cómo se mueve? | ¿Por qué se mueve? |
+| Posición        | Fuerzas            |
+| Velocidad       | Momentos           |
+| Aceleración     | Masa e inercia     |
+
+---
+
+# Repaso: cinemática de la partícula
+
+La cinemática estudia el movimiento de una partícula sin analizar sus causas. 
+
+La posición de una partícula se representa mediante:
+
+$$
+\vec{r}(t) = x(t) \hat{i} + y(t) \hat{j} + z(t) \hat{k}
+$$
+
+La velocidad instantánea está dada por:
+
+$$
+\vec{v} = \frac{d\vec{r}}{dt}
+$$
+
+La aceleración se determina derivando con respecto al tiempo el vector de velocidad:
+
+$$
+\vec{a} = \frac{d\vec{v}}{dt}
+$$
+
+---
+
+# Repaso: cinemática de la partícula
+
+## Un ejemplo ...
+
+La posición de una partícula está dada por el vector:
+
+$$
+\vec{r} = \left( 1.5t \right) \hat{\imath} + 
+\left( 2.6t - 4.905t^2 \right) \hat{\jmath}
+$$
+
+Determina su velocidad y aceleración.
+
+<v-click>
+Velocidad:
+
+$$
+\vec{v} = \frac{d\vec{r}}{dt} = 1.5 \hat{\imath} + \left( 2.6 - 9.81t \right) \hat{\jmath}
+$$
+
+Aceleración:
+
+$$
+\vec{a} = \frac{d\vec{v}}{dt} = -9.81 \hat{\jmath}
+$$
+</v-click>
+
+---
+
+# Repaso: movimiento circular
+
+
+
+---
+
+# Repaso: producto cruz
+
+
+
+---
+layout: center
+class: text-center
+---
+
+# Introducción al movimiento de cuerpo rígido
+
+
+---
+
+# Idealización y modelado
+
+<Question>
+¿Qué tan detalladamente necesitamos describir un objeto para estudiar su movimiento?
+</Question>
+
+Piensa en los siguientes casos:
+
+- Un automóvil que viaja de Celaya a Salamanca.
+- Una barra o una rueda que gira.
+
+---
+
+# La partícula
+
+Una partícula es un modelo idealizado en el que las dimensiones del cuerpo son despreciables para el problema que se estudia. Cuando modelamos un cuerpo como partícula, nos interesa principalmente la posición de un punto representativo.
+
+<br> <br>
+
+<Callout type="tip" title="Para recordar...">
+Modelar como partícula no significa que el objeto sea pequeño; significa que su tamaño y orientación no son relevantes para el análisis.
+</Callout>
+
+---
+
+# Cuerpo rígido
+
+Un cuerpo rígido es un modelo idealizado formado por un conjunto de partículas cuya distancia relativa permanece constante durante el movimiento.
+
+Si tomamos dos puntos cualesquiera $A$ y $B$:
+
+$$
+|| \vec{r}_A - \vec{r}_B || = constante
+$$
+
+<img src="/images/rigid_body.svg">
