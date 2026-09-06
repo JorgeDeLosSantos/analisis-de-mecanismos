@@ -159,3 +159,15 @@ $$
 $$
 
 <img src="/images/rigid_body.svg">
+
+---
+
+# Partícula y Cuerpo rígido
+
+| Partícula                             | Cuerpo rígido                               |
+| ------------------------------------- | ------------------------------------------- |
+| Se representa mediante un punto       | Tiene extensión espacial                    |
+| Interesa su posición                  | Interesan posición y orientación            |
+| Tamaño y forma no afectan el análisis | Tamaño y geometría sí afectan el movimiento |
+| Se considera únicamente traslación    | Puede trasladarse y rotar                   |
+
