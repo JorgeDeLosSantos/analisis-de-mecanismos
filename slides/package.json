@@ -3,11 +3,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
-    "export": "slidev export",
-    "u1": "slidev 01-cinematica.md",
-    "u2": "slidev 02-dinamica.md"
+    "dev:u1": "slidev 01-cinematica.md",
+    "dev:u2": "slidev 02-dinamica.md",
+    "build:u1": "slidev build 01-cinematica.md --base /analisis-de-mecanismos/slides/unidad-01/ --out dist/unidad-01",
+    "build": "pnpm build:u1",
+    "export:u1": "slidev export 01-cinematica.md"
   },
   "dependencies": {
     "@slidev/cli": "^52.19.1",
