@@ -3,10 +3,17 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "dev:intro": "slidev 00-intro.md",
     "dev:u1": "slidev 01-cinematica.md",
     "dev:u2": "slidev 02-dinamica.md",
+    "dev:u3": "slidev 03-mecanismos.md",
+    "dev:u4": "slidev 04-levas-y-engranes.md",
+    "build:intro": "slidev build 00-intro.md --base /analisis-de-mecanismos/slides/intro/ --out dist/intro",
     "build:u1": "slidev build 01-cinematica.md --base /analisis-de-mecanismos/slides/unidad-01/ --out dist/unidad-01",
-    "build": "pnpm build:u1",
+    "build:u2": "slidev build 02-dinamica.md --base /analisis-de-mecanismos/slides/unidad-02/ --out dist/unidad-02",
+    "build:u3": "slidev build 03-mecanismos.md --base /analisis-de-mecanismos/slides/unidad-03/ --out dist/unidad-03",
+    "build:u4": "slidev build 04-levas-y-engranes.md --base /analisis-de-mecanismos/slides/unidad-04/ --out dist/unidad-04",
+    "build": "pnpm build:intro && pnpm build:u1 && pnpm build:u2 && pnpm build:u3 && pnpm build:u4",
     "export:u1": "slidev export 01-cinematica.md"
   },
   "dependencies": {
