@@ -1,10 +1,9 @@
 # Node
 node_modules/
-slides/node_modules/
 
 # Build outputs
 dist/
-slides/dist/
+publish/
 
 # Logs
 npm-debug.log*
