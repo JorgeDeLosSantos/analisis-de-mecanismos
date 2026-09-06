@@ -1,11 +1,11 @@
 ---
 theme: default
-title: II. Cinética de cuerpo rígido
+title: IV. Levas y engranes
 ---
 
 # Análisis de mecanismos
 
-## II. Cinética de cuerpo rígido
+## IV. Levas y engranes
 
 Universidad Politécnica de Guanajuato
 

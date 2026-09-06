@@ -3,9 +3,9 @@ theme: default
 title: I. Cinemática de cuerpo rígido
 ---
 
-# I. Cinemática de cuerpo rígido
+# Análisis de mecanismos
 
-## Análisis de mecanismos
+## I. Cinemática de cuerpo rígido
 
 Universidad Politécnica de Guanajuato
 
@@ -158,7 +158,7 @@ $$
 || \vec{r}_A - \vec{r}_B || = constante
 $$
 
-<img src="/images/rigid_body.svg">
+<img src="/images/rigid_body.svg" class="mx-auto">
 
 ---
 
@@ -171,3 +171,44 @@ $$
 | Tamaño y forma no afectan el análisis | Tamaño y geometría sí afectan el movimiento |
 | Se considera únicamente traslación    | Puede trasladarse y rotar                   |
 
+---
+
+# Cuerpo rígido: posición y orientación
+
+<div class="grid grid-cols-3 gap-4 items-center">
+  <img src="/images/gdl_particle.svg">
+  <img src="/images/gdl_rigid_body.svg">
+  <img src="/images/gdl_rigid_body_space.svg">
+</div>
+
+---
+
+# Movimiento de un cuerpo rígido
+
+<Question>
+Si la configuración de un cuerpo rígido depende de su posición y su orientación, ¿de qué maneras pueden cambiar estas cantidades?
+</Question>
+
+<v-click>
+
+- Traslación
+- Rotación
+- Movimiento plano general
+
+</v-click>
+
+<v-click>
+<img src="/gifs/slider-crank.gif" width="300px" class="mx-auto">
+</v-click>
+
+---
+
+# Traslación
+
+Un cuerpo rígido está en traslación cuando todos sus puntos se desplazan manteniendo constante la orientación del cuerpo.
+
+
+<div class="grid grid-cols-2 gap-4 items-center">
+<img src="/images/translation.png" class="mx-auto">
+<img src="/images/curvilinear_translation.png" class="mx-auto">
+</div>

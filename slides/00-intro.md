@@ -5,6 +5,8 @@ title: Análisis de Mecanismos
 
 # Análisis de Mecanismos
 
+## Introducción a la asignatura
+
 Universidad Politécnica de Guanajuato
 
 Ingeniería Mecatrónica

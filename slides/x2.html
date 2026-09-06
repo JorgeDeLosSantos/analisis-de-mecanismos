@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulación de Mecanismo - Dinámica</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; background: #f4f4f9; margin: 0; padding: 20px; }
+        canvas { background: #ffffff; border: 1px solid #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; }
+        h2 { color: #333; margin-bottom: 5px; }
+        p { color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h2>Tipos de Movimiento en Cuerpos Rígidos</h2>
+    <p>Simulación interactiva en HTML5 Canvas basada en el diagrama clásico de dinámica.</p>
+    <canvas id="mechanismoCanvas" width="900" height="420"></canvas>
+
+    <script>
+        const canvas = document.getElementById('mechanismoCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let theta = 0; // Ángulo de la rueda central
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Parámetros geométricos principales
+            const cx = 450, cy = 200; // Centro de la rueda central
+            const R_disk = 65;        // Radio de la rueda
+            const r_pin = 40;         // Radio del perno excéntrico
+
+            // 1. Rueda central (Rotation about a fixed axis)
+            ctx.beginPath();
+            ctx.arc(cx, cy, R_disk, 0, 2 * Math.PI);
+            ctx.fillStyle = '#e3f2fd';
+            ctx.fill();
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#1565c0';
+            ctx.stroke();
+
+            // Centro fijo de la rueda
+            ctx.beginPath();
+            ctx.arc(cx, cy, 5, 0, 2 * Math.PI);
+            ctx.fillStyle = '#1565c0';
+            ctx.fill();
+
+            // Pernos en la rueda
+            const pinLeftX = cx + r_pin * Math.cos(theta);
+            const pinLeftY = cy + r_pin * Math.sin(theta);
+
+            const pinRightX = cx + r_pin * Math.cos(theta + Math.PI);
+            const pinRightY = cy + r_pin * Math.sin(theta + Math.PI);
+
+            // Dibujar pernos
+            ctx.beginPath();
+            ctx.arc(pinLeftX, pinLeftY, 5, 0, 2 * Math.PI);
+            ctx.arc(pinRightX, pinRightY, 5, 0, 2 * Math.PI);
+            ctx.fillStyle = '#d32f2f';
+            ctx.fill();
+
+            // --- LADO IZQUIERDO: Pistón y Biela ---
+            const sliderY = cy;
+            const L_rod1 = 200; 
+            const sliderX = pinLeftX - Math.sqrt(Math.max(0, L_rod1 * L_rod1 - Math.pow(pinLeftY - sliderY, 2)));
+
+            // Guías del pistón (Rectilinear translation)
+            ctx.fillStyle = '#cfd8dc';
+            ctx.fillRect(60, cy - 40, 70, 80);
+            ctx.strokeStyle = '#37474f';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(60, cy - 40, 70, 80);
+
+            // Bloque del pistón
+            ctx.fillStyle = '#78909c';
+            ctx.fillRect(sliderX - 25, cy - 30, 50, 60);
+            ctx.strokeStyle = '#263238';
+            ctx.strokeRect(sliderX - 25, cy - 30, 50, 60);
+
+            // Biela izquierda (General plane motion)
+            ctx.beginPath();
+            ctx.moveTo(sliderX, cy);
+            ctx.lineTo(pinLeftX, pinLeftY);
+            ctx.lineWidth = 7;
+            ctx.strokeStyle = '#ff8f00';
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            // --- LADO DERECHO: Barra y Brazo Oscilante ---
+            const pivotX = 750;
+            const pivotY = cy;
+            const L_arm = 85;
+            
+            // Cinemática aproximada del brazo oscilante derecho
+            const armAngle = -Math.PI / 6 + 0.45 * Math.sin(theta);
+            const armTopX = pivotX + L_arm * Math.sin(armAngle);
+            const armTopY = pivotY - L_arm * Math.cos(armAngle);
+
+            // Barra horizontal (Curvilinear translation)
+            ctx.beginPath();
+            ctx.moveTo(pinRightX, pinRightY);
+            ctx.lineTo(armTopX, armTopY);
+            ctx.lineWidth = 7;
+            ctx.strokeStyle = '#00897b';
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            // Base del brazo derecho
+            ctx.fillStyle = '#cfd8dc';
+            ctx.fillRect(pivotX - 25, pivotY + 10, 50, 15);
+            
+            // Brazo oscilante (Rotation about a fixed axis)
+            ctx.beginPath();
+            ctx.moveTo(pivotX, pivotY);
+            ctx.lineTo(armTopX, armTopY);
+            ctx.lineWidth = 9;
+            ctx.strokeStyle = '#3949ab';
+            ctx.stroke();
+
+            // Pivote derecho
+            ctx.beginPath();
+            ctx.arc(pivotX, pivotY, 5, 0, 2 * Math.PI);
+            ctx.fillStyle = '#1a237e';
+            ctx.fill();
+
+            // Textos descriptivos en el canvas
+            ctx.font = '11px sans-serif';
+            ctx.fillStyle = '#333';
+            ctx.fillText('Translación rectilínea', 50, cy + 60);
+            ctx.fillText('Movimiento plano general', 170, cy - 55);
+            ctx.fillText('Rotación (eje fijo)', cx - 45, cy + 85);
+            ctx.fillText('Translación curvilínea', 540, cy - 55);
+            ctx.fillText('Rotación (eje fijo)', pivotX - 45, cy + 45);
+
+            // Incrementar ángulo para la animación
+            theta += 0.025;
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 ---
 theme: default
-title: II. Cinética de cuerpo rígido
+title: III. Fundamentos y análisis de mecanismos
 ---
 
 # Análisis de mecanismos
 
-## II. Cinética de cuerpo rígido
+## III. Fundamentos y análisis de mecanismos
 
 Universidad Politécnica de Guanajuato
 
