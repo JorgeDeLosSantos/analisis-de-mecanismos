@@ -45,8 +45,8 @@ jobs:
 
       - name: Prepare Pages artifact
         run: |
-          mkdir -p publish/slides/unidad-01
-          cp -r slides/dist/unidad-01/. publish/slides/unidad-01/
+          mkdir -p publish/slides
+          cp -r slides/dist/. publish/slides/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
