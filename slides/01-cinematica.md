@@ -21,21 +21,11 @@ Pedro Jorge De Los Santos
 
 Al finalizar la unidad, el estudiante deberá ser capaz de identificar el tipo de movimiento de un cuerpo rígido, relacionar la velocidad y la aceleración de distintos puntos del cuerpo y plantear y resolver ecuaciones vectoriales para problemas de movimiento plano general.
 
+<br>
+
 <v-click>
-<img src="https://grabcad.com/screenshots/pics/0b4b55e825b38bc59f5a137740018502/large.gif" width="400px"/>
+<img src="https://grabcad.com/screenshots/pics/0b4b55e825b38bc59f5a137740018502/large.gif" width="400px" class="mx-auto"/>
 </v-click>
-
----
-
-# ¿Qué deberíamos saber?
-
-- Posición, velocidad y aceleración de partículas
-- Derivación respecto al tiempo
-- Vectores en coordenadas cartesianas
-- Producto cruz
-- Trigonometría básica
-- Movimiento circular
-- Componentes tangencial y normal de la aceleración
 
 ---
 
@@ -57,7 +47,7 @@ La cinemática estudia el movimiento de una partícula sin analizar sus causas.
 La posición de una partícula se representa mediante:
 
 $$
-\vec{r}(t) = x(t) \hat{i} + y(t) \hat{j} + z(t) \hat{k}
+\vec{r}(t) = x(t) \ihat + y(t) \jhat + z(t) \khat
 $$
 
 La velocidad instantánea está dada por:
@@ -81,8 +71,8 @@ $$
 La posición de una partícula está dada por el vector:
 
 $$
-\vec{r} = \left( 1.5t \right) \hat{\imath} + 
-\left( 2.6t - 4.905t^2 \right) \hat{\jmath}
+\vec{r} = \left( 1.5t \right) \ihat + 
+\left( 2.6t - 4.905t^2 \right) \jhat
 $$
 
 Determina su velocidad y aceleración.
@@ -91,13 +81,13 @@ Determina su velocidad y aceleración.
 Velocidad:
 
 $$
-\vec{v} = \frac{d\vec{r}}{dt} = 1.5 \hat{\imath} + \left( 2.6 - 9.81t \right) \hat{\jmath}
+\vec{v} = \frac{d\vec{r}}{dt} = 1.5 \ihat + \left( 2.6 - 9.81t \right) \jhat
 $$
 
 Aceleración:
 
 $$
-\vec{a} = \frac{d\vec{v}}{dt} = -9.81 \hat{\jmath}
+\vec{a} = \frac{d\vec{v}}{dt} = -9.81 \jhat
 $$
 </v-click>
 
@@ -111,7 +101,26 @@ $$
 
 # Repaso: producto cruz
 
+Sean $\vec{u}$ y $\vec{v}$ vectores dados por:
 
+$$
+\vec{u} = u_x \ihat + u_y \jhat + u_z \khat
+$$
+$$
+\vec{v} = v_x \ihat + v_y \jhat + v_z \khat 
+$$
+
+El producto cruz $\vec{u} \times \vec{v}$ está dado por:
+
+$$
+\vec{u} \times \vec{v} = 
+\begin{vmatrix}
+\ihat & \jhat & \khat \\
+u_x & u_y & u_z \\
+v_x & v_y & v_z 
+\end{vmatrix} = 
+(u_y v_z - u_z v_y) \ihat - (u_x v_z - u_z v_x) \jhat + (u_x v_y - u_y v_x) \khat
+$$
 
 ---
 layout: center
