@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presentaciones | Análisis de Mecanismos</title>
+  <meta name="description" content="Presentaciones de la asignatura Análisis de Mecanismos.">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --radius: 18px;
+      --shadow: 0 12px 32px rgba(16, 24, 40, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 72px 0 80px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 6vw, 4.4rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 20px 0 0;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 48px;
+    }
+
+    .card {
+      display: flex;
+      min-height: 220px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      color: inherit;
+      text-decoration: none;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #bfdbfe;
+      box-shadow: 0 18px 42px rgba(16, 24, 40, 0.11);
+    }
+
+    .card.intro {
+      grid-column: 1 / -1;
+      min-height: 185px;
+      background: linear-gradient(135deg, var(--surface), var(--accent-soft));
+    }
+
+    .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .card h2 {
+      margin: 22px 0 6px;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .link {
+      margin-top: 28px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 28px, 1080px);
+        padding-top: 44px;
+      }
+
+      .grid { grid-template-columns: 1fr; }
+      .card.intro { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Ingeniería Mecatrónica · UPGTO</p>
+      <h1>Análisis de Mecanismos</h1>
+      <p class="lead">Presentaciones de la asignatura. Este material se actualiza a lo largo del curso conforme avanzamos en cada unidad.</p>
+    </header>
+
+    <section class="grid" aria-label="Presentaciones del curso">
+      <a class="card intro" href="./intro/">
+        <div>
+          <span class="number">00</span>
+          <h2>Introducción a la asignatura</h2>
+          <p>Propósito de aprendizaje, unidades, evaluación, bibliografía y examen diagnóstico.</p>
+        </div>
+        <span class="link">Abrir presentación →</span>
+      </a>
+
+      <a class="card" href="./unidad-01/">
+        <div>
+          <span class="number">01</span>
+          <h2>Cinemática de cuerpo rígido</h2>
+          <p>Unidad I</p>
+        </div>
+        <span class="link">Abrir presentación →</span>
+      </a>
+
+      <a class="card" href="./unidad-02/">
+        <div>
+          <span class="number">02</span>
+          <h2>Cinética de cuerpo rígido</h2>
+          <p>Unidad II</p>
+        </div>
+        <span class="link">Abrir presentación →</span>
+      </a>
+
+      <a class="card" href="./unidad-03/">
+        <div>
+          <span class="number">03</span>
+          <h2>Fundamentos y análisis de mecanismos</h2>
+          <p>Unidad III</p>
+        </div>
+        <span class="link">Abrir presentación →</span>
+      </a>
+
+      <a class="card" href="./unidad-04/">
+        <div>
+          <span class="number">04</span>
+          <h2>Levas y engranes</h2>
+          <p>Unidad IV</p>
+        </div>
+        <span class="link">Abrir presentación →</span>
+      </a>
+    </section>
+
+    <footer>
+      Pedro Jorge De Los Santos · Universidad Politécnica de Guanajuato
+    </footer>
+  </main>
+</body>
+</html>
