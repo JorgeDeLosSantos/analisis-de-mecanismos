@@ -350,38 +350,50 @@ layout: two-cols
 Consideremos un punto $A$ que pertenece a un cuerpo rígido en rotación. La distancia $ds$ que recorre el punto $A$ está dada por:
 
 $$
-ds = r_A \Delta \theta 
+ds = r_A d \theta 
 $$
 
-Considerando que el desplazamiento ocurre en un tiempo $\Delta t$:
-
-$$
-\frac{\Delta s}{\Delta t} = r_A \frac{\Delta \theta}{\Delta t}
-$$
-
-Si analizamos para $\Delta t \to 0$, entonces:
+Si consideramos que el desplazamiento ocurre en un tiempo $dt$:
 
 $$
 \frac{ds}{dt} = r_A \frac{d\theta}{dt}
 $$
 
-Es decir, la velocidad instantánea de $A$ es:
+Entonces:
 
 $$
-v_A = r_A \omega
+\color{blue}{v_A = r_A \omega}
 $$
 
 
 
 ::right::
 
-<img src="/images/u1/pure_rotation_sys.svg" class="mx-auto">
+<img src="/images/u1/pure_rotation_sys.svg" class="mx-auto" width="350px">
 
-<v-click>
+---
+layout: two-cols
+---
 
-La dirección del vector de velocidad $\vec{v}_A$ es la misma que el vector de desplazamiento. Esta dirección es perpendicular al vector $\vec{r}_A$:
+# Rotación
 
-</v-click>
+En la figura se observa que el punto $A$ experimenta un desplazamiento infinitesimal $d\vec{r}_A$. Para un desplazamiento angular infinitesimal ($d\theta \to 0$), $d\vec{r}_A$ es tangente a la trayectoria circular, mientras que el vector $\vec{r}_A$ es radial, por lo tanto:
+
+$$
+\vec{r}_A \perp d\vec{r}_A
+$$
+
+Si dividimos $d\vec{r}_A$ por el tiempo $dt$ se obtiene:
+
+$$
+\vec{v}_A = \frac{d\vec{r}_A}{dt}
+$$
+
+Puesto que $dt$ es un escalar, lo anterior implica que $\vec{v}_A$ es un vector que apunta en la misma dirección que $d\vec{r}_A$. 
+
+::right::
+
+<img src="/images/u1/rotation_dr.svg" class="mx-auto" width="300px">
 
 ---
 layout: two-cols
@@ -395,11 +407,11 @@ $$
 \color{blue}{\vec{v}_A = \vec{\omega} \times \vec{r}_A}
 $$
 
-Donde $\vec{\omega}$ es el vector de velocidad angular y $\vec{r}_A$ es un vector de posición desde el centro de rotación hasta el punto $A$. 
+Donde $\vec{\omega}$ es el vector de velocidad angular y $\vec{r}_A$ es un vector de posición que va desde un punto del eje de rotación hasta el punto $A$. 
 
 ::right::
 
-<img src="/images/u1/pure_rotation_sys.svg" class="mx-auto">
+<img src="/images/u1/velocity_rotation.png" class="mx-auto" width="300px">
 
 ---
 layout: two-cols
@@ -433,7 +445,7 @@ $$
 
 ::right::
 
-<img src="/images/u1/pure_rotation_sys.svg" class="mx-auto">
+<img src="/images/u1/acceleration_rotation.png" class="mx-auto" width="300px">
 
 ---
 layout: two-cols
@@ -484,3 +496,7 @@ $$
 $$
 
 </v-click>
+
+---
+
+# .
