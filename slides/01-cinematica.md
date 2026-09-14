@@ -317,14 +317,12 @@ layout: two-cols
 **Velocidad angular:** indica qué tan rápido cambia la posición angular con respecto al tiempo. 
 
 $$
-\omega_{prom} = \frac{\Delta\theta}{\Delta t} \,  \qquad\qquad
 \omega = \frac{d\theta}{dt}
 $$
 
 **Aceleración angular:** es una medida de qué tan rápido cambia la velocidad angular con respecto al tiempo.
 
 $$
-\alpha_{prom} = \frac{\Delta\omega}{\Delta t} \,  \qquad\qquad
 \alpha = \frac{d\omega}{dt}
 $$
 
@@ -332,16 +330,27 @@ $$
 
 <img src="/images/u1/pure_rotation.svg" class="mx-auto">
 
+<v-click>
+
+<Callout type="note" title="Unidades de medición">
+
+- La velocidad angular $\omega$ se mide en $rad/s$. 
+- Es común que la velocidad angular se conozca en $\text{rpm}$, para convertir a $rad/s$ debes multiplicar por un factor de $\frac{2\pi}{60}$.
+- La aceleración angular se mide en $rad/s^2$
+</Callout>
+
+</v-click>
+
 ---
 layout: two-cols
 ---
 
 # Rotación
 
-La distancia $\Delta s$ que recorre el punto $A$ está dada por:
+Consideremos un punto $A$ que pertenece a un cuerpo rígido en rotación. La distancia $ds$ que recorre el punto $A$ está dada por:
 
 $$
-\Delta s = r_A \Delta \theta 
+ds = r_A \Delta \theta 
 $$
 
 Considerando que el desplazamiento ocurre en un tiempo $\Delta t$:
@@ -368,6 +377,11 @@ $$
 
 <img src="/images/u1/pure_rotation_sys.svg" class="mx-auto">
 
+<v-click>
+
+La dirección del vector de velocidad $\vec{v}_A$ es la misma que el vector de desplazamiento. Esta dirección es perpendicular al vector $\vec{r}_A$:
+
+</v-click>
 
 ---
 layout: two-cols
@@ -375,15 +389,98 @@ layout: two-cols
 
 # Rotación
 
-La dirección del vector de velocidad $\vec{v}_A$ es la misma que el vector de desplazamiento. Esta dirección es perpendicular al vector $\vec{r}_A$:
+La velocidad de un punto $A$ cualquiera en un cuerpo rígido en rotación se puede determinar vectorialmente utilizando el producto cruz:
 
-<v-click>
-<Callout type="note" title="Para recordar...">
+$$
+\color{blue}{\vec{v}_A = \vec{\omega} \times \vec{r}_A}
+$$
 
-</Callout>
-</v-click>
-
+Donde $\vec{\omega}$ es el vector de velocidad angular y $\vec{r}_A$ es un vector de posición desde el centro de rotación hasta el punto $A$. 
 
 ::right::
 
 <img src="/images/u1/pure_rotation_sys.svg" class="mx-auto">
+
+---
+layout: two-cols
+---
+
+# Rotación
+
+La aceleración se puede determinar derivando $\vec{v}_A$ con respecto al tiempo:
+
+$$
+\vec{a}_A = \frac{d\vec{v}_A}{dt} = \frac{d}{dt}\left( \vec{\omega} \times \vec{r}_A \right) = \frac{d\vec{\omega}}{dt} \times \vec{r}_A + \vec{\omega} \times \frac{d\vec{r}_A}{dt} 
+$$
+
+$$
+\vec{a}_A = \vec{\alpha} \times \vec{r}_A + \vec{\omega} \times \vec{v}_A
+$$
+
+$$
+\vec{a}_A = \vec{\alpha} \times \vec{r}_A + \vec{\omega} \times \left( \vec{\omega} \times \vec{r}_A \right)
+$$
+
+Para una rotación en el plano se cumple que $\vec{r}_A$ es perpendicular a $\vec{\omega}$ y en consecuencia:
+
+<EquationBox>
+
+$$
+\color{blue}{\vec{a}_A = \vec{\alpha} \times \vec{r}_A - \omega^2 \vec{r}_A}
+$$
+
+</EquationBox>
+
+::right::
+
+<img src="/images/u1/pure_rotation_sys.svg" class="mx-auto">
+
+---
+layout: two-cols
+---
+
+# Rotación: ejemplo
+
+La placa plana rectangular mostrada en la figura está rotando a velocidad angular constante de $10 \text{ rad/s}$ en sentido antihorario. Calcula $\vec{v}_P$ y $\vec{v}_Q$. Considera que $\overline{OP} = 100 \text{mm}$ y $\overline{OQ} = 200 \text{ mm}$.
+
+<img src="/images/u1/rectangular_plate.svg" class="mx-auto">
+
+::right:: 
+
+<v-click>
+
+Calculando $\vec{v}_P$: 
+
+$$
+\vec{v}_P = \vec{\omega} \times \vec{r}_P = 
+\begin{vmatrix}
+\ihat & \jhat & \khat \\
+0 & 0 & 10 \\
+-50 & 86.6 & 0 
+\end{vmatrix} 
+$$
+
+$$
+\vec{v}_P = \left( -866\ihat - 500 \jhat \right) \text{ mm/s}
+$$
+
+</v-click>
+
+<v-click>
+
+Calculando $\vec{v}_Q$:
+
+$$
+\vec{v}_Q = \vec{\omega} \times \vec{r}_Q = 
+\begin{vmatrix}
+\ihat & \jhat & \khat \\
+0 & 0 & 10 \\
+173.2 & 100 & 0 
+\end{vmatrix} 
+$$
+
+$$
+\vec{v}_Q = \left( -1000\ihat + 1732 \jhat \right) \text{ mm/s}
+$$
+
+</v-click>
