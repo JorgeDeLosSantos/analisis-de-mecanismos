@@ -3,3 +3,11 @@
   opacity: 1;
   }
 }
+
+.slidev-layout.two-columns {
+  column-gap: 0.5rem;
+}
+
+.slidev-layout.two-columns > :nth-child(2) {
+  padding-left: 1rem
+}

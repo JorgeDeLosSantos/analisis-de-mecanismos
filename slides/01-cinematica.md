@@ -399,7 +399,7 @@ Puesto que $dt$ es un escalar, lo anterior implica que $\vec{v}_A$ es un vector 
 layout: two-cols
 ---
 
-# Rotación
+# Rotación: velocidad 
 
 La velocidad de un punto $A$ cualquiera en un cuerpo rígido en rotación se puede determinar vectorialmente utilizando el producto cruz:
 
@@ -413,16 +413,145 @@ Donde $\vec{\omega}$ es el vector de velocidad angular y $\vec{r}_A$ es un vecto
 
 <img src="/images/u1/velocity_rotation.png" class="mx-auto" width="300px">
 
+
+---
+layout: two-cols-example
+---
+
+# Rotación: ejemplo
+
+La barra mostrada en la figura rota con velocidad angular constante de $60 \text{ rpm}$, en sentido antihorario. Calcula $\vec{v}_A$ para cuando:
+
+a) $\theta=0°$
+b) $\theta=30°$
+c) $\theta=90°$
+
+<img src="/images/u1/rotation_bar.svg" class="mx-auto" width="250px">
+
+Considera que $\overline{OA}=150 \text{ mm}$.
+
+::right::
+<div class="text-sm">
+
+<v-click>
+
+En todos los casos $\vec{\omega} = \left( 2\pi \, \khat \right) \text{ rad/s}$.
+</v-click>
+
+<v-click>
+
+Para $\theta=0°$:
+
+$$
+\vec{v}_A = \vec{\omega} \times \vec{r}_A = 
+\begin{vmatrix} 
+\ihat &  \jhat & \khat \\
+0 & 0 & 2\pi \\
+150 & 0 & 0 \\
+\end{vmatrix} = 
+\left( 942.5 \jhat \right) \text{ mm/s}
+$$
+</v-click>
+
+<v-click>
+
+Para $\theta=30°$:
+
+$$
+\vec{v}_A = \vec{\omega} \times \vec{r}_A = 
+\begin{vmatrix} 
+\ihat &  \jhat & \khat \\
+0 & 0 & 2\pi \\
+129.9 & 75 & 0 \\
+\end{vmatrix}
+$$
+$$
+\vec{v}_A = \left( -471.2\ihat + 816.2 \jhat \right) \text{ mm/s}
+$$
+</v-click>
+
+<v-click>
+
+Para $\theta=90°$:
+
+$$
+\vec{v}_A = \vec{\omega} \times \vec{r}_A = 
+\begin{vmatrix} 
+\ihat &  \jhat & \khat \\
+0 & 0 & 2\pi \\
+0 & 150 & 0 \\
+\end{vmatrix} = 
+\left( -942.5 \ihat \right) \text{ mm/s}
+$$
+</v-click>
+
+</div>
+
+
+---
+layout: two-cols-example
+transition: slide-left
+---
+
+# Rotación: ejemplo
+
+La placa plana rectangular mostrada en la figura está rotando a velocidad angular constante de $10 \text{ rad/s}$ en sentido antihorario. Calcula $\vec{v}_A$ y $\vec{v}_C$. Considera que $\overline{OC} = 100 \text{mm}$ y $\overline{OA} = 200 \text{ mm}$.
+
+<img src="/images/u1/rectangular_plate.svg" class="mx-auto">
+
+::right:: 
+
+<v-click>
+
+Calculando $\vec{v}_C$: 
+
+$$
+\vec{v}_C = \vec{\omega} \times \vec{r}_C = 
+\begin{vmatrix}
+\ihat & \jhat & \khat \\
+0 & 0 & 10 \\
+-50 & 86.6 & 0 
+\end{vmatrix} 
+$$
+
+$$
+\vec{v}_C = \left( -866\ihat - 500 \jhat \right) \text{ mm/s}
+$$
+
+</v-click>
+
+<v-click>
+
+Calculando $\vec{v}_A$:
+
+$$
+\vec{v}_A = \vec{\omega} \times \vec{r}_A = 
+\begin{vmatrix}
+\ihat & \jhat & \khat \\
+0 & 0 & 10 \\
+173.2 & 100 & 0 
+\end{vmatrix} 
+$$
+
+$$
+\vec{v}_A = \left( -1000\ihat + 1732 \jhat \right) \text{ mm/s}
+$$
+
+</v-click>
+
 ---
 layout: two-cols
 ---
 
-# Rotación
+# Rotación: aceleración
 
-La aceleración se puede determinar derivando $\vec{v}_A$ con respecto al tiempo:
+La aceleración del punto $A$ se puede determinar derivando $\vec{v}_A$ con respecto al tiempo:
 
 $$
-\vec{a}_A = \frac{d\vec{v}_A}{dt} = \frac{d}{dt}\left( \vec{\omega} \times \vec{r}_A \right) = \frac{d\vec{\omega}}{dt} \times \vec{r}_A + \vec{\omega} \times \frac{d\vec{r}_A}{dt} 
+\vec{a}_A = \frac{d\vec{v}_A}{dt} = \frac{d}{dt}\left( \vec{\omega} \times \vec{r}_A \right)
+$$
+$$
+= \frac{d\vec{\omega}}{dt} \times \vec{r}_A + \vec{\omega} \times \frac{d\vec{r}_A}{dt} 
 $$
 
 $$
@@ -447,13 +576,16 @@ $$
 
 <img src="/images/u1/acceleration_rotation.png" class="mx-auto" width="300px">
 
+<!-- This is a **note** -->
+
 ---
-layout: two-cols
+layout: two-cols-example
+transition: slide-left
 ---
 
-# Rotación: ejemplo
+# Ejemplo: aceleración
 
-La placa plana rectangular mostrada en la figura está rotando a velocidad angular constante de $10 \text{ rad/s}$ en sentido antihorario. Calcula $\vec{v}_P$ y $\vec{v}_Q$. Considera que $\overline{OP} = 100 \text{mm}$ y $\overline{OQ} = 200 \text{ mm}$.
+La placa plana rectangular mostrada en la figura está rotando a velocidad angular constante de $2 \text{ rad/s}$ en sentido horario. Calcula $\vec{a}_B$. Considera que $\overline{OC} = 100 \text{mm}$ y $\overline{OA} = 200 \text{ mm}$.
 
 <img src="/images/u1/rectangular_plate.svg" class="mx-auto">
 
@@ -461,42 +593,97 @@ La placa plana rectangular mostrada en la figura está rotando a velocidad angul
 
 <v-click>
 
-Calculando $\vec{v}_P$: 
+La aceleración de $B$ está dada por:
 
 $$
-\vec{v}_P = \vec{\omega} \times \vec{r}_P = 
-\begin{vmatrix}
-\ihat & \jhat & \khat \\
-0 & 0 & 10 \\
--50 & 86.6 & 0 
-\end{vmatrix} 
+\vec{a}_B = \vec{\alpha} \times \vec{r}_B - \omega^2 \vec{r}_B
 $$
 
-$$
-\vec{v}_P = \left( -866\ihat - 500 \jhat \right) \text{ mm/s}
-$$
-
-</v-click>
-
-<v-click>
-
-Calculando $\vec{v}_Q$:
+Como $\omega$ es constante, $\alpha=0$.
 
 $$
-\vec{v}_Q = \vec{\omega} \times \vec{r}_Q = 
-\begin{vmatrix}
-\ihat & \jhat & \khat \\
-0 & 0 & 10 \\
-173.2 & 100 & 0 
-\end{vmatrix} 
+\vec{a}_B = - (2)^2 \left( 123.2 \ihat + 186.6 \right) 
 $$
 
 $$
-\vec{v}_Q = \left( -1000\ihat + 1732 \jhat \right) \text{ mm/s}
+\color{green}{\vec{a}_B = \left( -492.8\ihat - 746.4 \jhat \right) \text{ mm/s}^2}
 $$
 
 </v-click>
 
 ---
+layout: two-cols
+---
 
-# .
+# Movimiento plano general
+
+El movimiento plano general de un cuerpo rígido se puede entender como un movimiento de traslación seguida por una rotación alrededor de un *punto base* del cuerpo.
+
+Para el diagrama de la figura se observa que los puntos $A$ y $B$ de la barra se desplazan una cantidad $d\vec{r}_A$, seguida de una rotación $d\theta$ alrededor del punto $A$, el punto $B$ experimenta un desplazamiento relativo $d\vec{r}_{B/A}$. Es sencillo ver que:
+
+$$
+d\vec{r}_B = d\vec{r}_A + d\vec{r}_{B/A}
+$$
+
+
+::right::
+
+<img src="/images/u1/general_plane_analysis_01.png" class="mx-auto" width="260px">
+
+<img src="/images/u1/general_plane_analysis_02.png" class="mx-auto" width="320px">
+
+---
+layout: default
+---
+
+# MPG: velocidad
+
+Para determinar la relación de velocidad de los puntos $A$ y $B$ basta con dividir la ecuación del desplazamiento por $dt$:
+
+$$
+\frac{d\vec{r}_B}{dt} = \frac{d\vec{r}_A}{dt} + \frac{d\vec{r}_{B/A}}{dt}
+$$
+
+De lo cual resulta:
+
+$$
+\color{blue}{\vec{v}_B = \vec{v}_A + \vec{v}_{B/A}}
+$$
+
+El término $\vec{v}_{B/A}$ corresponde a un movimiento de rotación alrededor del punto $A$, entonces:
+
+$$
+\vec{v}_{B/A} = \vec{\omega} \times \vec{r}_{B/A}
+$$
+
+La ecuación de velocidad para un cuerpo rígido en movimiento plano general podemos escribirla como:
+
+$$
+\color{blue}{\vec{v}_B = \vec{v}_A + \vec{\omega} \times \vec{r}_{B/A}}
+$$
+
+---
+layout: default
+---
+
+# MPG: velocidad
+
+$$
+\color{blue}{\vec{v}_B = \vec{v}_A + \vec{v}_{B/A}}
+$$
+
+<img src="/images/u1/velocity_general_plane.png" class="mx-auto">
+
+---
+layout: default
+---
+
+# MPG: velocidad
+
+La ecuación de velocidad puede utilizarse de manera práctica para estudiar el movimiento plano general de un cuerpo rígido que está articulado mediante un pasador o en contacto con otros cuerpos en movimiento. Al aplicar esta ecuación, los puntos $A$ y $B$ generalmente deben seleccionarse como puntos del cuerpo que estén articulados a otros cuerpos, o como puntos en contacto con cuerpos adyacentes que tengan un movimiento conocido.
+
+
+<div class="flex items-center justify-center gap-8">
+  <img src="/images/u1/velocity_general_plane_constraints_01.png" width="280px">
+  <img src="/images/u1/velocity_general_plane_constraints_02.png" width="250px">
+</div>
