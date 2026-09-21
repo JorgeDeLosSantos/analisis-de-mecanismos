@@ -240,6 +240,10 @@ Un cuerpo rígido está en traslación cuando todos sus puntos se desplazan mant
 <img src="/images/u1/curvilinear_translation.png" class="mx-auto">
 </div>
 
+<Footnote>
+Fuente: Meriam, 2015.
+</Footnote>
+
 ---
 
 # Rotación
@@ -248,6 +252,9 @@ Un cuerpo rígido realiza rotación alrededor de un eje fijo cuando todos sus pu
 
 <img src="/images/u1/rotation.png" class="mx-auto">
 
+<Footnote>
+Fuente: Meriam, 2015.
+</Footnote>
 
 ---
 
@@ -256,6 +263,10 @@ Un cuerpo rígido realiza rotación alrededor de un eje fijo cuando todos sus pu
 Un cuerpo rígido tiene movimiento plano general cuando simultáneamente cambia su posición y su orientación.
 
 <img src="/images/u1/general_plane.png" class="mx-auto">
+
+<Footnote>
+Fuente: Meriam, 2015.
+</Footnote>
 
 ---
 layout: section
@@ -413,6 +424,9 @@ Donde $\vec{\omega}$ es el vector de velocidad angular y $\vec{r}_A$ es un vecto
 
 <img src="/images/u1/velocity_rotation.png" class="mx-auto" width="300px">
 
+<Footnote>
+Fuente: Meriam, 2015.
+</Footnote>
 
 ---
 layout: two-cols-example
@@ -576,7 +590,9 @@ $$
 
 <img src="/images/u1/acceleration_rotation.png" class="mx-auto" width="300px">
 
-<!-- This is a **note** -->
+<Footnote>
+Fuente: Meriam, 2015.
+</Footnote>
 
 ---
 layout: two-cols-example
@@ -632,6 +648,10 @@ $$
 
 <img src="/images/u1/general_plane_analysis_02.png" class="mx-auto" width="320px">
 
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
+
 ---
 layout: default
 ---
@@ -674,6 +694,10 @@ $$
 
 <img src="/images/u1/velocity_general_plane.png" class="mx-auto">
 
+<Footnote>
+Fuente: Beer, 2010.
+</Footnote>
+
 ---
 layout: default
 ---
@@ -687,3 +711,128 @@ La ecuación de velocidad puede utilizarse de manera práctica para estudiar el 
   <img src="/images/u1/velocity_general_plane_constraints_01.png" width="280px">
   <img src="/images/u1/velocity_general_plane_constraints_02.png" width="250px">
 </div>
+
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
+
+---
+layout: two-cols-example
+---
+
+# Ejemplo
+
+Si la palanca $OA$ gira con una velocidad angular de $12$ rad/s, determine la velocidad del pistón $B$ y la velocidad angular de la barra $AB$ en el instante que se muestra.
+
+<img src="/images/u1/hibbeler-f16-10.png" class="mx-auto" width="350px">
+
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
+
+
+---
+layout: two-cols-example
+---
+
+# Ejemplo
+
+Si el rodillo $A$ se mueve a la derecha a una velocidad constante $v_A = 3 \text{ m/s}$, determine la velocidad angular
+del eslabón y la velocidad del rodillo $B$ cuando $\theta = 30°$. 
+
+<img src="/images/u1/F16-7-hibbeler.png" class="mx-auto" width="300px">
+
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
+
+::right::
+
+---
+layout: default
+---
+
+# Ejemplo
+
+El engrane planetario $A$ está unido mediante un pasador en $B$. El eslabón $BC$ gira en sentido horario con una velocidad angular de $8 \text{ rad/s}$, mientras que la corona dentada exterior gira en sentido antihorario con una velocidad angular de $2 \text{ rad/s}$. Determine la velocidad angular del engranaje $A$.
+
+<img src="/images/u1/hibbeler-16-62.png" class="mx-auto" width="600px">
+
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
+
+---
+layout: 
+
+# Ejemplo
+
+El engrane planetario $A$ está unido mediante un pasador en $B$. El eslabón $BC$ gira en sentido horario con una velocidad angular de $8 \text{ rad/s}$, mientras que la corona dentada exterior gira en sentido antihorario con una velocidad angular de $2 \text{ rad/s}$. Determine la velocidad angular del engranaje $A$.
+
+<img src="/images/u1/hibbeler-16-62.png" class="mx-auto" width="600px">
+
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
+
+---
+layout: two-cols-example
+---
+
+# Ejemplo
+
+La rueda gira sin deslizarse con una velocidad angular 10 rad/s. Determine la magnitud de la velocidad en el punto $B$ en el instante que se muestra. 
+
+<img src="/images/u1/hibbeler-f16-8.png" class="mx-auto" width="350px">
+
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
+
+---
+
+# Movimiento plano general: aceleración
+
+Una ecuación que relacione la aceleración de dos puntos en un cuerpo rígido en movimiento plano general se puede determinar al derivar la ecuación de velocidad con respecto al tiempo:
+
+$$
+\frac{d\vec{v}_B}{dt} = \frac{d\vec{v}_A}{dt} + \frac{d\vec{v}_{B/A}}{dt} 
+$$
+
+$$
+\vec{a}_B = \vec{a}_A + \vec{a}_{B/A}
+$$
+
+El término $\vec{a}_{B/A}$ representa la aceleración relativa que experimenta $B$ debido al movimiento de rotación con respecto al punto base $A$, por lo tanto:
+
+$$
+\color{blue}{\vec{a}_B = \vec{a}_A + \vec{\alpha} \times \vec{r}_{B/A} - \omega^2 \vec{r}_{B/A}}
+$$
+
+---
+layout: two-cols-example
+---
+
+# Ejemplo
+
+Si se sabe que en el instante mostrado la barra $AB$ tiene una velocidad angular constante de 6 rad/s en el sentido de las manecillas del reloj, determine a) la aceleración angular del elemento $BDE$ y b) la aceleración del punto $E$.
+
+<img src="/images/u1/beer-15.129.png" class="mx-auto" width="350px">
+
+<Footnote>
+Fuente: Beer, 2010.
+</Footnote>
+
+
+---
+
+# Fuentes de información
+
+- Hibbeler, R. C. (2015). Engineering mechanics: Dynamics (14th ed.). Pearson Education.
+- Meriam, J. L., Kraige, L. G., y Bolton, J. N. (2015). Engineering mechanics: Dynamics (8.ª ed.). Wiley.
+- Beer, F. P., Johnston, E. R. & Cornwell, P. J.(2010). Mecánica vectorial para ingenieros: Dinámica (9.ª ed.). McGraw-Hill.
+
+
+---
+
+# .

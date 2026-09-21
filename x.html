@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rodadura sin deslizamiento</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.2rem 2rem;
+      background: #1f2937;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    header p {
+      margin: 0.4rem 0 0;
+      opacity: 0.85;
+    }
+
+    main {
+      flex: 1;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 1.5rem;
+    }
+
+    .simulation {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      display: block;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .control {
+      margin-bottom: 1.3rem;
+    }
+
+    .control label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.45rem;
+      font-weight: 600;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    #pauseButton {
+      background: #2563eb;
+      color: white;
+    }
+
+    #resetButton {
+      background: #e5e7eb;
+      color: #222;
+    }
+
+    .data {
+      margin-top: 1.6rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+      font-family: monospace;
+      line-height: 1.8;
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 840px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      canvas {
+        min-height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Rueda rodando sin patinar</h1>
+      <p>
+        Condición de rodadura: <strong>x = Rθ</strong> &nbsp; | &nbsp;
+        velocidad angular: <strong>ω = v/R</strong>
+      </p>
+    </header>
+
+    <main>
+      <section class="simulation">
+        <canvas id="canvas"></canvas>
+      </section>
+
+      <aside class="panel">
+        <div class="control">
+          <label>
+            Radio
+            <span id="radiusValue">60 px</span>
+          </label>
+          <input id="radius" type="range" min="30" max="100" value="60" />
+        </div>
+
+        <div class="control">
+          <label>
+            Velocidad
+            <span id="speedValue">100 px/s</span>
+          </label>
+          <input id="speed" type="range" min="20" max="300" value="100" />
+        </div>
+
+        <button id="pauseButton">Pausar</button>
+        <button id="resetButton">Reiniciar</button>
+
+        <div class="data">
+          <div>x = <span id="xValue">0</span> px</div>
+          <div>θ = <span id="thetaValue">0</span> rad</div>
+          <div>ω = <span id="omegaValue">0</span> rad/s</div>
+        </div>
+
+        <div class="note">
+          Se dibujan varios puntos sobre la rueda, pero únicamente
+          el punto rojo deja su trayectoria (cicloide).
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const radiusInput = document.getElementById("radius");
+    const speedInput = document.getElementById("speed");
+
+    const radiusValue = document.getElementById("radiusValue");
+    const speedValue = document.getElementById("speedValue");
+
+    const xValue = document.getElementById("xValue");
+    const thetaValue = document.getElementById("thetaValue");
+    const omegaValue = document.getElementById("omegaValue");
+
+    const pauseButton = document.getElementById("pauseButton");
+    const resetButton = document.getElementById("resetButton");
+
+    let radius = Number(radiusInput.value);
+    let speed = Number(speedInput.value);
+
+    let x = 0;          // desplazamiento horizontal
+    let theta = 0;      // ángulo girado (magnitud del giro horario)
+    let running = true;
+    let previousTime = null;
+
+    const trail = [];
+
+    // Número de puntos en la circunferencia
+    const NUM_POINTS = 12;
+
+    // Sólo este punto dejará trayectoria
+    const trackedIndex = 0;
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    radiusInput.addEventListener("input", () => {
+      radius = Number(radiusInput.value);
+      radiusValue.textContent = `${radius} px`;
+
+      // Mantener la relación de rodadura sin patinar
+      theta = x / radius;
+
+      trail.length = 0;
+    });
+
+    speedInput.addEventListener("input", () => {
+      speed = Number(speedInput.value);
+      speedValue.textContent = `${speed} px/s`;
+    });
+
+    pauseButton.addEventListener("click", () => {
+      running = !running;
+      pauseButton.textContent = running ? "Pausar" : "Continuar";
+      previousTime = null;
+    });
+
+    resetButton.addEventListener("click", () => {
+      x = 0;
+      theta = 0;
+      trail.length = 0;
+      previousTime = null;
+    });
+
+    function update(dt) {
+      if (!running) return;
+
+      // Traslación del centro
+      x += speed * dt;
+
+      // Rodadura sin deslizamiento:
+      // x = R * theta  => theta = x / R
+      theta = x / radius;
+
+      const width = canvas.clientWidth;
+
+      // Cuando sale de pantalla, reinicia
+      if (x > width + radius * 2) {
+        x = 0;
+        theta = 0;
+        trail.length = 0;
+      }
+    }
+
+    function drawGround(width, height) {
+      const groundY = height * 0.74;
+
+      ctx.beginPath();
+      ctx.moveTo(0, groundY);
+      ctx.lineTo(width, groundY);
+      ctx.strokeStyle = "#374151";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      ctx.strokeStyle = "#9ca3af";
+      ctx.lineWidth = 1;
+
+      for (let i = 0; i < width; i += 40) {
+        ctx.beginPath();
+        ctx.moveTo(i, groundY);
+        ctx.lineTo(i + 15, groundY + 12);
+        ctx.stroke();
+      }
+
+      return groundY;
+    }
+
+    function drawTrail() {
+      if (trail.length < 2) return;
+
+      ctx.beginPath();
+      ctx.moveTo(trail[0].x, trail[0].y);
+
+      for (let i = 1; i < trail.length; i++) {
+        ctx.lineTo(trail[i].x, trail[i].y);
+      }
+
+      ctx.strokeStyle = "#ef4444";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function getRimPoint(cx, cy, angleFromBottom) {
+      // Corrección importante:
+      // para que ruede hacia la derecha, la rotación debe ser horaria.
+      // Si el punto inicial está abajo, su posición relativa correcta es:
+      // x = -R sin(angle), y = +R cos(angle)
+      return {
+        x: cx - radius * Math.sin(angleFromBottom),
+        y: cy + radius * Math.cos(angleFromBottom)
+      };
+    }
+
+    function drawWheel(cx, cy) {
+      // rueda
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = "#dbeafe";
+      ctx.fill();
+      ctx.strokeStyle = "#1e3a8a";
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      let trackedPoint = null;
+
+      for (let i = 0; i < NUM_POINTS; i++) {
+        const alpha = (2 * Math.PI * i) / NUM_POINTS;
+        const p = getRimPoint(cx, cy, theta + alpha);
+
+        if (i === trackedIndex) {
+          trackedPoint = p;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, i === trackedIndex ? 6 : 4, 0, Math.PI * 2);
+        ctx.fillStyle = i === trackedIndex ? "#ef4444" : "#111827";
+        ctx.fill();
+      }
+
+      // radio hacia el punto rastreado
+      if (trackedPoint) {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(trackedPoint.x, trackedPoint.y);
+        ctx.strokeStyle = "#2563eb";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        trail.push({ x: trackedPoint.x, y: trackedPoint.y });
+
+        if (trail.length > 2500) {
+          trail.shift();
+        }
+      }
+
+      // centro
+      ctx.beginPath();
+      ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+      ctx.fillStyle = "#111827";
+      ctx.fill();
+    }
+
+    function drawVelocityArrow(cx, cy) {
+      const y = cy - radius - 40;
+
+      ctx.strokeStyle = "#16a34a";
+      ctx.fillStyle = "#16a34a";
+      ctx.lineWidth = 3;
+
+      ctx.beginPath();
+      ctx.moveTo(cx - 30, y);
+      ctx.lineTo(cx + 50, y);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(cx + 50, y);
+      ctx.lineTo(cx + 38, y - 7);
+      ctx.lineTo(cx + 38, y + 7);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.font = "16px system-ui";
+      ctx.fillText("v", cx + 57, y + 5);
+    }
+
+    function render() {
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+
+      ctx.clearRect(0, 0, width, height);
+
+      const groundY = drawGround(width, height);
+
+      // El centro de la rueda está a una altura R sobre el piso
+      const cx = radius + x;
+      const cy = groundY - radius;
+
+      drawTrail();
+      drawWheel(cx, cy);
+      drawVelocityArrow(cx, cy);
+
+      xValue.textContent = x.toFixed(1);
+      thetaValue.textContent = theta.toFixed(2);
+      omegaValue.textContent = (speed / radius).toFixed(2);
+    }
+
+    function animate(timestamp) {
+      if (previousTime === null) {
+        previousTime = timestamp;
+      }
+
+      const dt = (timestamp - previousTime) / 1000;
+      previousTime = timestamp;
+
+      const safeDt = Math.min(dt, 0.05);
+
+      update(safeDt);
+      render();
+
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>
