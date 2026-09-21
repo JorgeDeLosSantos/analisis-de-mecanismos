@@ -737,39 +737,9 @@ layout: two-cols-example
 
 # Ejemplo
 
-Si el rodillo $A$ se mueve a la derecha a una velocidad constante $v_A = 3 \text{ m/s}$, determine la velocidad angular
-del eslabón y la velocidad del rodillo $B$ cuando $\theta = 30°$. 
+La rueda gira sin deslizarse con una velocidad angular 10 rad/s. Determine la magnitud de la velocidad en el punto $B$ en el instante que se muestra. 
 
-<img src="/images/u1/F16-7-hibbeler.png" class="mx-auto" width="300px">
-
-<Footnote>
-Fuente: Hibbeler, 2015.
-</Footnote>
-
-::right::
-
----
-layout: default
----
-
-# Ejemplo
-
-El engrane planetario $A$ está unido mediante un pasador en $B$. El eslabón $BC$ gira en sentido horario con una velocidad angular de $8 \text{ rad/s}$, mientras que la corona dentada exterior gira en sentido antihorario con una velocidad angular de $2 \text{ rad/s}$. Determine la velocidad angular del engranaje $A$.
-
-<img src="/images/u1/hibbeler-16-62.png" class="mx-auto" width="600px">
-
-<Footnote>
-Fuente: Hibbeler, 2015.
-</Footnote>
-
----
-layout: 
-
-# Ejemplo
-
-El engrane planetario $A$ está unido mediante un pasador en $B$. El eslabón $BC$ gira en sentido horario con una velocidad angular de $8 \text{ rad/s}$, mientras que la corona dentada exterior gira en sentido antihorario con una velocidad angular de $2 \text{ rad/s}$. Determine la velocidad angular del engranaje $A$.
-
-<img src="/images/u1/hibbeler-16-62.png" class="mx-auto" width="600px">
+<img src="/images/u1/hibbeler-f16-8.png" class="mx-auto" width="350px">
 
 <Footnote>
 Fuente: Hibbeler, 2015.
@@ -781,9 +751,27 @@ layout: two-cols-example
 
 # Ejemplo
 
-La rueda gira sin deslizarse con una velocidad angular 10 rad/s. Determine la magnitud de la velocidad en el punto $B$ en el instante que se muestra. 
+Si el rodillo $A$ se mueve a la derecha a una velocidad constante $v_A = 3 \text{ m/s}$, determine la velocidad angular
+del eslabón y la velocidad del rodillo $B$ cuando $\theta = 30°$. 
 
-<img src="/images/u1/hibbeler-f16-8.png" class="mx-auto" width="350px">
+<img src="/images/u1/F16-7-hibbeler.png" class="mx-auto" width="300px">
+
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
+
+::right::
+
+
+---
+layout: two-cols-example
+---
+
+# Ejemplo
+
+El engrane planetario $A$ está unido mediante un pasador en $B$. El eslabón $BC$ gira en sentido horario con una velocidad angular de $8 \text{ rad/s}$, mientras que la corona dentada exterior gira en sentido antihorario con una velocidad angular de $2 \text{ rad/s}$. Determine la velocidad angular del engranaje $A$.
+
+<img src="/images/u1/hibbeler-16-62.png" class="mx-auto" width="600px">
 
 <Footnote>
 Fuente: Hibbeler, 2015.
@@ -835,4 +823,4 @@ Fuente: Beer, 2010.
 
 ---
 
-# .
+#       
