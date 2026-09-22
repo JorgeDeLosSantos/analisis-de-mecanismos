@@ -778,6 +778,52 @@ Fuente: Hibbeler, 2015.
 </Footnote>
 
 ---
+layout: two-cols
+---
+
+# Centro instantáneo de rotación
+
+En un cuerpo rígido con movimiento plano general, el centro instantáneo de rotación (CIR) es el punto del plano que, en un instante dado, tiene velocidad nula. En ese instante, el movimiento completo del cuerpo puede interpretarse cinemáticamente como si fuera una rotación pura alrededor de ese punto.
+
+<Callout type="warning" title="o.O">
+
+- El CIR no es necesariamente un punto físico del cuerpo rígido. 
+- Velocidad cero no implica necesariamente aceleración cero.
+</Callout>
+
+::right::
+
+<img src="/images/u1/icr.png" class="mx-auto" width="400px">
+
+---
+layout: two-cols
+---
+
+# ¿Cómo ubicar el CIR?
+
+Si se conoce la dirección de dos velocidades no paralelas $\vec{v}_A$ y $\vec{v}_B$: trazamos en los puntos $A$ y $B$ segmentos de línea perpendiculares a las velocidades, al extender estas líneas el punto de intersección corresponde al CIR.
+
+<img src="/images/u1/icr_a.png" class="mx-auto" width="300px">
+
+::right::
+
+
+Si se conoce la velocidad $\vec{v}_A$ de un punto del cuerpo y su velocidad angular $\vec{\omega}$: el CIR se encuentra a lo largo de la línea trazada perpendicular a $\vec{v}_A$ en $A$, de modo que la distancia de $A$ al CIR es $r_{A/CI} = v_A / \omega$. 
+
+<img src="/images/u1/icr_b.png" class="mx-auto" width="300px">
+
+---
+
+# ¿Cómo ubicar el CIR?
+
+Si la magnitud y dirección de dos velocidades paralelas $\vec{v}_A$ y $\vec{v}_B$ se conocen: la ubicación del CIR se determina por medio de triángulos proporcionales. 
+
+<div class="grid grid-cols-2 gap-4 items-center">
+  <img src="/images/u1/icr_c.png" class="mx-auto" width="300px">
+  <img src="/images/u1/icr_d.png" class="mx-auto" width="300px">
+</div>
+
+---
 
 # Movimiento plano general: aceleración
 
@@ -798,6 +844,17 @@ $$
 $$
 
 ---
+
+# Movimiento plano general: aceleración
+
+<div class="grid grid-cols-3 gap-4 items-center">
+  <img src="/images/u1/general_plane_acceleration_01.png" class="mx-auto" width="300px">
+  <img src="/images/u1/general_plane_acceleration_02.png" class="mx-auto" width="180px">
+  <img src="/images/u1/general_plane_acceleration_03.png" class="mx-auto" width="200px">
+</div>
+
+
+---
 layout: two-cols-example
 ---
 
@@ -811,6 +868,20 @@ Si se sabe que en el instante mostrado la barra $AB$ tiene una velocidad angular
 Fuente: Beer, 2010.
 </Footnote>
 
+
+---
+layout: two-cols-example
+---
+
+# Ejemplo
+
+La barra $AB$ presenta el movimiento angular indicado en la figura. Determina la velocidad y aceleración del bloque deslizante $C$ en este instante.
+
+<img src="/images/u1/hibbeler-16-103.png" class="mx-auto" width="380px">
+
+<Footnote>
+Fuente: Hibbeler, 2015.
+</Footnote>
 
 ---
 

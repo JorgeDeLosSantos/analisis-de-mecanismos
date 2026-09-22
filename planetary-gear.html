@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engrane planetario — animación</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef2f7;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9e0ea;
+      --blue: #2f6f9f;
+      --blue-dark: #174f78;
+      --ring: #d6c7a4;
+      --ring-dark: #8c7d5c;
+      --accent: #19a7a0;
+      --danger: #dc5a5a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 48%, #e8edf4 100%);
+      color: var(--ink);
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    header {
+      padding: 18px 24px 12px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2vw, 1.8rem);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    main {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 18px;
+      padding: 0 24px 24px;
+    }
+
+    .stage,
+    .panel {
+      background: color-mix(in srgb, var(--panel) 94%, transparent);
+      border: 1px solid rgba(23, 32, 51, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(30, 52, 80, 0.10);
+    }
+
+    .stage {
+      min-height: 580px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    canvas {
+      display: block;
+      width: 70%;
+      height: 70%;
+      min-height: 580px;
+    }
+
+    .legend {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(8px);
+      color: var(--muted);
+      font-size: 0.82rem;
+      border: 1px solid rgba(23, 32, 51, 0.08);
+    }
+
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .dot.ring { background: var(--ring-dark); }
+    .dot.planet { background: var(--blue); }
+    .dot.contact { background: var(--danger); }
+
+    .panel {
+      padding: 18px;
+      align-self: stretch;
+      overflow: auto;
+    }
+
+    .card + .card {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 18px;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .metric {
+      padding: 10px 11px;
+      border-radius: 12px;
+      background: #f6f8fb;
+      border: 1px solid #e7ebf1;
+    }
+
+    .metric small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .metric strong {
+      font-size: 1.04rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .equation {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #e9edf2;
+      font-family: "Cambria Math", Georgia, serif;
+      line-height: 1.5;
+      color: #2b3548;
+    }
+
+    .control { margin: 14px 0; }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+    }
+
+    label { font-size: 0.9rem; font-weight: 650; }
+
+    output {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.88rem;
+    }
+
+    input[type="range"] { width: 100%; accent-color: var(--blue); }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid #d9e1eb;
+      background: #fff;
+      color: var(--ink);
+      border-radius: 11px;
+      padding: 10px 12px;
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+
+    button.primary {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    button:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(20, 42, 70, .10); }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 10px;
+      color: #475467;
+      font-size: 0.9rem;
+    }
+
+    .check input { accent-color: var(--blue); }
+
+    .note {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .sign-note {
+      padding: 9px 10px;
+      border-radius: 10px;
+      background: #f2fbfa;
+      border: 1px solid #d2efec;
+      color: #356a68;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 900px) {
+      main { grid-template-columns: 1fr; }
+      .stage, canvas { min-height: 520px; }
+      .panel { max-height: none; }
+    }
+
+    @media (max-width: 560px) {
+      header { padding-inline: 14px; }
+      main { padding: 0 14px 14px; }
+      .stage, canvas { min-height: 430px; }
+      .metric-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Engrane planetario con corona interna móvil</h1>
+      <p>Modelo cinemático inspirado en la figura: <strong>R = 20 in</strong>, <strong>CB = 15 in</strong> y, por geometría, <strong>r = 5 in</strong>.</p>
+    </header>
+
+    <main>
+      <section class="stage" aria-label="Animación del tren planetario">
+        <canvas id="gearCanvas"></canvas>
+        <div class="legend">
+          <span><i class="dot ring"></i> Corona D</span>
+          <span><i class="dot planet"></i> Engrane A</span>
+          <span><i class="dot contact"></i> Contacto</span>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <section class="card">
+          <h2>Cinemática</h2>
+          <div class="metric-grid">
+            <div class="metric"><small>ω<sub>BC</sub></small><strong id="carrierMetric">−8.00 rad/s</strong></div>
+            <div class="metric"><small>ω<sub>D</sub></small><strong id="ringMetric">+2.00 rad/s</strong></div>
+            <div class="metric"><small>ω<sub>A</sub></small><strong id="planetMetric">+32.00 rad/s</strong></div>
+            <div class="metric"><small>CB</small><strong>15 in</strong></div>
+          </div>
+
+          <div class="equation">
+            ω<sub>D</sub>R = ω<sub>BC</sub>(R − r) + ω<sub>A</sub>r<br>
+            ⇒ &nbsp;ω<sub>A</sub> = [Rω<sub>D</sub> − (R − r)ω<sub>BC</sub>] / r
+          </div>
+          <p class="note">Con los sentidos de la figura y tomando antihorario como positivo: ω<sub>BC</sub> = −8 rad/s y ω<sub>D</sub> = +2 rad/s, por lo que ω<sub>A</sub> = +32 rad/s.</p>
+        </section>
+
+        <section class="card">
+          <h2>Controles</h2>
+          <div class="sign-note">Convención de signos: <strong>+</strong> antihorario, <strong>−</strong> horario.</div>
+
+          <div class="control">
+            <div class="control-row">
+              <label for="carrierSpeed">ω<sub>BC</sub></label>
+              <output id="carrierOutput">−8.0 rad/s</output>
+            </div>
+            <input id="carrierSpeed" type="range" min="-12" max="12" step="0.1" value="-8" />
+          </div>
+
+          <div class="control">
+            <div class="control-row">
+              <label for="ringSpeed">ω<sub>D</sub></label>
+              <output id="ringOutput">+2.0 rad/s</output>
+            </div>
+            <input id="ringSpeed" type="range" min="-6" max="6" step="0.1" value="2" />
+          </div>
+
+          <div class="control">
+            <div class="control-row">
+              <label for="timeScale">Escala de tiempo</label>
+              <output id="timeScaleOutput">0.25×</output>
+            </div>
+            <input id="timeScale" type="range" min="0.05" max="1" step="0.05" value="0.25" />
+          </div>
+
+          <div class="buttons">
+            <button class="primary" id="pauseBtn">Pausar</button>
+            <button id="resetBtn">Reiniciar</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Visualización</h2>
+          <label class="check"><input id="pitchToggle" type="checkbox" checked /> Mostrar círculos primitivos</label>
+          <label class="check"><input id="contactToggle" type="checkbox" checked /> Mostrar punto de contacto</label>
+          <label class="check"><input id="orbitToggle" type="checkbox" checked /> Mostrar órbita de B</label>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const canvas = document.getElementById('gearCanvas');
+      const ctx = canvas.getContext('2d');
+
+      const carrierInput = document.getElementById('carrierSpeed');
+      const ringInput = document.getElementById('ringSpeed');
+      const timeScaleInput = document.getElementById('timeScale');
+      const carrierOutput = document.getElementById('carrierOutput');
+      const ringOutput = document.getElementById('ringOutput');
+      const timeScaleOutput = document.getElementById('timeScaleOutput');
+      const carrierMetric = document.getElementById('carrierMetric');
+      const ringMetric = document.getElementById('ringMetric');
+      const planetMetric = document.getElementById('planetMetric');
+      const pauseBtn = document.getElementById('pauseBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const pitchToggle = document.getElementById('pitchToggle');
+      const contactToggle = document.getElementById('contactToggle');
+      const orbitToggle = document.getElementById('orbitToggle');
+
+      // Geometría de la figura [in]
+      const R = 20;          // radio primitivo de la corona interna D
+      const arm = 15;        // distancia C-B
+      const r = R - arm;     // radio primitivo del planeta A = 5 in
+
+      // Dientes ficticios, elegidos sólo para mantener la proporción de radios 4:1.
+      const ringTeeth = 48;
+      const planetTeeth = 12;
+
+      // Estado angular. Positivo = antihorario.
+      let carrierAngle = -Math.PI / 2; // brazo inicialmente vertical hacia abajo
+      let ringAngle = 0;
+
+      // Fase inicial del planeta: coloca un valle frente a un diente de la corona.
+      let planetAngle = -5 * Math.PI / 12;
+
+      let running = true;
+      let lastTime = null;
+      let dpr = 1;
+      let cssWidth = 0;
+      let cssHeight = 0;
+
+      function signed(value, digits = 1) {
+        const v = Number(value);
+        if (Math.abs(v) < 1e-10) return `${(0).toFixed(digits)}`;
+        return `${v > 0 ? '+' : '−'}${Math.abs(v).toFixed(digits)}`;
+      }
+
+      function omegaPlanet() {
+        const omegaC = Number(carrierInput.value);
+        const omegaD = Number(ringInput.value);
+        return (R * omegaD - arm * omegaC) / r;
+      }
+
+      function refreshReadouts() {
+        const omegaC = Number(carrierInput.value);
+        const omegaD = Number(ringInput.value);
+        const omegaA = omegaPlanet();
+        const scale = Number(timeScaleInput.value);
+
+        carrierOutput.textContent = `${signed(omegaC)} rad/s`;
+        ringOutput.textContent = `${signed(omegaD)} rad/s`;
+        timeScaleOutput.textContent = `${scale.toFixed(2)}×`;
+
+        carrierMetric.textContent = `${signed(omegaC, 2)} rad/s`;
+        ringMetric.textContent = `${signed(omegaD, 2)} rad/s`;
+        planetMetric.textContent = `${signed(omegaA, 2)} rad/s`;
+      }
+
+      [carrierInput, ringInput, timeScaleInput].forEach(el => {
+        el.addEventListener('input', refreshReadouts);
+      });
+
+      pauseBtn.addEventListener('click', () => {
+        running = !running;
+        pauseBtn.textContent = running ? 'Pausar' : 'Continuar';
+        lastTime = null;
+      });
+
+      resetBtn.addEventListener('click', () => {
+        carrierAngle = -Math.PI / 2;
+        ringAngle = 0;
+        planetAngle = -5 * Math.PI / 12;
+        lastTime = null;
+      });
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        dpr = Math.max(1, window.devicePixelRatio || 1);
+        cssWidth = Math.max(1, rect.width);
+        cssHeight = Math.max(1, rect.height);
+        canvas.width = Math.round(cssWidth * dpr);
+        canvas.height = Math.round(cssHeight * dpr);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      refreshReadouts();
+
+      function polar(radius, angle) {
+        return [radius * Math.cos(angle), radius * Math.sin(angle)];
+      }
+
+      function drawRingGear() {
+        ctx.save();
+        ctx.rotate(ringAngle);
+
+        // Cuerpo de la corona.
+        ctx.beginPath();
+        ctx.arc(0, 0, R + 2.7, 0, Math.PI * 2);
+        ctx.arc(0, 0, R + 0.45, 0, Math.PI * 2, true);
+        ctx.fillStyle = '#d8c9a7';
+        ctx.fill('evenodd');
+        ctx.strokeStyle = '#8b7c5e';
+        ctx.lineWidth = 0.18;
+        ctx.stroke();
+
+        // Dientes internos trapezoidales.
+        const step = Math.PI * 2 / ringTeeth;
+        for (let i = 0; i < ringTeeth; i++) {
+          const a = i * step;
+          const halfRoot = step * 0.34;
+          const halfTip = step * 0.20;
+          const rootRadius = R + 0.55;
+          const tipRadius = R - 0.58;
+          const p1 = polar(rootRadius, a - halfRoot);
+          const p2 = polar(tipRadius, a - halfTip);
+          const p3 = polar(tipRadius, a + halfTip);
+          const p4 = polar(rootRadius, a + halfRoot);
+
+          ctx.beginPath();
+          ctx.moveTo(...p1);
+          ctx.lineTo(...p2);
+          ctx.lineTo(...p3);
+          ctx.lineTo(...p4);
+          ctx.closePath();
+          ctx.fillStyle = '#cabb97';
+          ctx.fill();
+          ctx.strokeStyle = '#887859';
+          ctx.lineWidth = 0.10;
+          ctx.stroke();
+        }
+
+        // Marca solidaria con la corona para hacer evidente su giro.
+        ctx.beginPath();
+        ctx.arc(R + 1.65, 0, 0.32, 0, Math.PI * 2);
+        ctx.fillStyle = '#8c7d5c';
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      function drawPlanetGear(bx, by) {
+        ctx.save();
+        ctx.translate(bx, by);
+        ctx.rotate(planetAngle);
+
+        const step = Math.PI * 2 / planetTeeth;
+
+        // Dientes externos.
+        for (let i = 0; i < planetTeeth; i++) {
+          const a = i * step;
+          const halfRoot = step * 0.34;
+          const halfTip = step * 0.21;
+          const rootRadius = r - 0.42;
+          const tipRadius = r + 0.58;
+          const p1 = polar(rootRadius, a - halfRoot);
+          const p2 = polar(tipRadius, a - halfTip);
+          const p3 = polar(tipRadius, a + halfTip);
+          const p4 = polar(rootRadius, a + halfRoot);
+
+          ctx.beginPath();
+          ctx.moveTo(...p1);
+          ctx.lineTo(...p2);
+          ctx.lineTo(...p3);
+          ctx.lineTo(...p4);
+          ctx.closePath();
+          ctx.fillStyle = '#77a7c7';
+          ctx.fill();
+          ctx.strokeStyle = '#174f78';
+          ctx.lineWidth = 0.12;
+          ctx.stroke();
+        }
+
+        // Cuerpo del engrane.
+        ctx.beginPath();
+        ctx.arc(0, 0, r - 0.15, 0, Math.PI * 2);
+        ctx.fillStyle = '#6d9fbe';
+        ctx.fill();
+        ctx.strokeStyle = '#174f78';
+        ctx.lineWidth = 0.18;
+        ctx.stroke();
+
+        // Aro interior y agujeros: ayudan a percibir el giro propio.
+        ctx.beginPath();
+        ctx.arc(0, 0, r * 0.55, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(23,79,120,.55)';
+        ctx.lineWidth = 0.15;
+        ctx.stroke();
+
+        for (let i = 0; i < 4; i++) {
+          const a = i * Math.PI / 2 + Math.PI / 4;
+          const [hx, hy] = polar(r * 0.62, a);
+          ctx.beginPath();
+          ctx.arc(hx, hy, 0.33, 0, Math.PI * 2);
+          ctx.fillStyle = '#dcebf4';
+          ctx.fill();
+          ctx.strokeStyle = '#174f78';
+          ctx.lineWidth = 0.08;
+          ctx.stroke();
+        }
+
+        ctx.beginPath();
+        ctx.arc(r * 0.78, 0, 0.27, 0, Math.PI * 2);
+        ctx.fillStyle = '#f3cc5b';
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      function drawCarrier(bx, by) {
+        ctx.save();
+        ctx.lineCap = 'round';
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(bx, by);
+        ctx.strokeStyle = '#2d6f9d';
+        ctx.lineWidth = 1.05;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(bx, by);
+        ctx.strokeStyle = '#8dc1df';
+        ctx.lineWidth = 0.52;
+        ctx.stroke();
+
+        // Hubs C y B
+        for (const [x, y, outer] of [[0, 0, 1.15], [bx, by, 1.05]]) {
+          ctx.beginPath();
+          ctx.arc(x, y, outer, 0, Math.PI * 2);
+          ctx.fillStyle = '#dbe8f0';
+          ctx.fill();
+          ctx.strokeStyle = '#355f79';
+          ctx.lineWidth = 0.16;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(x, y, outer * 0.38, 0, Math.PI * 2);
+          ctx.fillStyle = '#637888';
+          ctx.fill();
+        }
+
+        ctx.restore();
+      }
+
+      function drawPitchGeometry(bx, by) {
+        ctx.save();
+        ctx.setLineDash([0.45, 0.35]);
+        ctx.lineWidth = 0.08;
+        ctx.strokeStyle = 'rgba(68,84,106,.45)';
+
+        ctx.beginPath();
+        ctx.arc(0, 0, R, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(bx, by, r, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function drawOrbit() {
+        ctx.save();
+        ctx.setLineDash([0.35, 0.38]);
+        ctx.lineWidth = 0.08;
+        ctx.strokeStyle = 'rgba(25,167,160,.42)';
+        ctx.beginPath();
+        ctx.arc(0, 0, arm, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function drawContact() {
+        const x = R * Math.cos(carrierAngle);
+        const y = R * Math.sin(carrierAngle);
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x, y, 0.34, 0, Math.PI * 2);
+        ctx.fillStyle = '#dc5a5a';
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 0.12;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function worldToScreen(x, y, cx, cy, scale) {
+        return [cx + scale * x, cy - scale * y];
+      }
+
+      function drawScreenLabels(cx, cy, scale, bx, by) {
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.font = '600 15px system-ui, sans-serif';
+        ctx.fillStyle = '#26364c';
+        ctx.textBaseline = 'middle';
+
+        const [cxs, cys] = worldToScreen(0, 0, cx, cy, scale);
+        const [bxs, bys] = worldToScreen(bx, by, cx, cy, scale);
+        const [dsx, dsy] = worldToScreen((R + 2.0) * Math.cos(0.65), (R + 2.0) * Math.sin(0.65), cx, cy, scale);
+
+        ctx.fillText('C', cxs + 10, cys - 12);
+        ctx.fillText('B', bxs + 11, bys - 8);
+        ctx.fillText('A', bxs - 10, bys + 26);
+        ctx.fillText('D', dsx + 7, dsy - 3);
+      }
+
+      function render() {
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const margin = 34;
+        const worldDiameter = 2 * (R + 3.2);
+        const scale = Math.max(5, Math.min((cssWidth - margin * 2) / worldDiameter, (cssHeight - margin * 2) / worldDiameter));
+        const cx = cssWidth / 2;
+        const cy = cssHeight / 2;
+
+        // Transformación física: eje y positivo hacia arriba.
+        ctx.setTransform(dpr * scale, 0, 0, -dpr * scale, dpr * cx, dpr * cy);
+
+        const bx = arm * Math.cos(carrierAngle);
+        const by = arm * Math.sin(carrierAngle);
+
+        drawRingGear();
+        if (orbitToggle.checked) drawOrbit();
+        if (pitchToggle.checked) drawPitchGeometry(bx, by);
+        drawPlanetGear(bx, by);
+        drawCarrier(bx, by);
+        if (contactToggle.checked) drawContact();
+        drawScreenLabels(cx, cy, scale, bx, by);
+      }
+
+      function update(dt) {
+        const omegaC = Number(carrierInput.value);
+        const omegaD = Number(ringInput.value);
+        const omegaA = omegaPlanet();
+        const speed = Number(timeScaleInput.value);
+
+        carrierAngle += omegaC * dt * speed;
+        ringAngle += omegaD * dt * speed;
+        planetAngle += omegaA * dt * speed;
+      }
+
+      function animate(now) {
+        if (lastTime == null) lastTime = now;
+        const dt = Math.min((now - lastTime) / 1000, 0.05);
+        lastTime = now;
+
+        if (running) update(dt);
+        render();
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    })();
+  </script>
+</body>
+</html>
