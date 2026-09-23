@@ -45,8 +45,9 @@ jobs:
 
       - name: Prepare Pages artifact
         run: |
+          mkdir -p publish
+          cp -r site/. publish/
           mkdir -p publish/slides
-          cp site/slides/index.html publish/slides/index.html
           cp -r slides/dist/. publish/slides/
 
       - name: Upload Pages artifact
