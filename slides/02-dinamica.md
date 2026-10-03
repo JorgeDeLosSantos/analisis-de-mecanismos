@@ -26,6 +26,17 @@ Que el estudiante relacione el movimiento de un cuerpo rígido con las fuerzas y
 
 # -.-
 
+---
+layout: section
+---
+
+# Un repaso de cinética de la partícula
+
+---
+
+# Segunda ley de Newton
+
+
 
 ---
 layout: section
@@ -33,12 +44,35 @@ layout: section
 
 # Propiedades de inercia
 
+---
+
+# Momento de inercia de masa
+
+El momento de inercia es una medida de la inercia rotacional de un cuerpo. El momento de inercia refleja la distribución de masa de un objeto o de un sistema de partículas en rotación, respecto a un eje de giro.*
+
+Para un sola partícula de masa $m$, ubicada a una distancia perpendicular $r$ del eje, el momento de inercia $I$ está dado por:
+
+$$
+I = mr^2
+$$
+
+Para un cuerpo formado por varias partículas:
+
+$$
+I=\sum_i m_i r_i^2
+$$
+
+donde $r_i$ es la distancia perpendicular de cada partícula al eje considerado.
+
+<Footnote>
+[*] https://es.wikipedia.org/wiki/Momento_de_inercia
+</Footnote>
 
 ---
 
 # Momento de inercia de masa
 
-El momento de inercia de masa mide cómo se distribuye la masa de un cuerpo respecto a un eje y, en consecuencia, su resistencia a experimentar aceleración angular alrededor de ese eje.
+En el caso de un cuerpo con una distribución continua de masa, podemos imaginarlo como un conjunto de partículas infinitesimalmente pequeñas. El momento de inercia se obtiene entonces mediante la integral:
 
 $$
 I = \int_m r^2 dm
@@ -47,13 +81,8 @@ $$
 donde:
 
 - $dm$: elemento diferencial de masa.
-- $r$: distancia perpendicular del elemento de masa al eje considerado.
-- $I$: momento de inercia de masa respecto a ese eje.
-
-<Callout type="note">
-
-El momento de inercia no depende sólo de cuánta masa tiene el cuerpo, sino de cómo está distribuida.
-</Callout>
+- $r$: distancia perpendicular desde el eje de rotación hasta el elemento de masa $dm$.
+- $I$: momento de inercia de masa respecto al eje considerado.
 
 ---
 
@@ -78,6 +107,19 @@ $$
 I_{z} = \int_m (x^2 + y^2) \, dm 
 $$
 
+---
+
+# Teorema de ejes paralelos
+
+Si se conoce el momento de inercia de un cuerpo respecto a un eje que pasa por su centro de masa, puede obtenerse respecto a cualquier eje paralelo mediante:
+
+$$
+I = \bar{I} + m d^2 
+$$
+
+- $\bar{I}$ → momento de inercia respecto al eje centroidal
+- $I$ → momento de inercia respecto al nuevo eje
+- $d$  → distancia perpendicular entre los ejes
 
 ---
 
