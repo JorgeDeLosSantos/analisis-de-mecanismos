@@ -34,9 +34,46 @@ layout: section
 
 ---
 
+# Recordando: cinemática vs cinética
+
+- **Cinemática**: describe el movimiento sin considerar sus causas.
+- **Cinética**: relaciona el movimiento con las fuerzas que lo producen.
+
+---
+
 # Segunda ley de Newton
 
+La aceleración que experimenta una partícula está determinada por la fuerza resultante que actúa sobre ella: 
 
+$$
+\sum \vec{F} = m \vec{a}
+$$
+
+En coordenadas cartesianas:
+
+$$ \sum F_x = m a_x $$
+$$ \sum F_y = m a_y $$
+$$ \sum F_z = m a_z $$
+
+En coordenadas normal y tangencial:
+
+$$
+\sum F_t = m a_t
+$$
+
+$$
+\sum F_n = m a_n
+$$
+
+---
+layout: two-cols-example
+---
+
+**Ejemplo.** Un bloque de $2\,\text{kg}$, mostrado en la figura, se encuentra sobre una superficie horizontal. Sobre el bloque actúa una fuerza horizontal de magnitud $F=5\,\text{N}$. Si el coeficiente de fricción cinética entre el bloque y la superficie es $\mu_k=0.3$, determina la distancia que recorre el bloque durante los primeros $2\,\text{s}$, suponiendo que parte del reposo.
+
+
+
+<img src="/images/newton_exercise.svg" width="350px" class="mx-auto">
 
 ---
 layout: section
