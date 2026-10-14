@@ -436,3 +436,298 @@ Para resolver un problema de cinética de un eslabón con movimiento plano, prop
 Cuando se analiza un mecanismo con varios eslabones, el procedimiento se repite para cada cuerpo, teniendo en cuenta que las fuerzas de interacción entre dos eslabones aparecen con sentidos opuestos en sus respectivos diagramas de cuerpo libre.
 
 La siguiente sección estará dedicada a aplicar este procedimiento a situaciones representativas del análisis de mecanismos planos, con énfasis en el cálculo de reacciones y pares de accionamiento.
+
+## 4. Aplicaciones a mecanismos planos
+
+En las secciones anteriores establecimos las ecuaciones de Newton–Euler y sus principales simplificaciones para el movimiento plano. Ahora las aplicaremos a dos situaciones representativas: un eslabón que gira alrededor de un pivote fijo y una barra con movimiento plano general.
+
+En ambos ejemplos se considera un cuerpo rígido uniforme, con articulaciones y contactos ideales. Supondremos que las posiciones, velocidades y aceleraciones ya se conocen a partir del **análisis cinemático**, por lo que los problemas se plantean desde la perspectiva de la **dinámica inversa**.
+
+### 4.1. Ejemplo 1. Par motor y reacciones en un eslabón con pivote fijo
+
+**Planteamiento.** Una barra delgada, homogénea, de masa $m=3\ \mathrm{kg}$ y longitud $L=0.80\ \mathrm{m}$ gira en un plano vertical alrededor de un pasador fijo en $O$, situado en uno de sus extremos. Un motor aplica un par $M$ al eslabón.
+
+En el instante considerado, la barra forma un ángulo $\theta=30^\circ$ con el eje horizontal positivo y tiene velocidad angular $\omega=3\ \mathrm{rad/s}$ y aceleración angular $\alpha=2\ \mathrm{rad/s^2}$, ambas positivas en sentido antihorario.
+
+Determinar:
+
+1. El par motor $M$ necesario para producir la aceleración angular indicada.
+2. Las componentes $O_x$ y $O_y$ de la reacción en el pasador.
+
+Utilizaremos $g=9.81\ \mathrm{m/s^2}$ y consideraremos despreciable la fricción del pivote.
+
+**Paso 1. Propiedades de masa y acciones externas.** Por tratarse de una barra homogénea, su centro de masa se encuentra a una distancia $L/2$ del pivote. Su momento de inercia respecto a $O$ es
+
+$$
+I_O=I_G+m\left(\frac L2\right)^2
+=\frac{mL^2}{12}+\frac{mL^2}{4}
+=\frac{mL^2}{3}
+$$
+
+Por tanto,
+
+$$
+I_O=\frac{3(0.80)^2}{3}
+=0.64\ \mathrm{kg\,m^2}
+$$
+
+En el diagrama de cuerpo libre actúan el peso $mg$ en $G$, las reacciones $O_x$ y $O_y$ en el pasador, y el par motor $M$.
+
+**Paso 2. Ecuación de momentos respecto al pivote.** Tomamos como positivo el sentido antihorario. El peso produce un momento horario respecto a $O$, con brazo de palanca $(L/2)\cos\theta$. Como las reacciones pasan por $O$, no generan momento respecto a ese punto. Por tanto,
+
+$$
+\sum M_O=M-mg\frac L2\cos\theta=I_O\alpha
+$$
+
+Despejando el par motor,
+
+$$
+M=I_O\alpha+mg\frac L2\cos\theta
+$$
+
+y sustituyendo los datos,
+
+$$
+M=0.64(2)+3(9.81)(0.40)\cos 30^\circ
+$$
+
+De donde obtenemos
+
+$$
+\boxed{M\approx 11.47\ \mathrm{N\,m}}
+$$
+
+El signo positivo indica que el motor debe aplicar un par antihorario en el instante considerado.
+
+**Paso 3. Aceleración del centro de masa.** Para determinar las reacciones es necesario conocer las componentes de $\mathbf a_G$. En rotación alrededor de $O$ fijo:
+
+$$
+\mathbf a_G=
+\boldsymbol\alpha\times\mathbf r_{G/O}
++
+\boldsymbol\omega\times
+(\boldsymbol\omega\times\mathbf r_{G/O})
+$$
+
+Al proyectar sobre los ejes cartesianos,
+
+$$
+\begin{aligned}
+a_{Gx}&=-\frac L2\alpha\sin\theta
+-\frac L2\omega^2\cos\theta\\
+a_{Gy}&=\frac L2\alpha\cos\theta
+-\frac L2\omega^2\sin\theta
+\end{aligned}
+$$
+
+Con los valores dados,
+
+$$
+\begin{aligned}
+a_{Gx}&=-0.40(2)\sin30^\circ
+-0.40(3^2)\cos30^\circ
+\approx -3.52\ \mathrm{m/s^2}\\
+a_{Gy}&=0.40(2)\cos30^\circ
+-0.40(3^2)\sin30^\circ
+\approx -1.11\ \mathrm{m/s^2}
+\end{aligned}
+$$
+
+**Paso 4. Ecuaciones de fuerzas.** En la dirección horizontal sólo actúa la reacción del pasador, de modo que
+
+$$
+\sum F_x=O_x=ma_{Gx}
+$$
+
+y
+
+$$
+\boxed{O_x\approx -10.55\ \mathrm{N}}
+$$
+
+En la dirección vertical,
+
+$$
+\sum F_y=O_y-mg=ma_{Gy}
+$$
+
+Por tanto,
+
+$$
+O_y=m(a_{Gy}+g)
+$$
+
+y obtenemos
+
+$$
+\boxed{O_y\approx 26.11\ \mathrm{N}}
+$$
+
+**Interpretación.** El motor debe aplicar un par antihorario de aproximadamente $11.47\ \mathrm{N\,m}$. La reacción horizontal es negativa y, por tanto, actúa hacia la izquierda; la reacción vertical actúa hacia arriba. Nótese que para calcular el par bastó la ecuación de momentos respecto al pivote, pero las reacciones requirieron conocer también la velocidad angular, ya que esta contribuye a la aceleración normal del centro de masa.
+
+### 4.2. Ejemplo 2. Reacciones en una barra con movimiento plano general
+
+**Planteamiento.** Una barra delgada, homogénea, $AB$, de masa $m=2\ \mathrm{kg}$ y longitud $L=0.60\ \mathrm{m}$, está articulada en $A$ a otro miembro móvil de un mecanismo. En $B$ existe un rodillo ideal en contacto con una **guía horizontal sin fricción**, por lo que la fuerza de contacto en $B$ es únicamente vertical.
+
+En el instante considerado, la barra está horizontal, orientada de $A$ hacia $B$, y se conocen las siguientes magnitudes cinemáticas:
+
+$$
+\begin{aligned}
+\mathbf a_A&=(1.50\,\mathbf i-2.40\,\mathbf j)\ \mathrm{m/s^2}\\
+\omega&=2\ \mathrm{rad/s}\\
+\alpha&=4\ \mathrm{rad/s^2}
+\end{aligned}
+$$
+
+Las magnitudes angulares son positivas en sentido antihorario. Determinar las componentes de la fuerza de la articulación en $A$, $A_x$ y $A_y$, y la fuerza normal $N_B$ ejercida por la guía sobre el rodillo. Tomamos $g=9.81\ \mathrm{m/s^2}$.
+
+**Paso 1. Diagrama de cuerpo libre.** Sobre la barra actúan:
+
+- Las componentes de reacción $A_x$ y $A_y$ en la articulación móvil.
+- La fuerza normal $N_B$, vertical hacia arriba, en $B$.
+- El peso $mg$, vertical hacia abajo, aplicado en el centro de masa $G$.
+
+No se consideran pares externos aplicados a la barra. La dirección conocida de la reacción en $B$ es importante: gracias al contacto ideal sin fricción, sólo tenemos **tres incógnitas** para las tres ecuaciones de Newton–Euler.
+
+**Paso 2. Aceleración del centro de masa.** Como la barra está horizontal y $G$ se encuentra en su punto medio,
+
+$$
+\mathbf r_{G/A}=\frac L2\mathbf i=0.30\,\mathbf i\ \mathrm{m}
+$$
+
+La relación de aceleraciones del cuerpo rígido es
+
+$$
+\mathbf a_G=
+\mathbf a_A+
+\boldsymbol\alpha\times\mathbf r_{G/A}
++
+\boldsymbol\omega\times
+(\boldsymbol\omega\times\mathbf r_{G/A})
+$$
+
+En este instante,
+
+$$
+\boldsymbol\alpha\times\mathbf r_{G/A}
+=4(0.30)\mathbf j=1.20\,\mathbf j\ \mathrm{m/s^2}
+$$
+
+y
+
+$$
+\boldsymbol\omega\times
+(\boldsymbol\omega\times\mathbf r_{G/A})
+=-2^2(0.30)\mathbf i
+=-1.20\,\mathbf i\ \mathrm{m/s^2}
+$$
+
+Por tanto,
+
+$$
+\mathbf a_G=
+(1.50\,\mathbf i-2.40\,\mathbf j)
++1.20\,\mathbf j-1.20\,\mathbf i
+$$
+
+De donde
+
+$$
+\boxed{\mathbf a_G=(0.30\,\mathbf i-1.20\,\mathbf j)\ \mathrm{m/s^2}}
+$$
+
+Como comprobación cinemática, la aceleración vertical de $B$ debe ser cero al desplazarse por una guía horizontal recta. En efecto,
+
+$$
+a_{By}=a_{Ay}+\alpha L=-2.40+4(0.60)=0
+$$
+
+**Paso 3. Ecuaciones de fuerzas.** En la dirección horizontal,
+
+$$
+\sum F_x=A_x=ma_{Gx}=2(0.30)
+$$
+
+y por tanto
+
+$$
+\boxed{A_x=0.60\ \mathrm{N}}
+$$
+
+En la dirección vertical,
+
+$$
+\sum F_y=A_y+N_B-mg=ma_{Gy}
+$$
+
+Sustituyendo,
+
+$$
+A_y+N_B-2(9.81)=2(-1.20)
+$$
+
+y simplificando,
+
+$$
+\boxed{A_y+N_B=17.22\ \mathrm{N}}
+\tag{4.1}
+$$
+
+**Paso 4. Ecuación de momentos respecto a $G$.** El momento de inercia de la barra respecto a su centro de masa es
+
+$$
+I_G=\frac{mL^2}{12}
+=\frac{2(0.60)^2}{12}
+=0.060\ \mathrm{kg\,m^2}
+$$
+
+El peso pasa por $G$ y no produce momento respecto a ese punto. La componente horizontal $A_x$ tampoco produce momento porque la barra está horizontal. Los momentos de las fuerzas verticales tienen signos opuestos:
+
+$$
+\sum M_G=N_B\frac L2-A_y\frac L2=I_G\alpha
+$$
+
+Sustituyendo los valores,
+
+$$
+0.30(N_B-A_y)=0.060(4)
+$$
+
+Por tanto,
+
+$$
+\boxed{N_B-A_y=0.80\ \mathrm{N}}
+\tag{4.2}
+$$
+
+**Paso 5. Solución e interpretación.** Al resolver simultáneamente las ecuaciones (4.1) y (4.2), obtenemos
+
+$$
+\boxed{
+\begin{aligned}
+A_x&=0.60\ \mathrm{N}\\
+A_y&=8.21\ \mathrm{N}\\
+N_B&=9.01\ \mathrm{N}
+\end{aligned}
+}
+$$
+
+Las tres fuerzas resultaron positivas respecto a los sentidos inicialmente asumidos. En particular, $N_B>0$ es compatible con la hipótesis de contacto del rodillo con la guía.
+
+Este ejemplo ilustra por qué, durante el movimiento plano general, no basta conocer la aceleración angular: también debemos calcular la aceleración del centro de masa mediante las relaciones cinemáticas.
+
+### 4.3. Del eslabón aislado al mecanismo completo
+
+En los ejemplos anteriores las condiciones de los apoyos y contactos permitieron determinar todas las incógnitas mediante las tres ecuaciones de movimiento plano de **un solo cuerpo**. Sin embargo, en un mecanismo de varios eslabones la situación puede ser diferente.
+
+Por ejemplo, si aislamos el **acoplador de un mecanismo de cuatro barras** conectado mediante pasadores ideales en $A$ y $B$, aparecen, en general, cuatro componentes desconocidas de fuerza:
+
+$$
+A_x,\quad A_y,\quad B_x,\quad B_y
+$$
+
+Las tres ecuaciones de Newton–Euler del acoplador no bastan, por sí solas, para determinar las cuatro componentes. Es necesario considerar también los demás eslabones del mecanismo y establecer sus correspondientes ecuaciones de movimiento, junto con las relaciones de acción y reacción en las articulaciones.
+
+Por tanto, el **análisis dinámico de mecanismos** no consiste en aplicar una ecuación aislada a todo el conjunto, sino en combinar el análisis cinemático con los balances de fuerzas y momentos de los cuerpos que lo integran.
+
+Los procedimientos y ejemplos desarrollados aquí constituyen el punto de partida para determinar las reacciones y los pares de accionamiento en mecanismos planos más complejos.
