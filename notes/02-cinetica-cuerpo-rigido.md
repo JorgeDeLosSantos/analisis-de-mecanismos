@@ -19,9 +19,9 @@ Un **cuerpo rígido** es un modelo idealizado de un cuerpo cuyas partículas man
 
 Para el análisis cinético de un cuerpo rígido es necesario conocer, además de su movimiento, algunas de sus propiedades de masa:
 
-- **Masa, `m`:** cuantifica la inercia traslacional del cuerpo.
-- **Centro de masa, `G`:** punto cuyo movimiento permite describir la respuesta traslacional del cuerpo a las fuerzas externas.
-- **Momento de inercia de masa, `I`:** caracteriza la distribución de masa respecto a un eje y su resistencia a experimentar aceleración angular alrededor de dicho eje.
+- **Masa, $m$:** cuantifica la inercia traslacional del cuerpo.
+- **Centro de masa, $G$:** punto cuyo movimiento permite describir la respuesta traslacional del cuerpo a las fuerzas externas.
+- **Momento de inercia de masa, $I$:** caracteriza la distribución de masa respecto a un eje y su resistencia a experimentar aceleración angular alrededor de dicho eje.
 
 Estas propiedades permiten relacionar las fuerzas y momentos externos con las aceleraciones del cuerpo.
 
@@ -31,13 +31,13 @@ En estos apuntes nos concentraremos en cuerpos rígidos con **movimiento plano**
 
 En el análisis cinético es necesario identificar las **acciones externas** que actúan sobre el cuerpo. En un eslabón de un mecanismo pueden incluir el peso, las fuerzas de contacto, las reacciones en las articulaciones y los pares aplicados por actuadores.
 
-Recordemos que el momento de una fuerza `\\mathbf F` respecto a un punto `O` se calcula mediante
+Recordemos que el momento de una fuerza $\mathbf F$ respecto a un punto `O` se calcula mediante
 
 $$
-\\mathbf M_O=\\mathbf r_{OP}\\times\\mathbf F
+\mathbf M_O=\mathbf r_{OP}\times\mathbf F
 $$
 
-donde `\\mathbf r_{OP}` es el vector que va desde `O` hasta un punto `P` de la línea de acción de la fuerza.
+donde $\mathbf r_{OP}$ es el vector que va desde `O` hasta un punto `P` de la línea de acción de la fuerza.
 
 Además de los momentos producidos por fuerzas, sobre un cuerpo pueden actuar **pares aplicados**, como el par que transmite un motor. En el movimiento plano, los momentos se representan mediante magnitudes escalares con signo, de acuerdo con una convención de sentidos.
 
@@ -50,7 +50,7 @@ La cinética clásica se fundamenta en las leyes del movimiento de Newton.
 Para una partícula de masa constante, la segunda ley establece que la resultante de las fuerzas externas es igual al producto de su masa por su aceleración:
 
 $$
-\\sum \\mathbf F=m\\mathbf a
+\sum \mathbf F=m\mathbf a
 $$
 
 Esta ecuación expresa la relación entre las fuerzas aplicadas y el cambio en el movimiento de la partícula.
