@@ -565,169 +565,260 @@ $$
 
 **Interpretación.** El motor debe aplicar un par antihorario de aproximadamente $11.47\ \mathrm{N\,m}$. La reacción horizontal es negativa y, por tanto, actúa hacia la izquierda; la reacción vertical actúa hacia arriba. Nótese que para calcular el par bastó la ecuación de momentos respecto al pivote, pero las reacciones requirieron conocer también la velocidad angular, ya que esta contribuye a la aceleración normal del centro de masa.
 
-### 4.2. Ejemplo 2. Reacciones en una barra con movimiento plano general
+### 4.2. Ejemplo 2. Análisis dinámico inverso de un mecanismo manivela-biela-corredera
 
-**Planteamiento.** Una barra delgada, homogénea, $AB$, de masa $m=2\ \mathrm{kg}$ y longitud $L=0.60\ \mathrm{m}$, está articulada en $A$ a otro miembro móvil de un mecanismo. En $B$ existe un rodillo ideal en contacto con una **guía horizontal sin fricción**, por lo que la fuerza de contacto en $B$ es únicamente vertical.
+**Planteamiento.** Consideremos un mecanismo manivela-biela-corredera que se mueve en un plano vertical, con una guía horizontal y articulaciones ideales sin fricción. La manivela $OA$ y la biela $AB$ son barras delgadas homogéneas; la corredera es un cuerpo de masa concentrada en $B$ para efectos del análisis plano.
 
-En el instante considerado, la barra está horizontal, orientada de $A$ hacia $B$, y se conocen las siguientes magnitudes cinemáticas:
+En el instante estudiado, las coordenadas de las articulaciones, expresadas en metros, son
+
+$$
+O=(0,0),\qquad A=(0.18,0.24),\qquad B=(0.50,0)
+$$
+
+De esta forma, las longitudes de la manivela y la biela son $OA=0.30\ \mathrm m$ y $AB=0.40\ \mathrm m$, respectivamente. Las propiedades y condiciones de operación son:
+
+| Magnitud | Valor |
+| --- | --- |
+| Masa de la manivela, $m_1$ | $1.0\ \mathrm{kg}$ |
+| Masa de la biela, $m_2$ | $2.0\ \mathrm{kg}$ |
+| Masa de la corredera, $m_3$ | $1.5\ \mathrm{kg}$ |
+| Velocidad angular de la manivela, $\omega_1$ | $+2.0\ \mathrm{rad/s}$ |
+| Aceleración angular de la manivela, $\alpha_1$ | $0\ \mathrm{rad/s^2}$ |
+| Fuerza resistente sobre la corredera, $F_R$ | $20\ \mathrm N$ hacia $+x$ |
+
+Tomaremos $g=9.81\ \mathrm{m/s^2}$, el eje $x$ positivo hacia la derecha, el eje $y$ positivo hacia arriba y los giros antihorarios como positivos. La fuerza resistente se opone al movimiento instantáneo de la corredera, que ocurre hacia la izquierda.
+
+Se desea determinar las fuerzas transmitidas en las articulaciones, la reacción de la guía y el **par motor $M$** necesario para mantener el movimiento prescrito de la manivela.
+
+**Paso 1. Recuperar los resultados del análisis cinemático.**
+
+En un problema de dinámica inversa, la cinemática se resuelve antes de plantear las ecuaciones de fuerzas. Aquí presentamos sus resultados y recordamos brevemente las relaciones utilizadas.
+
+Para la manivela, cuyo pivote $O$ es fijo,
 
 $$
 \begin{aligned}
-\mathbf a_A&=(1.50\,\mathbf i-2.40\,\mathbf j)\ \mathrm{m/s^2}\\
-\omega&=2\ \mathrm{rad/s}\\
-\alpha&=4\ \mathrm{rad/s^2}
+\mathbf v_A&=\boldsymbol\omega_1\times\mathbf r_{A/O}
+=(-0.48\,\mathbf i+0.36\,\mathbf j)\ \mathrm{m/s}\\
+\mathbf a_A&=\boldsymbol\alpha_1\times\mathbf r_{A/O}
+-\omega_1^2\mathbf r_{A/O}
+=(-0.72\,\mathbf i-0.96\,\mathbf j)\ \mathrm{m/s^2}
 \end{aligned}
 $$
 
-Las magnitudes angulares son positivas en sentido antihorario. Determinar las componentes de la fuerza de la articulación en $A$, $A_x$ y $A_y$, y la fuerza normal $N_B$ ejercida por la guía sobre el rodillo. Tomamos $g=9.81\ \mathrm{m/s^2}$.
-
-**Paso 1. Diagrama de cuerpo libre.** Sobre la barra actúan:
-
-- Las componentes de reacción $A_x$ y $A_y$ en la articulación móvil.
-- La fuerza normal $N_B$, vertical hacia arriba, en $B$.
-- El peso $mg$, vertical hacia abajo, aplicado en el centro de masa $G$.
-
-No se consideran pares externos aplicados a la barra. La dirección conocida de la reacción en $B$ es importante: gracias al contacto ideal sin fricción, sólo tenemos **tres incógnitas** para las tres ecuaciones de Newton–Euler.
-
-**Paso 2. Aceleración del centro de masa.** Como la barra está horizontal y $G$ se encuentra en su punto medio,
+Para la biela, $\mathbf r_{B/A}=0.32\,\mathbf i-0.24\,\mathbf j$. Como la corredera sólo puede moverse horizontalmente, $v_{By}=a_{By}=0$. Al utilizar las ecuaciones de velocidad y aceleración relativas,
 
 $$
-\mathbf r_{G/A}=\frac L2\mathbf i=0.30\,\mathbf i\ \mathrm{m}
+\begin{aligned}
+\mathbf v_B&=\mathbf v_A+
+\boldsymbol\omega_2\times\mathbf r_{B/A}\\
+\mathbf a_B&=\mathbf a_A+
+\boldsymbol\alpha_2\times\mathbf r_{B/A}
+-\omega_2^2\mathbf r_{B/A}
+\end{aligned}
 $$
 
-La relación de aceleraciones del cuerpo rígido es
+se obtienen
 
 $$
-\mathbf a_G=
-\mathbf a_A+
-\boldsymbol\alpha\times\mathbf r_{G/A}
-+
-\boldsymbol\omega\times
-(\boldsymbol\omega\times\mathbf r_{G/A})
+\begin{aligned}
+\omega_2&=-1.125\ \mathrm{rad/s}\\
+\alpha_2&=+2.051\ \mathrm{rad/s^2}\\
+\mathbf a_B&=-0.6328\,\mathbf i\ \mathrm{m/s^2}
+\end{aligned}
 $$
 
-En este instante,
+Los centros de masa de ambas barras se encuentran en sus puntos medios. Aplicando la relación de aceleraciones a cada cuerpo:
 
 $$
-\boldsymbol\alpha\times\mathbf r_{G/A}
-=4(0.30)\mathbf j=1.20\,\mathbf j\ \mathrm{m/s^2}
+\begin{aligned}
+\mathbf a_{G_1}&=(-0.360\,\mathbf i-0.480\,\mathbf j)\ \mathrm{m/s^2}\\
+\mathbf a_{G_2}&=(-0.6764\,\mathbf i-0.480\,\mathbf j)\ \mathrm{m/s^2}
+\end{aligned}
 $$
 
-y
+Estos resultados cinemáticos son los datos necesarios para resolver la parte cinética.
+
+**Paso 2. Analizar la corredera.**
+
+Denotaremos por $\mathbf B=B_x\mathbf i+B_y\mathbf j$ la **fuerza que la corredera ejerce sobre la biela** en la articulación $B$. Por acción y reacción, la biela ejerce sobre la corredera la fuerza $-\mathbf B$. Sobre esta última actúan además la fuerza resistente $F_R$, su peso y la reacción vertical $N$ de la guía.
+
+En la dirección horizontal,
 
 $$
-\boldsymbol\omega\times
-(\boldsymbol\omega\times\mathbf r_{G/A})
-=-2^2(0.30)\mathbf i
-=-1.20\,\mathbf i\ \mathrm{m/s^2}
+\sum F_x=-B_x+F_R=m_3a_{Bx}
 $$
 
 Por tanto,
 
 $$
-\mathbf a_G=
-(1.50\,\mathbf i-2.40\,\mathbf j)
-+1.20\,\mathbf j-1.20\,\mathbf i
+B_x=F_R-m_3a_{Bx}
+=20-1.5(-0.6328)
 $$
 
-De donde
+y obtenemos
 
 $$
-\boxed{\mathbf a_G=(0.30\,\mathbf i-1.20\,\mathbf j)\ \mathrm{m/s^2}}
+\boxed{B_x\approx 20.95\ \mathrm N}
 $$
 
-Como comprobación cinemática, la aceleración vertical de $B$ debe ser cero al desplazarse por una guía horizontal recta. En efecto,
+En la dirección vertical, $a_{By}=0$, de modo que
 
 $$
-a_{By}=a_{Ay}+\alpha L=-2.40+4(0.60)=0
-$$
-
-**Paso 3. Ecuaciones de fuerzas.** En la dirección horizontal,
-
-$$
-\sum F_x=A_x=ma_{Gx}=2(0.30)
-$$
-
-y por tanto
-
-$$
-\boxed{A_x=0.60\ \mathrm{N}}
-$$
-
-En la dirección vertical,
-
-$$
-\sum F_y=A_y+N_B-mg=ma_{Gy}
-$$
-
-Sustituyendo,
-
-$$
-A_y+N_B-2(9.81)=2(-1.20)
-$$
-
-y simplificando,
-
-$$
-\boxed{A_y+N_B=17.22\ \mathrm{N}}
+-B_y+N-m_3g=0
+\quad\Longrightarrow\quad
+N=m_3g+B_y
 \tag{4.1}
 $$
 
-**Paso 4. Ecuación de momentos respecto a $G$.** El momento de inercia de la barra respecto a su centro de masa es
+La componente $B_y$ se determinará mediante el análisis de la biela.
+
+**Paso 3. Analizar la biela.**
+
+Sea $\mathbf A=A_x\mathbf i+A_y\mathbf j$ la fuerza que **la manivela ejerce sobre la biela** en $A$. Las fuerzas externas sobre la biela son $\mathbf A$, $\mathbf B$ y su peso $m_2g$, aplicado en $G_2$.
+
+Las ecuaciones de fuerzas son
 
 $$
-I_G=\frac{mL^2}{12}
-=\frac{2(0.60)^2}{12}
-=0.060\ \mathrm{kg\,m^2}
+\begin{aligned}
+A_x+B_x&=m_2a_{G_2x}\\
+A_y+B_y-m_2g&=m_2a_{G_2y}
+\end{aligned}
 $$
 
-El peso pasa por $G$ y no produce momento respecto a ese punto. La componente horizontal $A_x$ tampoco produce momento porque la barra está horizontal. Los momentos de las fuerzas verticales tienen signos opuestos:
+De la primera ecuación,
 
 $$
-\sum M_G=N_B\frac L2-A_y\frac L2=I_G\alpha
+A_x=2(-0.6764)-20.9492
 $$
 
-Sustituyendo los valores,
+de donde
 
 $$
-0.30(N_B-A_y)=0.060(4)
+\boxed{A_x\approx -22.30\ \mathrm N}
+$$
+
+La segunda ecuación proporciona
+
+$$
+A_y+B_y=2(-0.480)+2(9.81)=18.66\ \mathrm N
+\tag{4.2}
+$$
+
+Para completar el sistema, aplicamos la ecuación de momentos respecto a $G_2$. Los vectores de posición de las articulaciones respecto al centro de masa son
+
+$$
+\mathbf r_{A/G_2}=-0.16\,\mathbf i+0.12\,\mathbf j,
+\qquad
+\mathbf r_{B/G_2}=0.16\,\mathbf i-0.12\,\mathbf j
+$$
+
+El peso no produce momento respecto a $G_2$. Como la biela es una barra delgada homogénea,
+
+$$
+I_{G_2}=\frac{m_2(AB)^2}{12}
+=\frac{2(0.40)^2}{12}
+=0.02667\ \mathrm{kg\,m^2}
 $$
 
 Por tanto,
 
 $$
-\boxed{N_B-A_y=0.80\ \mathrm{N}}
-\tag{4.2}
+\sum M_{G_2}
+=0.16(B_y-A_y)+0.12(B_x-A_x)
+=I_{G_2}\alpha_2
 $$
 
-**Paso 5. Solución e interpretación.** Al resolver simultáneamente las ecuaciones (4.1) y (4.2), obtenemos
+Sustituyendo los valores conocidos,
+
+$$
+0.16(B_y-A_y)+0.12(20.9492+22.3020)
+=0.02667(2.0508)
+\tag{4.3}
+$$
+
+La solución simultánea de las ecuaciones (4.2) y (4.3) es
 
 $$
 \boxed{
-\begin{aligned}
-A_x&=0.60\ \mathrm{N}\\
-A_y&=8.21\ \mathrm{N}\\
-N_B&=9.01\ \mathrm{N}
-\end{aligned}
+A_y\approx 25.38\ \mathrm N,
+\qquad
+B_y\approx-6.72\ \mathrm N
 }
 $$
 
-Las tres fuerzas resultaron positivas respecto a los sentidos inicialmente asumidos. En particular, $N_B>0$ es compatible con la hipótesis de contacto del rodillo con la guía.
-
-Este ejemplo ilustra por qué, durante el movimiento plano general, no basta conocer la aceleración angular: también debemos calcular la aceleración del centro de masa mediante las relaciones cinemáticas.
-
-### 4.3. Del eslabón aislado al mecanismo completo
-
-En los ejemplos anteriores las condiciones de los apoyos y contactos permitieron determinar todas las incógnitas mediante las tres ecuaciones de movimiento plano de **un solo cuerpo**. Sin embargo, en un mecanismo de varios eslabones la situación puede ser diferente.
-
-Por ejemplo, si aislamos el **acoplador de un mecanismo de cuatro barras** conectado mediante pasadores ideales en $A$ y $B$, aparecen, en general, cuatro componentes desconocidas de fuerza:
+Finalmente, al regresar a la corredera y utilizar la ecuación (4.1),
 
 $$
-A_x,\quad A_y,\quad B_x,\quad B_y
+N=1.5(9.81)-6.7183
 $$
 
-Las tres ecuaciones de Newton–Euler del acoplador no bastan, por sí solas, para determinar las cuatro componentes. Es necesario considerar también los demás eslabones del mecanismo y establecer sus correspondientes ecuaciones de movimiento, junto con las relaciones de acción y reacción en las articulaciones.
+obtenemos la reacción de la guía:
 
-Por tanto, el **análisis dinámico de mecanismos** no consiste en aplicar una ecuación aislada a todo el conjunto, sino en combinar el análisis cinemático con los balances de fuerzas y momentos de los cuerpos que lo integran.
+$$
+\boxed{N\approx 8.00\ \mathrm N}
+$$
 
-Los procedimientos y ejemplos desarrollados aquí constituyen el punto de partida para determinar las reacciones y los pares de accionamiento en mecanismos planos más complejos.
+El resultado positivo es compatible con la dirección supuesta para la reacción normal.
+
+**Paso 4. Analizar la manivela y calcular el par motor.**
+
+Sobre la manivela actúan su peso, la reacción del pivote fijo $O$, el par motor $M$ y la fuerza $-\mathbf A$ ejercida por la biela en $A$.
+
+Para calcular $M$ conviene sumar momentos respecto a $O$, ya que las reacciones del pivote no producen momento alrededor de ese punto:
+
+$$
+\sum M_O=
+M-0.18A_y+0.24A_x
+-m_1g(0.09)
+=I_O\alpha_1
+$$
+
+Como la manivela gira con velocidad angular constante, $\alpha_1=0$. Despejando,
+
+$$
+M=0.18A_y-0.24A_x+m_1g(0.09)
+$$
+
+y sustituyendo los valores calculados,
+
+$$
+M=0.18(25.3783)-0.24(-22.3020)+1(9.81)(0.09)
+$$
+
+Por tanto,
+
+$$
+\boxed{M\approx 10.80\ \mathrm{N\,m}}
+$$
+
+El par motor es **antihorario**, según la convención adoptada. Observemos que, aunque $\alpha_1=0$, el par necesario **no es nulo**: debe compensar los momentos producidos por las fuerzas transmitidas a través de la biela y por el peso de la manivela.
+
+Si además se desean las reacciones en el pivote $O$, las ecuaciones de fuerzas de la manivela proporcionan
+
+$$
+\begin{aligned}
+O_x-A_x&=m_1a_{G_1x}\\
+O_y-A_y-m_1g&=m_1a_{G_1y}
+\end{aligned}
+$$
+
+de donde
+
+$$
+\boxed{
+O_x\approx-22.66\ \mathrm N,
+\qquad
+O_y\approx34.71\ \mathrm N
+}
+$$
+
+**Interpretación del resultado.** El análisis se resolvió siguiendo la transmisión de fuerzas desde la corredera hacia la biela y, finalmente, hacia la manivela. Cada eslabón se aisló mediante su propio diagrama de cuerpo libre, y las fuerzas comunes a dos cuerpos aparecieron con sentidos opuestos. Este procedimiento enlaza directamente los resultados del análisis cinemático con el cálculo del par que debe proporcionar el accionamiento.
+
+### 4.3. Del análisis de un eslabón al mecanismo completo
+
+El ejemplo anterior muestra que la cinética de un mecanismo plano puede abordarse mediante **ecuaciones de Newton–Euler para cada eslabón**, complementadas con las relaciones de acción y reacción entre cuerpos conectados.
+
+En nuestro mecanismo, las condiciones de la guía y el orden elegido permitieron resolver las incógnitas de forma progresiva: primero la corredera, después la biela y finalmente la manivela. En otros mecanismos, como el de cuatro barras, puede resultar más conveniente plantear y resolver simultáneamente el sistema de ecuaciones de todos los eslabones móviles.
+
+En ambos casos, la idea fundamental es la misma: **la cinemática proporciona las aceleraciones; la cinética relaciona esas aceleraciones con las fuerzas y los pares que producen el movimiento**.
