@@ -435,14 +435,4 @@ Para resolver un problema de cinética de un eslabón con movimiento plano, prop
 
 Cuando se analiza un mecanismo con varios eslabones, el procedimiento se repite para cada cuerpo, teniendo en cuenta que las fuerzas de interacción entre dos eslabones aparecen con sentidos opuestos en sus respectivos diagramas de cuerpo libre.
 
-### 3.7. Comparación de los tres casos
-
-| Tipo de movimiento | Característica cinemática | Ecuación de momentos conveniente |
-| --- | --- | --- |
-| Traslación | $\omega=0$ y $\alpha=0$ | $\sum M_G=0$ |
-| Rotación alrededor de $O$ fijo | $\mathbf a_G=\boldsymbol\alpha\times\mathbf r_{G/O}+\boldsymbol\omega\times(\boldsymbol\omega\times\mathbf r_{G/O})$ | $\sum M_O=I_O\alpha$ |
-| Movimiento plano general | Combinación de traslación y rotación | $\sum M_G=I_G\alpha$ |
-
-En los tres casos, las ecuaciones de fuerzas $\sum F_x=ma_{Gx}$ y $\sum F_y=ma_{Gy}$ permanecen vigentes.
-
 La siguiente sección estará dedicada a aplicar este procedimiento a situaciones representativas del análisis de mecanismos planos, con énfasis en el cálculo de reacciones y pares de accionamiento.
