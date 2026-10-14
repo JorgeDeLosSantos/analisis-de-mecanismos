@@ -30,7 +30,7 @@ Que el estudiante relacione el movimiento de un cuerpo rígido con las fuerzas y
 layout: section
 ---
 
-# Un repaso de cinética de la partícula
+# Un recordatorio de cinética de la partícula
 
 ---
 
@@ -80,6 +80,65 @@ layout: section
 ---
 
 # Propiedades de inercia
+
+---
+
+# Centro de masa
+
+El centro de masa es el punto cuya posición representa el promedio ponderado de la distribución de masa de un cuerpo o sistema.
+
+Para un sistema de partículas el CDM se determina mediante:
+
+$$
+\bar{x} = \frac{\sum x_i m_i }{\sum m_i} \quad;\qquad
+\bar{y} = \frac{\sum y_i m_i }{\sum m_i} \quad;\qquad
+\bar{z} = \frac{\sum z_i m_i }{\sum m_i}
+$$
+
+---
+
+# Centro de masa de un cuerpo rígido
+
+Para un cuerpo rígido el CDM está dado por:
+
+$$
+\bar{x} = \frac{\displaystyle\int_m x \, dm}{\displaystyle\int_m dm} \quad;\qquad
+\bar{y} = \frac{\displaystyle\int_m y \, dm}{\displaystyle\int_m dm} \quad;\qquad
+\bar{z} = \frac{\displaystyle\int_m z \, dm}{\displaystyle\int_m dm}
+$$
+
+La forma de $dm$ dependerá del tipo de cuerpo: 
+
+- Para un sólido: $dm = \rho \, dV$
+- Para una placa plana: $dm = \rho_A \, dA$
+- Para un varilla o barra delgada: $dm = \rho_L \, dL$
+
+---
+layout: two-cols
+---
+
+# Centro de masa de cuerpos compuestos
+
+Un cuerpo compuesto más complejo puede dividirse en varios cuerpos simples, de los cuales sea sencillo determinar la masa y ubicación del centro de masa. El CDM del cuerpo compuesto se determina mediante:
+
+
+$$ \bar{x} = \frac{\sum \tilde{x_i} m_i }{\sum m_i} $$
+$$ \bar{y} = \frac{\sum \tilde{y_i} m_i }{\sum m_i} $$
+$$ \bar{z} = \frac{\sum \tilde{z_i} m_i }{\sum m_i} $$
+
+::right::
+
+<img src="/images/u2/beer_B.38.png" width="400px">
+
+---
+layout: two-cols-example
+---
+
+# Ejemplo
+
+Calcula el CDM del cuerpo compuesto mostrado en la figura. El alambre tiene una densidad $\rho_L = 0.5 \text{ lbm/ft}$.
+
+<img src="/images/u2/beer_B.38.png" width="400px">
 
 ---
 
@@ -157,6 +216,24 @@ $$
 - $\bar{I}$ → momento de inercia respecto al eje centroidal
 - $I$ → momento de inercia respecto al nuevo eje
 - $d$  → distancia perpendicular entre los ejes
+
+---
+
+# Momento de inercia de cuerpos compuestos
+
+
+
+---
+layout: section
+---
+
+# Cinética de cuerpo rígido
+
+---
+
+# Ecuaciones de Newton-Euler
+
+
 
 ---
 
