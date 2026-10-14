@@ -265,3 +265,184 @@ Las ecuaciones anteriores permiten distinguir dos aspectos complementarios de la
 En un mecanismo, las aceleraciones pueden obtenerse previamente mediante el análisis cinemático. Si además conocemos la masa, el centro de masa y el momento de inercia de cada eslabón, las ecuaciones de Newton–Euler nos permitirán calcular fuerzas de reacción y pares de accionamiento.
 
 En la siguiente sección examinaremos cómo se aplican estas ecuaciones a la traslación, la rotación alrededor de un eje fijo y el movimiento plano general.
+
+## 3. Cinética del movimiento plano
+
+Las ecuaciones de Newton–Euler obtenidas en la sección anterior son válidas para cualquier cuerpo rígido con movimiento plano. Sin embargo, **su aplicación puede simplificarse según el tipo de movimiento** que experimente el cuerpo. En esta sección examinaremos tres casos: traslación, rotación alrededor de un punto fijo y movimiento plano general.
+
+También estableceremos un procedimiento para identificar las acciones externas y plantear las ecuaciones necesarias en un problema de análisis cinético.
+
+### 3.1. Identificación del tipo de movimiento
+
+La cinemática permite distinguir los siguientes tipos de movimiento plano de un cuerpo rígido:
+
+- **Traslación:** todas las rectas ligadas al cuerpo conservan su orientación; el cuerpo no gira.
+- **Rotación alrededor de un punto fijo:** existe un punto del cuerpo que permanece inmóvil respecto al sistema de referencia inercial, mientras los demás describen trayectorias circulares alrededor de él.
+- **Movimiento plano general:** el cuerpo combina traslación y rotación, sin que necesariamente exista un punto fijo.
+
+Estas categorías no representan leyes dinámicas diferentes. En todos los casos se aplican las mismas ecuaciones de Newton–Euler; lo que cambia son las **relaciones cinemáticas** y, por tanto, las simplificaciones disponibles.
+
+### 3.2. Cinética de la traslación
+
+En un movimiento de traslación, todos los puntos del cuerpo tienen la misma velocidad y la misma aceleración en cada instante:
+
+$$
+\mathbf v_A=\mathbf v_G,
+\qquad
+\mathbf a_A=\mathbf a_G
+$$
+
+Además, la orientación del cuerpo permanece constante, por lo que
+
+$$
+\omega=0,
+\qquad
+\alpha=0
+$$
+
+Las ecuaciones de movimiento se reducen a
+
+$$
+\boxed{
+\begin{aligned}
+\sum F_x&=ma_{Gx}\\
+\sum F_y&=ma_{Gy}\\
+\sum M_G&=0
+\end{aligned}
+}
+$$
+
+El hecho de que el cuerpo no tenga aceleración angular **no implica que todas las fuerzas sean nulas**: puede acelerar traslacionalmente mientras los momentos externos respecto a su centro de masa se equilibran.
+
+Tampoco significa que la suma de momentos respecto a *cualquier* punto sea cero. Si los momentos se toman respecto a un punto $P$ distinto de $G$, en general se cumple
+
+$$
+\sum M_P=
+\left(\mathbf r_{G/P}\times m\mathbf a_G\right)_z
+$$
+
+La traslación puede ser rectilínea o curvilínea. En ambos casos se conservan las relaciones anteriores; sólo cambia la dirección de la aceleración del cuerpo.
+
+### 3.3. Cinética de la rotación alrededor de un punto fijo
+
+Consideremos un eslabón que gira en el plano alrededor de una articulación fija $O$. Su movimiento queda descrito por la posición angular $\theta$, la velocidad angular $\omega=\dot\theta$ y la aceleración angular $\alpha=\ddot\theta$.
+
+La aceleración del centro de masa puede escribirse como
+
+$$
+\mathbf a_G=
+\boldsymbol{\alpha}\times\mathbf r_{G/O}
++
+\boldsymbol{\omega}\times
+\left(\boldsymbol{\omega}\times\mathbf r_{G/O}\right)
+$$
+
+Para el movimiento plano, esta expresión también puede interpretarse mediante sus componentes tangencial y normal:
+
+$$
+a_{G,t}=\alpha r_{G/O},
+\qquad
+a_{G,n}=\omega^2r_{G/O}
+$$
+
+La componente tangencial es perpendicular a la línea $OG$; la normal apunta hacia el pivote $O$.
+
+Como $O$ es un punto fijo, podemos utilizar la ecuación de momentos desarrollada en la Sección 2:
+
+$$
+\boxed{\sum M_O=I_O\alpha}
+$$
+
+donde
+
+$$
+I_O=I_G+mr_{G/O}^{2}
+$$
+
+es el momento de inercia de masa respecto al eje perpendicular al plano que pasa por $O$.
+
+**¿Por qué conviene tomar momentos respecto al pivote?** Si la articulación es ideal y no transmite un par de reacción, las fuerzas que ejerce en $O$ no producen momento respecto a ese mismo punto. De este modo, podemos determinar un par aplicado o una aceleración angular sin introducir inicialmente las componentes de la reacción del apoyo.
+
+No obstante, las ecuaciones de fuerzas siguen siendo necesarias cuando se desean calcular dichas reacciones:
+
+$$
+\sum F_x=ma_{Gx},
+\qquad
+\sum F_y=ma_{Gy}
+$$
+
+Es importante observar que incluso cuando $\alpha=0$, el centro de masa puede tener aceleración normal si $\omega\ne0$. Por tanto, **una velocidad angular constante no implica que la resultante de fuerzas sea nula**.
+
+### 3.4. Cinética del movimiento plano general
+
+En el movimiento plano general, el cuerpo puede trasladarse y girar simultáneamente. Un ejemplo característico es el eslabón acoplador de un mecanismo de cuatro barras.
+
+Si se conoce la aceleración de un punto $A$ del cuerpo, la aceleración del centro de masa se obtiene mediante la relación cinemática
+
+$$
+\mathbf a_G=
+\mathbf a_A+
+\boldsymbol{\alpha}\times\mathbf r_{G/A}
++
+\boldsymbol{\omega}\times
+\left(\boldsymbol{\omega}\times\mathbf r_{G/A}\right)
+$$
+
+Una vez conocidas las componentes de $\mathbf a_G$ y la aceleración angular $\alpha$, se aplican las tres ecuaciones:
+
+$$
+\boxed{
+\begin{aligned}
+\sum F_x&=ma_{Gx}\\
+\sum F_y&=ma_{Gy}\\
+\sum M_G&=I_G\alpha
+\end{aligned}
+}
+$$
+
+En este caso no existe, en general, un pivote fijo respecto al cual podamos simplificar automáticamente la ecuación de momentos a $\sum M=I\alpha$. El centro de masa suele ser la referencia más conveniente.
+
+En mecanismos articulados, las acciones desconocidas pueden incluir las componentes de las fuerzas en las uniones entre eslabones y los pares transmitidos por los actuadores. Para analizar un mecanismo completo, se plantean las ecuaciones de cada eslabón y se incorporan las relaciones de acción y reacción entre sus articulaciones.
+
+> **Precaución:** el centro instantáneo de rotación es una herramienta cinemática útil para el análisis de velocidades, pero no necesariamente es un punto fijo ni tiene aceleración nula. No debe utilizarse como pivote fijo en la ecuación $\sum M_O=I_O\alpha$ sin verificar las condiciones correspondientes.
+
+### 3.5. Diagramas de cuerpo libre y representación del movimiento
+
+Antes de escribir las ecuaciones de Newton–Euler es necesario **aislar el cuerpo** que se desea analizar y representar todas las acciones externas que actúan sobre él. Esta representación se denomina *diagrama de cuerpo libre* (DCL).
+
+En un eslabón de un mecanismo plano, el DCL puede incluir:
+
+- **Peso** $W=mg$, aplicado en el centro de masa $G$, bajo la aproximación de un campo gravitatorio uniforme.
+- **Reacciones en las articulaciones**, por ejemplo, las componentes $A_x$ y $A_y$ de la fuerza ejercida por un pasador ideal ubicado en $A$.
+- **Fuerzas de contacto**, según las características de los pares cinemáticos y las hipótesis sobre fricción.
+- **Pares externos**, como un par motor aplicado al eslabón.
+
+Para complementar el DCL es útil representar, por separado, la **información cinemática** del cuerpo: la aceleración del centro de masa $\mathbf a_G$, la aceleración angular $\alpha$ y, cuando sea necesaria, la velocidad angular $\omega$.
+
+Estas aceleraciones **no son fuerzas externas** y, por tanto, no deben añadirse al DCL como si lo fueran. Aparecen en el lado derecho de las ecuaciones de Newton–Euler. Si más adelante se emplea un diagrama cinético o el principio de D'Alembert, habrá que distinguir explícitamente entre las acciones reales y los términos de inercia introducidos por esa formulación.
+
+Para elaborar correctamente un DCL, debemos recordar que las fuerzas internas del mecanismo pueden convertirse en **fuerzas externas del eslabón aislado**. Por ejemplo, la fuerza transmitida por una articulación es interna al mecanismo completo, pero externa al eslabón individual que estamos analizando.
+
+### 3.6. Procedimiento general de análisis cinético
+
+Para resolver un problema de cinética de un eslabón con movimiento plano, proponemos seguir estos pasos:
+
+1. **Identificar y aislar el cuerpo.** Determinar qué eslabón o conjunto de cuerpos se analizará y reconocer si presenta traslación, rotación alrededor de un punto fijo o movimiento plano general.
+2. **Elaborar el diagrama de cuerpo libre.** Representar el peso, las acciones de las articulaciones, otras fuerzas externas y los pares aplicados. Definir sentidos positivos para las fuerzas desconocidas y los momentos.
+3. **Determinar la información cinemática.** Obtener $\mathbf a_G$ y $\alpha$ mediante las relaciones estudiadas en cinemática. Incluir $\omega$ cuando intervenga en el cálculo de aceleraciones.
+4. **Seleccionar las ecuaciones de movimiento.** Aplicar $\sum F_x=ma_{Gx}$, $\sum F_y=ma_{Gy}$ y una ecuación de momentos respecto a un punto conveniente. Justificar cualquier simplificación.
+5. **Resolver e interpretar.** Calcular las fuerzas y los pares desconocidos; verificar unidades y signos. Un resultado negativo indica que el sentido real es opuesto al supuesto inicialmente.
+
+Cuando se analiza un mecanismo con varios eslabones, el procedimiento se repite para cada cuerpo, teniendo en cuenta que las fuerzas de interacción entre dos eslabones aparecen con sentidos opuestos en sus respectivos diagramas de cuerpo libre.
+
+### 3.7. Comparación de los tres casos
+
+| Tipo de movimiento | Característica cinemática | Ecuación de momentos conveniente |
+| --- | --- | --- |
+| Traslación | $\omega=0$ y $\alpha=0$ | $\sum M_G=0$ |
+| Rotación alrededor de $O$ fijo | $\mathbf a_G=\boldsymbol\alpha\times\mathbf r_{G/O}+\boldsymbol\omega\times(\boldsymbol\omega\times\mathbf r_{G/O})$ | $\sum M_O=I_O\alpha$ |
+| Movimiento plano general | Combinación de traslación y rotación | $\sum M_G=I_G\alpha$ |
+
+En los tres casos, las ecuaciones de fuerzas $\sum F_x=ma_{Gx}$ y $\sum F_y=ma_{Gy}$ permanecen vigentes.
+
+La siguiente sección estará dedicada a aplicar este procedimiento a situaciones representativas del análisis de mecanismos planos, con énfasis en el cálculo de reacciones y pares de accionamiento.
