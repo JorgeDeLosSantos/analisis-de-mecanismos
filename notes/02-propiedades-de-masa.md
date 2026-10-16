@@ -156,3 +156,154 @@ si uno de sus extremos se toma como origen y el eje $x$ sigue la dirección de l
 La simetría geométrica por sí sola no es suficiente si la densidad varía de manera asimétrica: un cuerpo de forma simétrica puede tener su centro de masa desplazado hacia la región más pesada.
 
 **Relación con los mecanismos.** Al analizar un eslabón, conocer $G$ permite ubicar su peso en un campo gravitatorio uniforme y determinar la aceleración de su centro de masa a partir de las relaciones cinemáticas. En las secciones siguientes estudiaremos otra propiedad complementaria —el momento de inercia de masa— y después aprenderemos a calcular ambas propiedades en cuerpos compuestos.
+
+
+## 2. Momento de inercia de masa
+
+En la sección anterior determinamos la posición del centro de masa, que caracteriza la distribución de masa de un cuerpo mediante un punto. Sin embargo, para estudiar su movimiento de rotación necesitamos otra propiedad: el **momento de inercia de masa** respecto a un eje.
+
+### 2.1. Interpretación física
+
+La masa cuantifica la inercia asociada al movimiento de traslación. En el movimiento de rotación, además de la cantidad de masa, importa **a qué distancia del eje de rotación se encuentra distribuida**.
+
+Consideremos dos cuerpos con la misma masa total, pero distribuciones diferentes respecto a un eje. Si una mayor proporción de su masa se encuentra lejos de ese eje, el cuerpo tendrá un momento de inercia mayor. En consecuencia, para una misma aceleración angular alrededor de un eje fijo, será necesario aplicar un momento resultante mayor, si las demás condiciones son equivalentes.
+
+Esta dependencia de la distancia es cuadrática: una partícula situada a una distancia $2r$ de un eje contribuye cuatro veces más al momento de inercia que otra partícula de la misma masa situada a una distancia $r$.
+
+> **Importante.** El momento de inercia de masa es una **propiedad del cuerpo respecto a un eje determinado**. Por ello, un mismo cuerpo puede tener distintos momentos de inercia cuando se consideran ejes diferentes.
+
+### 2.2. Definición matemática
+
+Consideremos un sistema de $n$ partículas. Sea $r_{\perp,i}$ la distancia **perpendicular** desde la partícula $i$ hasta un eje especificado. El momento de inercia de masa del sistema respecto a ese eje se define mediante
+
+$$
+\boxed{I=\sum_{i=1}^{n}m_i r_{\perp,i}^{\,2}}
+$$
+
+Para una distribución continua de masa, esta expresión se convierte en
+
+$$
+\boxed{I=\int_m r_\perp^{\,2}\,dm}
+$$
+
+donde $dm$ representa un elemento diferencial de masa y $r_\perp$ es su distancia perpendicular al eje considerado.
+
+En el Sistema Internacional, el momento de inercia de masa se expresa en $\mathrm{kg\,m^2}$.
+
+**Momentos de inercia respecto a ejes cartesianos.** Si los ejes $x$, $y$ y $z$ de un sistema cartesiano son los ejes respecto a los que deseamos calcular el momento de inercia, entonces
+
+$$
+\begin{aligned}
+I_x&=\int_m(y^2+z^2)\,dm\\
+I_y&=\int_m(x^2+z^2)\,dm\\
+I_z&=\int_m(x^2+y^2)\,dm
+\end{aligned}
+$$
+
+Cada expresión utiliza la distancia perpendicular al eje correspondiente. Así, para el eje $z$, esa distancia satisface $r_\perp^2=x^2+y^2$.
+
+**Especialización a mecanismos planos.** En un mecanismo cuyo movimiento ocurre en el plano $xy$, nos interesa principalmente el momento de inercia respecto a un eje paralelo a $z$, perpendicular al plano del movimiento.
+
+Si dicho eje pasa por el centro de masa $G$, emplearemos la notación $I_G$:
+
+$$
+\boxed{
+I_G=\int_m\left[(x-x_G)^2+(y-y_G)^2\right]\,dm
+}
+$$
+
+De manera equivalente, para un sistema de partículas,
+
+$$
+I_G=\sum_{i=1}^{n}m_i
+\left(x_{i/G}^{\,2}+y_{i/G}^{\,2}\right)
+$$
+
+Aquí $x_{i/G}$ y $y_{i/G}$ son las componentes del vector relativo $\mathbf r_{i/G}$ definido en la sección anterior. La abreviatura $I_G$ siempre se referirá, en nuestro estudio del movimiento plano, al eje perpendicular al plano que pasa por $G$.
+
+La importancia dinámica de esta propiedad aparecerá en las [ecuaciones de Newton–Euler para movimiento plano](02-cinetica-cuerpo-rigido.md), donde se utiliza la relación
+
+$$
+\sum M_G=I_G\alpha
+$$
+
+No es necesario extender esta relación escalar a la rotación tridimensional general: en ese caso, la descripción completa de la inercia rotacional requiere considerar también cómo se distribuye la masa respecto a distintas direcciones.
+
+### 2.3. Cálculo por integración: barra delgada homogénea
+
+Calculemos el momento de inercia de masa de una **barra delgada y homogénea**, de masa $m$ y longitud $L$, respecto al eje perpendicular a la barra que pasa por su centro de masa $G$.
+
+Tomemos el eje $x$ sobre la barra, con el origen en $G$. Por simetría, sus extremos se encuentran en $x=-L/2$ y $x=L/2$.
+
+**Paso 1. Definir el elemento de masa.** Al ser homogénea, la barra tiene densidad lineal constante
+
+$$
+\lambda=\frac{m}{L}
+$$
+
+Por tanto, un segmento diferencial de longitud $dx$ tiene una masa
+
+$$
+dm=\lambda\,dx=\frac{m}{L}\,dx
+$$
+
+**Paso 2. Expresar la distancia al eje.** Para el elemento situado en la coordenada $x$, la distancia perpendicular al eje que pasa por $G$ es $r_\perp=|x|$, de modo que $r_\perp^2=x^2$.
+
+**Paso 3. Plantear e integrar.** Sustituyendo en la definición,
+
+$$
+\begin{aligned}
+I_G
+&=\int_{-L/2}^{L/2}x^2\,dm\\
+&=\frac{m}{L}\int_{-L/2}^{L/2}x^2\,dx\\
+&=\frac{m}{L}\left[\frac{x^3}{3}\right]_{-L/2}^{L/2}\\
+&=\frac{m}{L}\left(\frac{L^3}{12}\right)
+\end{aligned}
+$$
+
+Finalmente,
+
+$$
+\boxed{I_G=\frac{1}{12}mL^2}
+$$
+
+Esta expresión es válida en el **modelo de barra delgada** y para el eje especificado. Si el cuerpo tiene dimensiones transversales relevantes, su momento de inercia debe calcularse considerando la distribución tridimensional de masa.
+
+**Ejemplo numérico.** Para una barra con $m=3\ \mathrm{kg}$ y $L=0.80\ \mathrm m$,
+
+$$
+I_G=\frac{1}{12}(3)(0.80)^2
+=\boxed{0.16\ \mathrm{kg\,m^2}}
+$$
+
+Este valor corresponde al eje perpendicular que pasa por $G$. Si se requiere el momento de inercia respecto al eje de una articulación situada en un extremo, el resultado será distinto. En la siguiente sección estudiaremos cómo relacionar ambos mediante el **teorema de ejes paralelos**.
+
+### 2.4. Radio de giro
+
+El **radio de giro** $k$ respecto a un eje se define como la distancia a la cual podría concentrarse idealmente toda la masa del cuerpo para obtener el mismo momento de inercia respecto a ese eje:
+
+$$
+I=mk^2
+$$
+
+Despejando,
+
+$$
+\boxed{k=\sqrt{\frac{I}{m}}}
+$$
+
+El radio de giro tiene unidades de longitud y sirve como medida de la distribución de masa respecto al eje. **No debe confundirse con la distancia del centro de masa al eje:** aun cuando el eje pasa por $G$, el radio de giro es generalmente distinto de cero.
+
+Para la barra delgada homogénea estudiada anteriormente,
+
+$$
+k_G=\sqrt{\frac{I_G}{m}}
+=\sqrt{\frac{L^2}{12}}
+=\boxed{\frac{L}{\sqrt{12}}}
+$$
+
+Para $L=0.80\ \mathrm m$, resulta $k_G\approx 0.231\ \mathrm m$.
+
+> **Distinción de terminología.** El *momento de inercia de masa*, utilizado en dinámica, se expresa en $\mathrm{kg\,m^2}$. El *segundo momento de área*, frecuente en resistencia de materiales, se expresa en $\mathrm{m^4}$. Aunque sus expresiones matemáticas se parecen, corresponden a cantidades físicas diferentes.
+
+**Relación con los mecanismos.** La masa $m$, la posición del centro de masa $G$ y el momento de inercia $I_G$ son datos esenciales para plantear las ecuaciones de movimiento de un eslabón plano. En la siguiente sección utilizaremos el teorema de ejes paralelos para obtener momentos de inercia respecto a otros ejes, como los que pasan por las articulaciones.
