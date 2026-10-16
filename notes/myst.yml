@@ -10,6 +10,7 @@ project:
   # Las secciones dentro de las notas ya están numeradas en los títulos.
   toc:
     - file: index.md
+    - file: 02-propiedades-de-masa.md
     - file: 02-cinetica-cuerpo-rigido.md
 
 site:
