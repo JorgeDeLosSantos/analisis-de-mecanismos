@@ -1,0 +1,2 @@
+# Jupyter Book 2 version verified by GitHub Actions (Python 3.12)
+jupyter-book==2.1.7
