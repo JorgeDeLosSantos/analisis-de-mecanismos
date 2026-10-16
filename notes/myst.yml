@@ -15,8 +15,8 @@ project:
 site:
   template: book-theme
   title: Apuntes de Análisis de Mecanismos
-  hide_authors: true
   options:
+    hide_authors: true
     folders: true
   nav:
     - title: Inicio del curso
