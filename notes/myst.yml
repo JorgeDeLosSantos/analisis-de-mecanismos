@@ -1,0 +1,25 @@
+version: 1
+
+project:
+  title: Análisis de Mecanismos
+  description: Apuntes y notas de estudio para Ingeniería Mecatrónica
+  authors:
+    - name: Pedro Jorge De Los Santos
+  copyright: "2026"
+  github: JorgeDeLosSantos/analisis-de-mecanismos
+  # Las secciones dentro de las notas ya están numeradas en los títulos.
+  toc:
+    - file: index.md
+    - file: 02-cinetica-cuerpo-rigido.md
+
+site:
+  template: book-theme
+  title: Apuntes de Análisis de Mecanismos
+  hide_authors: true
+  options:
+    folders: true
+  nav:
+    - title: Inicio del curso
+      url: https://jorgedelossantos.github.io/analisis-de-mecanismos/
+    - title: Presentaciones
+      url: https://jorgedelossantos.github.io/analisis-de-mecanismos/slides/

@@ -17,3 +17,7 @@ Thumbs.db
 .vscode/
 .idea/
 .history/
+
+# Jupyter Book 2 / MyST build files
+notes/_build/
+notes/.myst/

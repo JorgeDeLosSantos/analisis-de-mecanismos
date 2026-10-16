@@ -1,0 +1,2 @@
+# Version probada para el flujo de publicación (Python 3.12).
+jupyter-book==2.1.7
