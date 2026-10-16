@@ -57,6 +57,17 @@ jobs:
         run: |
           test -f slides/dist/intro/index.html
           test -f notes/_build/html/index.html
+          echo "Generated HTML and figure assets:"
+          find notes/_build/html -type f | grep -E '(fig-|cinetica|index[.]html)' | head -n 50 || true
+          python - <<'PY'
+          from pathlib import Path
+          root = Path("notes/_build/html")
+          all_files = [p for p in root.rglob("*") if p.is_file()]
+          html = [p for p in all_files if p.suffix == ".html"]
+          images = [p for p in all_files if p.suffix.lower() in {".svg", ".png", ".jpg", ".jpeg", ".webp"}]
+          print(f"Site contains {len(all_files)} files, {len(html)} HTML pages and {len(images)} image files")
+          print("Image samples:", [p.relative_to(root).as_posix() for p in images[:15]])
+          PY
 
       - name: Upload notes HTML preview
         uses: actions/upload-artifact@v4
