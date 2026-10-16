@@ -124,10 +124,10 @@ Esta expresión indica que la resultante de las fuerzas externas determina la ac
 
 La ecuación de fuerzas no describe completamente el movimiento de un cuerpo rígido, pues este también puede girar. Para estudiar la rotación empleamos la **cantidad de movimiento angular**.
 
-Sea $\boldsymbol{\rho}_i=\mathbf r_i-\mathbf r_G$ el vector desde el centro de masa hasta la partícula $i$, y sea $\mathbf v_{i/G}=\mathbf v_i-\mathbf v_G$ su velocidad relativa al centro de masa. La cantidad de movimiento angular del cuerpo respecto a $G$ se define como
+Sea $\mathbf r_{i/G}=\mathbf r_i-\mathbf r_G$ el vector desde el centro de masa hasta la partícula $i$, de manera que $\mathbf r_i=\mathbf r_G+\mathbf r_{i/G}$. Asimismo, sea $\mathbf v_{i/G}=\mathbf v_i-\mathbf v_G$ su velocidad relativa al centro de masa. La cantidad de movimiento angular del cuerpo respecto a $G$ se define como
 
 $$
-\mathbf H_G=\sum_{i=1}^{n}\boldsymbol{\rho}_i
+\mathbf H_G=\sum_{i=1}^{n}\mathbf r_{i/G}
 \times m_i\mathbf v_{i/G}
 $$
 
@@ -149,7 +149,7 @@ $$
 Para cada partícula del cuerpo rígido se cumple
 
 $$
-\mathbf v_{i/G}=\boldsymbol{\omega}\times\boldsymbol{\rho}_i
+\mathbf v_{i/G}=\boldsymbol{\omega}\times\mathbf r_{i/G}
 $$
 
 Nos interesa la **componente $z$ del momento angular**, perpendicular al plano del movimiento. Al sustituir la relación anterior en su definición, obtenemos
