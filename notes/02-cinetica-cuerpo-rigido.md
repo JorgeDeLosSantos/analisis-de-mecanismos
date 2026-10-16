@@ -83,6 +83,8 @@ Para establecer las ecuaciones de movimiento de un cuerpo rígido, partiremos de
 
 Supondremos que la masa del cuerpo es constante y que las posiciones, velocidades y aceleraciones se describen respecto a un sistema de referencia inercial.
 
+![Sistema de partículas, centro de masa y relación entre vectores de posición.](figures/fig-01-particle-system.svg)
+
 ### 2.1. Ecuación de traslación: movimiento del centro de masa
 
 Consideremos un cuerpo formado por $n$ partículas, cada una de masa $m_i$ y aceleración $\mathbf a_i$. La segunda ley de Newton, aplicada a la partícula $i$, establece que
@@ -410,6 +412,9 @@ En mecanismos articulados, las acciones desconocidas pueden incluir las componen
 
 ### 3.5. Diagramas de cuerpo libre y representación del movimiento
 
+![Comparación entre el diagrama de cuerpo libre y la información cinemática.](figures/fig-02-fbd-kinematics.svg)
+
+
 Antes de escribir las ecuaciones de Newton–Euler es necesario **aislar el cuerpo** que se desea analizar y representar todas las acciones externas que actúan sobre él. Esta representación se denomina *diagrama de cuerpo libre* (DCL).
 
 En un eslabón de un mecanismo plano, el DCL puede incluir:
@@ -446,6 +451,8 @@ En las secciones anteriores establecimos las ecuaciones de Newton–Euler y sus 
 Los eslabones se modelan como barras homogéneas y las articulaciones y contactos se consideran ideales. En el segundo ejemplo, la corredera se idealiza como una masa concentrada. Aprovecharemos los resultados del **análisis cinemático** para resolver problemas de **dinámica inversa**.
 
 ### 4.1. Ejemplo 1. Par motor y reacciones en un eslabón con pivote fijo
+
+![Configuración geométrica y diagrama de cuerpo libre de una barra con pivote fijo.](figures/fig-03-fixed-pivot.svg)
 
 **Planteamiento.** Una barra delgada, homogénea, de masa $m=3\ \mathrm{kg}$ y longitud $L=0.80\ \mathrm{m}$ gira en un plano vertical alrededor de un pasador fijo en $O$, situado en uno de sus extremos. Un motor aplica un par $M$ al eslabón.
 
@@ -569,6 +576,8 @@ $$
 
 ### 4.2. Ejemplo 2. Análisis dinámico inverso de un mecanismo manivela-biela-corredera
 
+![Geometría del mecanismo manivela-biela-corredera.](figures/fig-04-slider-crank-geometry.svg)
+
 **Planteamiento.** Consideremos un mecanismo manivela-biela-corredera en un plano vertical, con guía horizontal y articulaciones ideales sin fricción. La manivela $OA$ y la biela $AB$ son barras delgadas homogéneas. Para simplificar, la **corredera se idealiza como una partícula de masa $m_3$ localizada en $B$**, sin dimensiones ni inercia rotacional; se analizan sus fuerzas de traslación.
 
 En el instante considerado, las coordenadas de las articulaciones, expresadas en metros, son
@@ -618,6 +627,8 @@ Para la biela, $\mathbf r_{B/A}=0.32\,\mathbf i-0.24\,\mathbf j$ y, debido a la 
 Los centros de masa $G_1$ y $G_2$ se encuentran en los puntos medios de las respectivas barras. El signo $v_{Bx}<0$ confirma que la corredera se mueve hacia la izquierda: la fuerza $F_R$, dirigida hacia la derecha, **se opone a su movimiento**.
 
 A partir de aquí inicia la **etapa cinética**, en la que utilizaremos Newton–Euler para calcular las fuerzas desconocidas.
+
+![Diagramas de cuerpo libre de la corredera, la biela y la manivela. Los sentidos de las componentes de fuerza son supuestos; cada par de acción y reacción debe interpretarse con sentidos opuestos en los eslabones que interactúan.](figures/fig-05-slider-crank-fbd.svg)
 
 **Paso 2. Analizar la corredera.**
 
