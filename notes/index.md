@@ -4,8 +4,7 @@ Este material complementa las clases de **Análisis de Mecanismos** de Ingenier�
 
 ## Contenido disponible
 
-- **Unidad II. [Propiedades de masa del cuerpo rígido](02-propiedades-de-masa.md):** centro de masa (borrador en desarrollo); posteriormente, momento de inercia, ejes paralelos y cuerpos compuestos.
-- **Unidad II. [Cinética del cuerpo rígido](02-cinetica-cuerpo-rigido.md):** fundamentos, ecuaciones de Newton–Euler, movimiento plano y aplicaciones a mecanismos.
+- **Unidad II. [Cinética del cuerpo rígido](02-cinetica-cuerpo-rigido.md):** fundamentos, propiedades de masa, ecuaciones de Newton–Euler, movimiento plano y aplicaciones a mecanismos.
 
 Los apuntes de las demás unidades se incorporarán conforme avance su elaboración y revisión.
 
