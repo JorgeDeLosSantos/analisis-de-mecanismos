@@ -143,7 +143,7 @@ En este caso, el cálculo coincide con la determinación del centroide geométri
 
 Antes de realizar una suma o una integral, conviene examinar si la distribución de masa presenta alguna simetría.
 
-Si la geometría **y la distribución de densidad** son simétricas respecto a un eje, el centro de masa debe encontrarse sobre ese eje. Cuando existen dos ejes de simetría que se intersectan, su punto de intersección determina la posición de $G$ en el plano.
+En una distribución plana, si la geometría **y la distribución de densidad** son simétricas respecto a un eje, el centro de masa debe encontrarse sobre ese eje. Cuando existen dos ejes de simetría que se intersectan, su punto de intersección determina la posición de $G$ en el plano.
 
 Por ejemplo, el centro de masa de una barra delgada homogénea de longitud $L$ se encuentra en su punto medio:
 
@@ -231,7 +231,7 @@ No es necesario extender esta relación escalar a la rotación tridimensional ge
 
 ### 2.3. Cálculo por integración: barra delgada homogénea
 
-Calculemos el momento de inercia de masa de una **barra delgada y homogénea**, de masa $m$ y longitud $L$, respecto al eje perpendicular a la barra que pasa por su centro de masa $G$.
+Calculemos el momento de inercia de masa de una **barra delgada y homogénea**, de masa $m$ y longitud $L$, respecto al eje perpendicular al plano $xy$ que pasa por su centro de masa $G$.
 
 Tomemos el eje $x$ sobre la barra, con el origen en $G$. Por simetría, sus extremos se encuentran en $x=-L/2$ y $x=L/2$.
 
@@ -254,7 +254,7 @@ $$
 $$
 \begin{aligned}
 I_G
-&=\int_{-L/2}^{L/2}x^2\,dm\\
+&=\int_m x^2\,dm\\
 &=\frac{m}{L}\int_{-L/2}^{L/2}x^2\,dx\\
 &=\frac{m}{L}\left[\frac{x^3}{3}\right]_{-L/2}^{L/2}\\
 &=\frac{m}{L}\left(\frac{L^3}{12}\right)
@@ -400,7 +400,7 @@ La deducción se extiende directamente a cuerpos con distribución continua de m
 
 ### 3.3. Aplicación: barra homogénea articulada en un extremo
 
-En la Sección 2 calculamos el momento de inercia de una barra delgada homogénea, de masa $m$ y longitud $L$, respecto al eje perpendicular que pasa por su centro de masa:
+En la Sección 2 calculamos el momento de inercia de una barra delgada homogénea, de masa $m$ y longitud $L$, respecto al eje perpendicular al plano que pasa por su centro de masa:
 
 $$
 I_G=\frac{1}{12}mL^2
@@ -608,7 +608,7 @@ donde $d_1$, $d_2$ y $d_h$ son las distancias entre los centros de las regiones 
 
 > **Importante.** La perforación es una contribución negativa **sólo en el procedimiento algebraico**; su masa $m_h$ y su momento de inercia $I_{G_h}$ se calculan como magnitudes positivas, usando la densidad del material que habría ocupado esa región. No existe una masa física negativa.
 
-Este recurso funciona siempre que la descomposición describa correctamente qué material se añade y cuál se retira, sin contar dos veces una misma región. Si intervienen distintos materiales o espesores, debemos calcular las propiedades de cada región con la densidad correspondiente.
+Este recurso funciona siempre que la descomposición represente correctamente el material presente y las regiones retiradas, sin duplicar material ni restar dos veces una misma perforación. Si intervienen distintos materiales o espesores, debemos calcular las propiedades de cada región con la densidad correspondiente.
 
 ### 4.5. Procedimiento de cálculo mediante una tabla
 
@@ -661,7 +661,7 @@ Tomemos el punto $O=(0,0)$ en la esquina inferior izquierda de la placa y los ej
 - **Región 1 (horizontal):** $0\leq x\leq 0.60\ \mathrm m$ y $0\leq y\leq 0.12\ \mathrm m$.
 - **Región 2 (vertical):** $0\leq x\leq 0.12\ \mathrm m$ y $0.12\ \mathrm m\leq y\leq 0.48\ \mathrm m$.
 
-De esta manera, las dimensiones exteriores de la pieza son $0.60\times 0.48\ \mathrm m$. Ambas regiones comparten una frontera, pero **ninguna porción de área se cuenta dos veces**.
+De esta manera, el rectángulo envolvente de la pieza mide $0.60\times 0.48\ \mathrm m$. Ambas regiones comparten una frontera, pero **ninguna porción de área se cuenta dos veces**.
 
 Supondremos que el eslabón puede articularse idealmente alrededor de un eje perpendicular al plano que pasa por $O$. La posible remoción de material para alojar un perno no se considera en este primer modelo.
 
@@ -671,10 +671,10 @@ Calcularemos la masa total $m$, la posición del centro de masa $G$, el momento 
 
 Primero determinamos las áreas, las masas y las coordenadas de los centros de cada rectángulo. Para una placa homogénea, $m_i=\sigma A_i$ y el centro de masa de cada región coincide con su centro geométrico.
 
-| Región | Dimensiones ($\mathrm m$) | Área ($\mathrm{m^2}$) | Masa ($\mathrm{kg}$) | $x_{G_i}$ ($\mathrm m$) | $y_{G_i}$ ($\mathrm m$) |
-| --- | --- | ---: | ---: | ---: | ---: |
-| 1. Horizontal | $0.60\times0.12$ | $0.0720$ | $3.60$ | $0.30$ | $0.06$ |
-| 2. Vertical | $0.12\times0.36$ | $0.0432$ | $2.16$ | $0.06$ | $0.30$ |
+| Región | Área ($\mathrm{m^2}$) | Masa ($\mathrm{kg}$) | $G_i=(x_{G_i},y_{G_i})$ ($\mathrm m$) |
+| --- | ---: | ---: | ---: |
+| 1. Horizontal | $0.0720$ | $3.60$ | $(0.30,\ 0.06)$ |
+| 2. Vertical | $0.0432$ | $2.16$ | $(0.06,\ 0.30)$ |
 
 La masa total resulta
 
