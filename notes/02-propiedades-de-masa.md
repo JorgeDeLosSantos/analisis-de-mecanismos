@@ -573,53 +573,27 @@ Otra posibilidad es trasladar directamente cada contribución al eje de $O$ y su
 
 ### 4.4. Perforaciones y regiones de material removido
 
-Es frecuente que un eslabón contenga orificios, ranuras u otras regiones sin material. Cuando conocemos la geometría y las propiedades de la pieza original, podemos representar cada perforación como una **contribución que se resta**.
+Es frecuente que un eslabón contenga orificios, ranuras u otras regiones sin material. Cuando conocemos la geometría y las propiedades de la pieza original, podemos calcular las propiedades del cuerpo restante **restando las contribuciones correspondientes al material removido**.
 
-Para unificar los cálculos, asignemos a cada región un signo $s_i$:
+La idea es sencilla: una perforación se trata como si inicialmente estuviera ocupada por material y, después, se resta su **masa**, su **primer momento de masa** y su **momento de inercia respecto al eje considerado**.
 
-$$
-s_i=
-\begin{cases}
-+1,&\text{material presente},\\
--1,&\text{material removido}.
-\end{cases}
-$$
-
-Conservaremos $m_i>0$ e $I_{G_i}>0$ como las propiedades que tendría la región $i$ si estuviera llena del material que se está añadiendo o retirando. El signo se aplica únicamente al sumar sus contribuciones. Así, la masa real del cuerpo es
+**Ejemplo de formulación.** Supongamos que una placa se representa mediante dos regiones con material, $1$ y $2$, y una perforación $h$. La masa total es
 
 $$
-\boxed{m=\sum_{i=1}^{n}s_i m_i}
+m=m_1+m_2-m_h
 $$
 
-y su centro de masa se calcula mediante
+y las coordenadas de su centro de masa se obtienen mediante
 
 $$
 \boxed{
-x_G=\frac{\sum_i s_i m_i x_{G_i}}{m},
+x_G=\frac{m_1x_{G_1}+m_2x_{G_2}-m_hx_{G_h}}{m},
 \qquad
-y_G=\frac{\sum_i s_i m_i y_{G_i}}{m}
+y_G=\frac{m_1y_{G_1}+m_2y_{G_2}-m_hy_{G_h}}{m}
 }
 $$
 
-Una vez calculado $G$, el momento de inercia queda
-
-$$
-\boxed{
-I_G=\sum_{i=1}^{n}s_i\left[
-I_{G_i}+m_i\left((x_{G_i}-x_G)^2+(y_{G_i}-y_G)^2\right)
-\right]
-}
-$$
-
-**Ejemplo de formulación.** Si una placa se representa mediante dos regiones con material, $1$ y $2$, y una perforación $h$, la masa total y la coordenada horizontal del centro de masa serían
-
-$$
-m=m_1+m_2-m_h,
-\qquad
-x_G=\frac{m_1x_{G_1}+m_2x_{G_2}-m_hx_{G_h}}{m}
-$$
-
-Su momento de inercia respecto al eje que pasa por $G$ se expresa como
+Una vez localizado $G$, trasladamos **cada contribución al mismo eje perpendicular al plano que pasa por $G$**. Entonces,
 
 $$
 \begin{aligned}
@@ -630,32 +604,39 @@ I_G
 \end{aligned}
 $$
 
-El uso de un signo negativo es una **herramienta de cálculo**, no significa que exista materia con masa física negativa. Además, la perforación debe descontarse con la densidad correspondiente al material que habría ocupado esa región. Si una descomposición mezcla regiones con diferentes densidades o superposiciones, debe revisarse antes de aplicar estas expresiones.
+donde $d_1$, $d_2$ y $d_h$ son las distancias entre los centros de las regiones correspondientes y el centro de masa $G$ del cuerpo restante.
+
+> **Importante.** La perforación es una contribución negativa **sólo en el procedimiento algebraico**; su masa $m_h$ y su momento de inercia $I_{G_h}$ se calculan como magnitudes positivas, usando la densidad del material que habría ocupado esa región. No existe una masa física negativa.
+
+Este recurso funciona siempre que la descomposición describa correctamente qué material se añade y cuál se retira, sin contar dos veces una misma región. Si intervienen distintos materiales o espesores, debemos calcular las propiedades de cada región con la densidad correspondiente.
 
 ### 4.5. Procedimiento de cálculo mediante una tabla
 
-Una tabla resulta útil para organizar los datos, especialmente cuando el cuerpo contiene varias regiones. Recomiendo utilizar la siguiente estructura:
+Una tabla ayuda a organizar los datos, especialmente cuando el cuerpo contiene varias regiones. Podemos emplear la siguiente estructura:
 
-| Región $i$ | Signo $s_i$ | Masa $m_i$ | $x_{G_i}$ | $y_{G_i}$ | $I_{G_i}$ |
-| --- | :---: | ---: | ---: | ---: | ---: |
-| Componente 1 | $+1$ | $m_1$ | $x_{G_1}$ | $y_{G_1}$ | $I_{G_1}$ |
-| Componente 2 | $+1$ | $m_2$ | $x_{G_2}$ | $y_{G_2}$ | $I_{G_2}$ |
-| Perforación $h$ | $-1$ | $m_h$ | $x_{G_h}$ | $y_{G_h}$ | $I_{G_h}$ |
+| Región | Tipo | Masa | $x_{G_i}$ | $y_{G_i}$ | $I_{G_i}$ |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Componente 1 | Material | $m_1$ | $x_{G_1}$ | $y_{G_1}$ | $I_{G_1}$ |
+| Componente 2 | Material | $m_2$ | $x_{G_2}$ | $y_{G_2}$ | $I_{G_2}$ |
+| Región $h$ | Perforación | $m_h$ | $x_{G_h}$ | $y_{G_h}$ | $I_{G_h}$ |
 
-A partir de estos datos se calculan, en orden, las siguientes cantidades:
+**Todas las masas y momentos de inercia de la tabla se registran como magnitudes positivas.** Durante el cálculo, las regiones marcadas como perforaciones se restan.
 
-1. **Masa total:** sumar $s_i m_i$ y verificar que $m>0$.
-2. **Centro de masa:** obtener $x_G$ y $y_G$ mediante los primeros momentos de masa con signo.
-3. **Distancias entre centros:** calcular $d_i^2$ para cada región respecto al $G$ ya determinado.
-4. **Momento de inercia total:** sumar las contribuciones $s_i(I_{G_i}+m_i d_i^2)$.
+A partir de estos datos procedemos en el siguiente orden:
+
+1. **Masa total:** sumar las masas del material presente y restar las de las perforaciones; comprobar que $m>0$.
+2. **Centro de masa:** sumar los primeros momentos de masa del material y restar los correspondientes a las perforaciones, dividiendo entre la masa total real.
+3. **Distancias entre centros:** determinar $d_i^2=(x_{G_i}-x_G)^2+(y_{G_i}-y_G)^2$ para cada región, una vez localizado $G$.
+4. **Momento de inercia:** trasladar las contribuciones de todas las regiones al eje que pasa por $G$ y sumar las del material, restando las de las perforaciones.
 5. **Cambio de eje, si se requiere:** aplicar el teorema de ejes paralelos desde $G$ hasta el eje de interés.
 
-Como verificación, el centro de masa calculado debe satisfacer
+Como verificación, los primeros momentos de masa respecto al centro de masa deben compensarse. Por ejemplo, en la placa de dos componentes y una perforación:
 
 $$
-\sum_{i=1}^{n}s_i m_i(x_{G_i}-x_G)=0,
-\qquad
-\sum_{i=1}^{n}s_i m_i(y_{G_i}-y_G)=0
+\begin{aligned}
+m_1(x_{G_1}-x_G)+m_2(x_{G_2}-x_G)-m_h(x_{G_h}-x_G)&=0\\
+m_1(y_{G_1}-y_G)+m_2(y_{G_2}-y_G)-m_h(y_{G_h}-y_G)&=0
+\end{aligned}
 $$
 
 También debemos comprobar que las unidades sean consistentes: las masas se expresan en $\mathrm{kg}$, las coordenadas en $\mathrm m$ y los momentos de inercia de masa en $\mathrm{kg\,m^2}$.
