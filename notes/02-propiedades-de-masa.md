@@ -174,19 +174,19 @@ Esta dependencia de la distancia es cuadrática: una partícula situada a una di
 
 ### 2.2. Definición matemática
 
-Consideremos un sistema de $n$ partículas. Sea $r_{\perp,i}$ la distancia **perpendicular** desde la partícula $i$ hasta un eje especificado. El momento de inercia de masa del sistema respecto a ese eje se define mediante
+Consideremos un sistema de $n$ partículas. Sea $r_i$ la **distancia perpendicular** desde la partícula $i$ hasta el eje considerado. El momento de inercia de masa del sistema respecto a ese eje se define mediante
 
 $$
-\boxed{I=\sum_{i=1}^{n}m_i r_{\perp,i}^{\,2}}
+\boxed{I=\sum_{i=1}^{n}m_i r_i^{\,2}}
 $$
 
 Para una distribución continua de masa, esta expresión se convierte en
 
 $$
-\boxed{I=\int_m r_\perp^{\,2}\,dm}
+\boxed{I=\int_m r^2\,dm}
 $$
 
-donde $dm$ representa un elemento diferencial de masa y $r_\perp$ es su distancia perpendicular al eje considerado.
+donde $dm$ representa un elemento diferencial de masa y $r$ es la **distancia perpendicular** desde ese elemento hasta el eje respecto al cual se calcula el momento de inercia. Aquí $r$ es una distancia escalar, que no debe confundirse con un vector de posición como $\mathbf r_i$.
 
 En el Sistema Internacional, el momento de inercia de masa se expresa en $\mathrm{kg\,m^2}$.
 
@@ -200,7 +200,7 @@ I_z&=\int_m(x^2+y^2)\,dm
 \end{aligned}
 $$
 
-Cada expresión utiliza la distancia perpendicular al eje correspondiente. Así, para el eje $z$, esa distancia satisface $r_\perp^2=x^2+y^2$.
+Cada expresión utiliza la distancia perpendicular al eje correspondiente. Así, para el eje $z$, esa distancia satisface $r^2=x^2+y^2$.
 
 **Especialización a mecanismos planos.** En un mecanismo cuyo movimiento ocurre en el plano $xy$, nos interesa principalmente el momento de inercia respecto a un eje paralelo a $z$, perpendicular al plano del movimiento.
 
@@ -247,7 +247,7 @@ $$
 dm=\lambda\,dx=\frac{m}{L}\,dx
 $$
 
-**Paso 2. Expresar la distancia al eje.** Para el elemento situado en la coordenada $x$, la distancia perpendicular al eje que pasa por $G$ es $r_\perp=|x|$, de modo que $r_\perp^2=x^2$.
+**Paso 2. Expresar la distancia al eje.** Para el elemento situado en la coordenada $x$, la distancia perpendicular al eje que pasa por $G$ es $r=|x|$, de modo que $r^2=x^2$.
 
 **Paso 3. Plantear e integrar.** Sustituyendo en la definición,
 
@@ -307,3 +307,146 @@ Para $L=0.80\ \mathrm m$, resulta $k_G\approx 0.231\ \mathrm m$.
 > **Distinción de terminología.** El *momento de inercia de masa*, utilizado en dinámica, se expresa en $\mathrm{kg\,m^2}$. El *segundo momento de área*, frecuente en resistencia de materiales, se expresa en $\mathrm{m^4}$. Aunque sus expresiones matemáticas se parecen, corresponden a cantidades físicas diferentes.
 
 **Relación con los mecanismos.** La masa $m$, la posición del centro de masa $G$ y el momento de inercia $I_G$ son datos esenciales para plantear las ecuaciones de movimiento de un eslabón plano. En la siguiente sección utilizaremos el teorema de ejes paralelos para obtener momentos de inercia respecto a otros ejes, como los que pasan por las articulaciones.
+
+
+## 3. Teorema de ejes paralelos
+
+El momento de inercia de masa depende del eje respecto al cual se calcula. En muchos problemas de mecanismos conocemos el momento de inercia de un eslabón respecto al eje que pasa por su centro de masa, pero necesitamos determinarlo respecto al eje de una articulación.
+
+El **teorema de ejes paralelos**, también conocido como teorema de Steiner, permite relacionar ambas cantidades sin repetir la integración sobre toda la distribución de masa.
+
+### 3.1. Formulación del teorema
+
+Consideremos un cuerpo de masa $m$ y dos **ejes paralelos**: uno que pasa por el centro de masa $G$ y otro que pasa por un punto $O$. Sea $d$ la distancia perpendicular entre ambos ejes.
+
+El teorema establece que
+
+$$
+\boxed{I_O=I_G+md^2}
+$$
+
+donde:
+
+- $I_G$ es el momento de inercia de masa respecto al eje que pasa por $G$.
+- $I_O$ es el momento de inercia de masa respecto al eje paralelo que pasa por $O$.
+- $d$ es la distancia perpendicular entre los dos ejes.
+- $m$ es la masa total del cuerpo.
+
+En el **movimiento plano** que estudiaremos, ambos ejes son perpendiculares al plano del movimiento. Si $O$ y $G$ se ubican en dicho plano, entonces $d$ coincide con la distancia entre esos puntos:
+
+$$
+d^2=(x_G-x_O)^2+(y_G-y_O)^2
+$$
+
+Como $md^2\geq 0$, el momento de inercia respecto al eje que pasa por $G$ es el **mínimo entre los momentos de inercia respecto a los ejes paralelos a él**, y la igualdad ocurre cuando ambos ejes coinciden.
+
+> **Condición esencial.** Los ejes deben ser paralelos, y uno de ellos debe pasar por el centro de masa del cuerpo. No puede utilizarse la expresión $I_O=I_P+md^2$ entre dos ejes arbitrarios sólo porque sean paralelos.
+
+### 3.2. Deducción para ejes perpendiculares al plano
+
+Retomemos el modelo de un sistema de $n$ partículas, con posiciones $(x_i,y_i)$ medidas desde $O$. Sea $(x_G,y_G)$ la posición del centro de masa respecto al mismo origen. Entonces podemos escribir las componentes de la posición relativa como
+
+$$
+x_{i/G}=x_i-x_G,
+\qquad
+y_{i/G}=y_i-y_G
+$$
+
+Por tanto,
+
+$$
+x_i=x_G+x_{i/G},
+\qquad
+y_i=y_G+y_{i/G}
+$$
+
+El momento de inercia respecto al eje perpendicular al plano que pasa por $O$ es
+
+$$
+I_O=\sum_{i=1}^{n}m_i(x_i^2+y_i^2)
+$$
+
+Al sustituir las expresiones anteriores y desarrollar los cuadrados:
+
+$$
+\begin{aligned}
+I_O
+={}&\sum_{i=1}^{n}m_i(x_{i/G}^2+y_{i/G}^2)\\
+&+2x_G\sum_{i=1}^{n}m_i x_{i/G}
++2y_G\sum_{i=1}^{n}m_i y_{i/G}\\
+&+(x_G^2+y_G^2)\sum_{i=1}^{n}m_i
+\end{aligned}
+$$
+
+El primer término es precisamente $I_G$. Los dos términos intermedios se anulan, porque en la Sección 1 demostramos que
+
+$$
+\sum_{i=1}^{n}m_i\mathbf r_{i/G}=\mathbf 0
+$$
+
+Por último, $\sum_i m_i=m$ y, con el origen situado en $O$, se cumple $x_G^2+y_G^2=d^2$. Así obtenemos
+
+$$
+I_O=I_G+0+0+md^2
+$$
+
+es decir,
+
+$$
+\boxed{I_O=I_G+md^2}
+$$
+
+La deducción se extiende directamente a cuerpos con distribución continua de masa, sustituyendo las sumatorias por integrales. El hecho fundamental es el mismo: **los primeros momentos de masa respecto a $G$ son nulos**.
+
+### 3.3. Aplicación: barra homogénea articulada en un extremo
+
+En la Sección 2 calculamos el momento de inercia de una barra delgada homogénea, de masa $m$ y longitud $L$, respecto al eje perpendicular que pasa por su centro de masa:
+
+$$
+I_G=\frac{1}{12}mL^2
+$$
+
+Supongamos ahora que la barra está unida a una articulación en uno de sus extremos, al que llamaremos $O$. El centro de masa se encuentra en el punto medio de la barra, por lo que la distancia entre el eje de $O$ y el eje paralelo de $G$ es
+
+$$
+d=\frac{L}{2}
+$$
+
+Aplicando el teorema de ejes paralelos,
+
+$$
+\begin{aligned}
+I_O
+&=I_G+md^2\\
+&=\frac{1}{12}mL^2+m\left(\frac{L}{2}\right)^2\\
+&=\left(\frac{1}{12}+\frac{1}{4}\right)mL^2
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+\boxed{I_O=\frac{1}{3}mL^2}
+$$
+
+**Ejemplo numérico.** Utilicemos la misma barra de la sección anterior, con $m=3\ \mathrm{kg}$ y $L=0.80\ \mathrm m$. Sabemos que $I_G=0.16\ \mathrm{kg\,m^2}$ y que $d=0.40\ \mathrm m$. Entonces,
+
+$$
+\begin{aligned}
+I_O
+&=0.16+3(0.40)^2\\
+&=\boxed{0.64\ \mathrm{kg\,m^2}}
+\end{aligned}
+$$
+
+El momento de inercia respecto al eje de la articulación es cuatro veces el correspondiente al eje paralelo que pasa por $G$.
+
+**Conexión con Newton–Euler.** Si la barra gira alrededor de un **pivote fijo $O$** en un plano, el momento de inercia $I_O$ interviene en la ecuación
+
+$$
+\sum M_O=I_O\alpha
+$$
+
+Esta relación aparece en el [ejemplo de la barra con pivote fijo de los apuntes de cinética](02-cinetica-cuerpo-rigido.md). Conviene distinguir dos afirmaciones: el teorema de ejes paralelos es una relación **geométrica de propiedades de masa**, válida independientemente del movimiento; en cambio, para utilizar la ecuación dinámica $\sum M_O=I_O\alpha$ en esta forma se requiere que $O$ sea un punto fijo de rotación en un sistema de referencia inercial.
+
+En la siguiente sección utilizaremos el teorema para calcular el momento de inercia de **cuerpos compuestos**, a partir de los momentos de inercia de sus componentes.
