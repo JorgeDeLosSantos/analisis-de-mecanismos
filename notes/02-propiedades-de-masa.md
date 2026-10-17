@@ -450,3 +450,214 @@ $$
 Esta relación aparece en el [ejemplo de la barra con pivote fijo de los apuntes de cinética](02-cinetica-cuerpo-rigido.md). Conviene distinguir dos afirmaciones: el teorema de ejes paralelos es una relación **geométrica de propiedades de masa**, válida independientemente del movimiento; en cambio, para utilizar la ecuación dinámica $\sum M_O=I_O\alpha$ en esta forma se requiere que $O$ sea un punto fijo de rotación en un sistema de referencia inercial.
 
 En la siguiente sección utilizaremos el teorema para calcular el momento de inercia de **cuerpos compuestos**, a partir de los momentos de inercia de sus componentes.
+
+
+## 4. Centro de masa y momento de inercia de cuerpos compuestos
+
+En el diseño de mecanismos es habitual encontrar eslabones formados por varias regiones geométricas: placas con salientes, barras unidas entre sí o piezas con perforaciones. Si conocemos las propiedades de masa de figuras sencillas, podemos combinarlas para obtener las del cuerpo completo, **sin integrar nuevamente sobre toda su geometría**.
+
+El procedimiento consiste en calcular primero la masa y el centro de masa del conjunto y, después, su momento de inercia respecto al eje deseado.
+
+### 4.1. Descomposición en componentes simples
+
+Consideremos un cuerpo rígido que pueda representarse mediante $n$ componentes de geometría sencilla. Cada componente $i$ tiene:
+
+- Masa $m_i$.
+- Centro de masa $G_i$, situado en $(x_{G_i},y_{G_i})$ respecto a un mismo sistema de referencia.
+- Momento de inercia $I_{G_i}$ respecto al eje perpendicular al plano que pasa por $G_i$.
+
+Para comenzar su análisis, conviene identificar regiones **sin superposición**, de modo que ninguna porción de material se contabilice dos veces. Cuando sea más sencillo describir una pieza como una figura completa a la que se le retira material, podemos emplear el procedimiento de sustracción que estudiaremos en el apartado 4.4.
+
+En una placa delgada homogénea, las masas se obtienen a partir del área de cada componente y de la densidad superficial común $\sigma$:
+
+$$
+m_i=\sigma A_i
+$$
+
+Si el espesor y la densidad volumétrica son uniformes, la densidad superficial puede expresarse como $\sigma=\rho t$, donde $t$ es el espesor. Si los componentes tienen materiales, espesores o densidades diferentes, **sus masas deben determinarse por separado**.
+
+Algunas expresiones útiles para los componentes más habituales son:
+
+| Componente homogéneo | Masa | Momento de inercia respecto al eje por $G_i$ |
+| --- | --- | --- |
+| Barra delgada de longitud $L$ | $m_i=\lambda L$ | $I_{G_i}=\frac{1}{12}m_iL^2$ |
+| Placa rectangular de lados $b$ y $h$ | $m_i=\sigma bh$ | $I_{G_i}=\frac{1}{12}m_i(b^2+h^2)$ |
+| Placa circular de radio $R$ | $m_i=\sigma\pi R^2$ | $I_{G_i}=\frac{1}{2}m_iR^2$ |
+
+En todos los casos de la tabla, el eje es **perpendicular al plano de la figura** y pasa por el centro de masa correspondiente. Para utilizar las fórmulas es necesario que el componente se ajuste a la idealización geométrica indicada.
+
+### 4.2. Centro de masa del cuerpo compuesto
+
+Si todos los componentes representan material presente, la masa total es
+
+$$
+m=\sum_{i=1}^{n}m_i
+$$
+
+La posición del centro de masa $G$ del conjunto se obtiene sumando los primeros momentos de masa de sus componentes:
+
+$$
+\boxed{
+\mathbf r_G=\frac{1}{m}\sum_{i=1}^{n}m_i\mathbf r_{G_i}
+}
+$$
+
+Para una distribución plana, esta relación toma la forma
+
+$$
+\boxed{
+\begin{aligned}
+x_G&=\frac{\sum_{i=1}^{n}m_i x_{G_i}}{\sum_{i=1}^{n}m_i}\\
+y_G&=\frac{\sum_{i=1}^{n}m_i y_{G_i}}{\sum_{i=1}^{n}m_i}
+\end{aligned}
+}
+$$
+
+Aquí $\mathbf r_{G_i}$ es el vector de posición del centro de masa del componente $i$ respecto al origen elegido.
+
+Si todos los componentes son placas con la **misma densidad superficial**, el factor $\sigma$ se cancela y podemos trabajar directamente con sus áreas:
+
+$$
+x_G=\frac{\sum_i A_i x_{G_i}}{\sum_i A_i},
+\qquad
+y_G=\frac{\sum_i A_i y_{G_i}}{\sum_i A_i}
+$$
+
+Esta última simplificación **no debe emplearse** si los componentes tienen distintas densidades superficiales, incluso cuando estén hechos de figuras geométricas semejantes.
+
+### 4.3. Momento de inercia respecto al centro de masa del conjunto
+
+Una vez localizado $G$, necesitamos determinar el momento de inercia del cuerpo completo respecto al eje perpendicular al plano que pasa por ese punto.
+
+Para cada componente conocemos $I_{G_i}$, pero el eje que pasa por $G_i$ generalmente **no coincide** con el eje que pasa por $G$. Aplicamos entonces el teorema de ejes paralelos a cada componente:
+
+$$
+I_{G}^{(i)}=I_{G_i}+m_i d_i^2
+$$
+
+donde $I_{G}^{(i)}$ es la contribución del componente $i$ respecto al eje que pasa por el centro de masa del conjunto, y
+
+$$
+d_i^2=(x_{G_i}-x_G)^2+(y_{G_i}-y_G)^2
+$$
+
+es el cuadrado de la distancia entre los centros de masa. En nuestra notación vectorial, el desplazamiento correspondiente es
+
+$$
+\mathbf r_{G_i/G}=\mathbf r_{G_i}-\mathbf r_G
+$$
+
+Al sumar las contribuciones de todos los componentes obtenemos
+
+$$
+\boxed{
+I_G=\sum_{i=1}^{n}\left[
+I_{G_i}+m_i\left((x_{G_i}-x_G)^2+(y_{G_i}-y_G)^2\right)
+\right]
+}
+$$
+
+La expresión muestra que intervienen **dos aportaciones por componente**: su momento de inercia respecto al propio centro de masa y el término asociado al desplazamiento entre $G_i$ y $G$.
+
+> **Error frecuente.** No basta con sumar los momentos de inercia $I_{G_i}$ de los componentes. Antes de sumarlos, todos deben estar referidos a un **mismo eje**.
+
+Si finalmente necesitamos el momento de inercia respecto a un eje paralelo que pasa por una articulación $O$, podemos trasladar el momento de inercia del cuerpo completo:
+
+$$
+\boxed{
+I_O=I_G+m\left[(x_G-x_O)^2+(y_G-y_O)^2\right]
+}
+$$
+
+Otra posibilidad es trasladar directamente cada contribución al eje de $O$ y sumarlas. Ambos procedimientos deben proporcionar el mismo resultado.
+
+### 4.4. Perforaciones y regiones de material removido
+
+Es frecuente que un eslabón contenga orificios, ranuras u otras regiones sin material. Cuando conocemos la geometría y las propiedades de la pieza original, podemos representar cada perforación como una **contribución que se resta**.
+
+Para unificar los cálculos, asignemos a cada región un signo $s_i$:
+
+$$
+s_i=
+\begin{cases}
++1,&\text{material presente},\\
+-1,&\text{material removido}.
+\end{cases}
+$$
+
+Conservaremos $m_i>0$ e $I_{G_i}>0$ como las propiedades que tendría la región $i$ si estuviera llena del material que se está añadiendo o retirando. El signo se aplica únicamente al sumar sus contribuciones. Así, la masa real del cuerpo es
+
+$$
+\boxed{m=\sum_{i=1}^{n}s_i m_i}
+$$
+
+y su centro de masa se calcula mediante
+
+$$
+\boxed{
+x_G=\frac{\sum_i s_i m_i x_{G_i}}{m},
+\qquad
+y_G=\frac{\sum_i s_i m_i y_{G_i}}{m}
+}
+$$
+
+Una vez calculado $G$, el momento de inercia queda
+
+$$
+\boxed{
+I_G=\sum_{i=1}^{n}s_i\left[
+I_{G_i}+m_i\left((x_{G_i}-x_G)^2+(y_{G_i}-y_G)^2\right)
+\right]
+}
+$$
+
+**Ejemplo de formulación.** Si una placa se representa mediante dos regiones con material, $1$ y $2$, y una perforación $h$, la masa total y la coordenada horizontal del centro de masa serían
+
+$$
+m=m_1+m_2-m_h,
+\qquad
+x_G=\frac{m_1x_{G_1}+m_2x_{G_2}-m_hx_{G_h}}{m}
+$$
+
+Su momento de inercia respecto al eje que pasa por $G$ se expresa como
+
+$$
+\begin{aligned}
+I_G
+={}&(I_{G_1}+m_1d_1^2)
++(I_{G_2}+m_2d_2^2)\\
+&-(I_{G_h}+m_hd_h^2)
+\end{aligned}
+$$
+
+El uso de un signo negativo es una **herramienta de cálculo**, no significa que exista materia con masa física negativa. Además, la perforación debe descontarse con la densidad correspondiente al material que habría ocupado esa región. Si una descomposición mezcla regiones con diferentes densidades o superposiciones, debe revisarse antes de aplicar estas expresiones.
+
+### 4.5. Procedimiento de cálculo mediante una tabla
+
+Una tabla resulta útil para organizar los datos, especialmente cuando el cuerpo contiene varias regiones. Recomiendo utilizar la siguiente estructura:
+
+| Región $i$ | Signo $s_i$ | Masa $m_i$ | $x_{G_i}$ | $y_{G_i}$ | $I_{G_i}$ |
+| --- | :---: | ---: | ---: | ---: | ---: |
+| Componente 1 | $+1$ | $m_1$ | $x_{G_1}$ | $y_{G_1}$ | $I_{G_1}$ |
+| Componente 2 | $+1$ | $m_2$ | $x_{G_2}$ | $y_{G_2}$ | $I_{G_2}$ |
+| Perforación $h$ | $-1$ | $m_h$ | $x_{G_h}$ | $y_{G_h}$ | $I_{G_h}$ |
+
+A partir de estos datos se calculan, en orden, las siguientes cantidades:
+
+1. **Masa total:** sumar $s_i m_i$ y verificar que $m>0$.
+2. **Centro de masa:** obtener $x_G$ y $y_G$ mediante los primeros momentos de masa con signo.
+3. **Distancias entre centros:** calcular $d_i^2$ para cada región respecto al $G$ ya determinado.
+4. **Momento de inercia total:** sumar las contribuciones $s_i(I_{G_i}+m_i d_i^2)$.
+5. **Cambio de eje, si se requiere:** aplicar el teorema de ejes paralelos desde $G$ hasta el eje de interés.
+
+Como verificación, el centro de masa calculado debe satisfacer
+
+$$
+\sum_{i=1}^{n}s_i m_i(x_{G_i}-x_G)=0,
+\qquad
+\sum_{i=1}^{n}s_i m_i(y_{G_i}-y_G)=0
+$$
+
+También debemos comprobar que las unidades sean consistentes: las masas se expresan en $\mathrm{kg}$, las coordenadas en $\mathrm m$ y los momentos de inercia de masa en $\mathrm{kg\,m^2}$.
+
+**Conexión con mecanismos.** El procedimiento permite obtener las propiedades $m$, $G$ e $I_G$ de un eslabón de geometría compuesta. En la siguiente sección lo aplicaremos a un **eslabón plano**, calculando después su momento de inercia respecto al eje de una articulación. Estos datos podrán utilizarse directamente en las ecuaciones de Newton–Euler.
