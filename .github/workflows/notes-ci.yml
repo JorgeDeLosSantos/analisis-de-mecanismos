@@ -1,0 +1,35 @@
+name: Validate course notes
+
+on:
+  pull_request:
+    paths:
+      - 'notes/**'
+      - '.github/workflows/notes-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-notes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: notes/requirements.txt
+
+      - name: Install Jupyter Book 2
+        run: python -m pip install -r notes/requirements.txt
+
+      - name: Build notes (strict)
+        working-directory: notes
+        env:
+          BASE_URL: /analisis-de-mecanismos/apuntes
+        run: jupyter book build --html --strict
