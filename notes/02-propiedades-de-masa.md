@@ -642,3 +642,194 @@ $$
 También debemos comprobar que las unidades sean consistentes: las masas se expresan en $\mathrm{kg}$, las coordenadas en $\mathrm m$ y los momentos de inercia de masa en $\mathrm{kg\,m^2}$.
 
 **Conexión con mecanismos.** El procedimiento permite obtener las propiedades $m$, $G$ e $I_G$ de un eslabón de geometría compuesta. En la siguiente sección lo aplicaremos a un **eslabón plano**, calculando después su momento de inercia respecto al eje de una articulación. Estos datos podrán utilizarse directamente en las ecuaciones de Newton–Euler.
+
+
+## 5. Aplicación a mecanismos: propiedades de masa de un eslabón compuesto
+
+En las secciones anteriores estudiamos cómo localizar el centro de masa y calcular el momento de inercia de un cuerpo. A continuación aplicaremos ambos procedimientos a un **eslabón plano de geometría compuesta**. El objetivo es obtener las propiedades que posteriormente necesitaremos para plantear sus ecuaciones de movimiento.
+
+### 5.1. Planteamiento y descomposición geométrica
+
+Consideremos un eslabón fabricado a partir de una **placa delgada, homogénea y con forma de L**, de densidad superficial constante
+
+$$
+\sigma=50\ \mathrm{kg/m^2}
+$$
+
+Tomemos el punto $O=(0,0)$ en la esquina inferior izquierda de la placa y los ejes $x$ y $y$ a lo largo de sus bordes horizontal y vertical, respectivamente. Para representar la L utilizaremos dos regiones rectangulares **sin superposición de áreas**:
+
+- **Región 1 (horizontal):** $0\leq x\leq 0.60\ \mathrm m$ y $0\leq y\leq 0.12\ \mathrm m$.
+- **Región 2 (vertical):** $0\leq x\leq 0.12\ \mathrm m$ y $0.12\ \mathrm m\leq y\leq 0.48\ \mathrm m$.
+
+De esta manera, las dimensiones exteriores de la pieza son $0.60\times 0.48\ \mathrm m$. Ambas regiones comparten una frontera, pero **ninguna porción de área se cuenta dos veces**.
+
+Supondremos que el eslabón puede articularse idealmente alrededor de un eje perpendicular al plano que pasa por $O$. La posible remoción de material para alojar un perno no se considera en este primer modelo.
+
+Calcularemos la masa total $m$, la posición del centro de masa $G$, el momento de inercia $I_G$ respecto al eje perpendicular al plano que pasa por $G$ y el momento de inercia $I_O$ respecto al eje paralelo que pasa por $O$.
+
+### 5.2. Masa total y posición del centro de masa
+
+Primero determinamos las áreas, las masas y las coordenadas de los centros de cada rectángulo. Para una placa homogénea, $m_i=\sigma A_i$ y el centro de masa de cada región coincide con su centro geométrico.
+
+| Región | Dimensiones ($\mathrm m$) | Área ($\mathrm{m^2}$) | Masa ($\mathrm{kg}$) | $x_{G_i}$ ($\mathrm m$) | $y_{G_i}$ ($\mathrm m$) |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 1. Horizontal | $0.60\times0.12$ | $0.0720$ | $3.60$ | $0.30$ | $0.06$ |
+| 2. Vertical | $0.12\times0.36$ | $0.0432$ | $2.16$ | $0.06$ | $0.30$ |
+
+La masa total resulta
+
+$$
+m=m_1+m_2=3.60+2.16=\boxed{5.76\ \mathrm{kg}}
+$$
+
+Para la coordenada horizontal del centro de masa:
+
+$$
+\begin{aligned}
+x_G
+&=\frac{m_1x_{G_1}+m_2x_{G_2}}{m}\\
+&=\frac{3.60(0.30)+2.16(0.06)}{5.76}\\
+&=\boxed{0.21\ \mathrm m}
+\end{aligned}
+$$
+
+De manera análoga, para la coordenada vertical:
+
+$$
+\begin{aligned}
+y_G
+&=\frac{m_1y_{G_1}+m_2y_{G_2}}{m}\\
+&=\frac{3.60(0.06)+2.16(0.30)}{5.76}\\
+&=\boxed{0.15\ \mathrm m}
+\end{aligned}
+$$
+
+Por tanto, respecto al origen $O$,
+
+$$
+\boxed{G=(0.21,\ 0.15)\ \mathrm m}
+$$
+
+**Observación física.** En esta configuración, el centro de masa queda en la región interior vacía de la L, porque $x_G>0.12\ \mathrm m$ y $y_G>0.12\ \mathrm m$. Esto no representa un error: el centro de masa de un cuerpo no tiene que coincidir con un punto ocupado por material.
+
+### 5.3. Momento de inercia respecto al centro de masa del conjunto
+
+Para cada rectángulo utilizamos el momento de inercia respecto al eje perpendicular a su plano que pasa por su propio centro:
+
+$$
+I_{G_i}=\frac{1}{12}m_i(b_i^2+h_i^2)
+$$
+
+Así, para la región horizontal,
+
+$$
+I_{G_1}
+=\frac{3.60}{12}\left(0.60^2+0.12^2\right)
+=0.11232\ \mathrm{kg\,m^2}
+$$
+
+y para la región vertical,
+
+$$
+I_{G_2}
+=\frac{2.16}{12}\left(0.12^2+0.36^2\right)
+=0.02592\ \mathrm{kg\,m^2}
+$$
+
+Sin embargo, estos valores están referidos a **ejes diferentes**. Debemos trasladarlos al eje perpendicular al plano que pasa por el centro de masa $G$ del eslabón completo.
+
+Los cuadrados de las distancias entre cada centro $G_i$ y el centro $G$ son
+
+$$
+\begin{aligned}
+d_1^2
+&=(0.30-0.21)^2+(0.06-0.15)^2
+=0.0162\ \mathrm{m^2}\\
+d_2^2
+&=(0.06-0.21)^2+(0.30-0.15)^2
+=0.0450\ \mathrm{m^2}
+\end{aligned}
+$$
+
+Aplicando el teorema de ejes paralelos a ambos componentes y sumando sus contribuciones:
+
+$$
+\begin{aligned}
+I_G
+&=(I_{G_1}+m_1d_1^2)+(I_{G_2}+m_2d_2^2)\\
+&=[0.11232+3.60(0.0162)]\\
+&\quad+[0.02592+2.16(0.0450)]\\
+&=\boxed{0.29376\ \mathrm{kg\,m^2}}
+\end{aligned}
+$$
+
+### 5.4. Momento de inercia respecto a la articulación
+
+Supongamos que necesitamos conocer el momento de inercia respecto al eje que pasa por $O$. La distancia entre ese eje y el eje paralelo que pasa por $G$ satisface
+
+$$
+d_{G/O}^2=x_G^2+y_G^2
+=0.21^2+0.15^2
+=0.0666\ \mathrm{m^2}
+$$
+
+Por el teorema de ejes paralelos,
+
+$$
+\begin{aligned}
+I_O
+&=I_G+md_{G/O}^2\\
+&=0.29376+5.76(0.0666)\\
+&=\boxed{0.677376\ \mathrm{kg\,m^2}}
+\end{aligned}
+$$
+
+**Comprobación independiente.** Podemos calcular el mismo resultado trasladando directamente cada componente al eje que pasa por $O$, sin utilizar previamente el centro de masa del conjunto:
+
+$$
+\begin{aligned}
+I_O
+={}&\left[I_{G_1}+m_1(x_{G_1}^2+y_{G_1}^2)\right]\\
+&+\left[I_{G_2}+m_2(x_{G_2}^2+y_{G_2}^2)\right]\\
+={}&\left[0.11232+3.60(0.30^2+0.06^2)\right]\\
+&+\left[0.02592+2.16(0.06^2+0.30^2)\right]\\
+={}&0.44928+0.228096\\
+={}&\boxed{0.677376\ \mathrm{kg\,m^2}}
+\end{aligned}
+$$
+
+Ambos procedimientos coinciden. Esta equivalencia constituye una buena verificación del cálculo y recuerda que **todas las contribuciones al momento de inercia deben referirse al mismo eje antes de sumarse**.
+
+### 5.5. Interpretación y conexión con el análisis dinámico
+
+Las propiedades de masa obtenidas para el eslabón son
+
+$$
+\boxed{
+\begin{aligned}
+m&=5.76\ \mathrm{kg}\\
+\mathbf r_G&=(0.21\,\mathbf i+0.15\,\mathbf j)\ \mathrm m\\
+I_G&=0.29376\ \mathrm{kg\,m^2}\\
+I_O&=0.677376\ \mathrm{kg\,m^2}
+\end{aligned}
+}
+$$
+
+Estas cantidades describen aspectos diferentes del mismo cuerpo:
+
+- La **masa** determina su inercia traslacional.
+- La posición de $G$ permite localizar el centro de masa y, en un campo gravitatorio uniforme, el punto de aplicación equivalente del peso.
+- $I_G$ caracteriza su inercia rotacional respecto al eje perpendicular que pasa por el centro de masa.
+- $I_O$ es útil cuando el eslabón gira alrededor de una **articulación fija en $O$**.
+
+Por ejemplo, si el eslabón tiene movimiento plano alrededor de ese pivote fijo, sus ecuaciones dinámicas permiten relacionar los momentos externos y la aceleración angular mediante
+
+$$
+\sum M_O=I_O\alpha
+$$
+
+Esta ecuación, junto con el análisis del peso y de las fuerzas aplicadas, se desarrolla en los [apuntes de cinética del cuerpo rígido](02-cinetica-cuerpo-rigido.md).
+
+**Para ampliar el ejercicio.** Si el eslabón tuviera una perforación circular contenida por completo en una de sus regiones rectangulares, podríamos calcular las nuevas propiedades restando la masa, los primeros momentos y el momento de inercia de la región removida, tal como estudiamos en el apartado 4.4.
+
+En conjunto, el procedimiento utilizado muestra cómo pasar de una **descripción geométrica del eslabón** a los parámetros de masa necesarios para el análisis dinámico de mecanismos.
