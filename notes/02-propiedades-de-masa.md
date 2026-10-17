@@ -188,6 +188,8 @@ $$
 
 donde $dm$ representa un elemento diferencial de masa y $r$ es la **distancia perpendicular** desde ese elemento hasta el eje respecto al cual se calcula el momento de inercia. Aquí $r$ es una distancia escalar, que no debe confundirse con un vector de posición como $\mathbf r_i$.
 
+![Distancia perpendicular desde un elemento diferencial de masa hasta el eje z. Vista del plano xy.](figures/mass-inertia-axis.svg)
+
 En el Sistema Internacional, el momento de inercia de masa se expresa en $\mathrm{kg\,m^2}$.
 
 **Momentos de inercia respecto a ejes cartesianos.** Si los ejes $x$, $y$ y $z$ de un sistema cartesiano son los ejes respecto a los que deseamos calcular el momento de inercia, entonces
@@ -660,6 +662,8 @@ Tomemos el punto $O=(0,0)$ en la esquina inferior izquierda de la placa y los ej
 
 - **Región 1 (horizontal):** $0\leq x\leq 0.60\ \mathrm m$ y $0\leq y\leq 0.12\ \mathrm m$.
 - **Región 2 (vertical):** $0\leq x\leq 0.12\ \mathrm m$ y $0.12\ \mathrm m\leq y\leq 0.48\ \mathrm m$.
+
+![Geometría y descomposición del eslabón en L, con dimensiones, origen O y centros de masa G1, G2 y G.](figures/composite-l-link.svg)
 
 De esta manera, el rectángulo envolvente de la pieza mide $0.60\times 0.48\ \mathrm m$. Ambas regiones comparten una frontera, pero **ninguna porción de área se cuenta dos veces**.
 
