@@ -1009,7 +1009,7 @@ Aquí $a_{Gx}$ y $a_{Gy}$ son las componentes de la aceleración del centro de m
 
 Adoptaremos como convención que el eje $z$ positivo sale del plano y que los momentos y aceleraciones angulares **antihorarios son positivos**.
 
-Las tres ecuaciones permiten relacionar las acciones externas sobre un eslabón con su aceleración traslacional y angular. Su aplicación práctica requiere identificar correctamente las fuerzas y pares que actúan sobre el cuerpo mediante un diagrama de cuerpo libre.
+Las ecuaciones de fuerzas describen la aceleración del centro de masa, mientras que la ecuación de momentos describe su aceleración angular. Para aplicarlas es necesario identificar las acciones externas mediante un diagrama de cuerpo libre.
 
 ### 3.4. Ecuación de momentos respecto a otro punto
 
@@ -1061,18 +1061,7 @@ $$
 \boxed{\sum M_O=I_O\alpha}
 $$
 
-Esta simplificación es muy útil al estudiar eslabones que giran alrededor de pivotes fijos. **No debe aplicarse automáticamente a cualquier punto**, como el centro instantáneo de rotación de un cuerpo en movimiento plano general.
-
-### 3.5. Interpretación física y conexión con los mecanismos
-
-Las ecuaciones anteriores permiten distinguir dos aspectos complementarios de la respuesta dinámica de un eslabón:
-
-- La resultante de **fuerzas externas** determina la aceleración de su centro de masa.
-- El momento resultante respecto al **centro de masa** determina su aceleración angular durante el movimiento plano.
-
-En un mecanismo, las aceleraciones pueden obtenerse previamente mediante el análisis cinemático. Si además conocemos la masa, el centro de masa y el momento de inercia de cada eslabón, las ecuaciones de Newton–Euler nos permitirán calcular fuerzas de reacción y pares de accionamiento.
-
-En la siguiente sección examinaremos cómo se aplican estas ecuaciones a la traslación, la rotación alrededor de un eje fijo y el movimiento plano general.
+El **teorema de ejes paralelos** relaciona propiedades de masa y puede emplearse independientemente del movimiento del cuerpo. En cambio, la forma dinámica $\sum M_O=I_O\alpha$ exige que $O$ sea un pivote fijo respecto a un sistema inercial. **No debe aplicarse automáticamente a cualquier punto**, como el centro instantáneo de rotación de un cuerpo en movimiento plano general.
 
 ## 4. Cinética del movimiento plano
 
@@ -1246,7 +1235,7 @@ Para resolver un problema de cinética de un eslabón con movimiento plano, prop
 
 Cuando se analiza un mecanismo con varios eslabones, el procedimiento se repite para cada cuerpo, teniendo en cuenta que las fuerzas de interacción entre dos eslabones aparecen con sentidos opuestos en sus respectivos diagramas de cuerpo libre.
 
-La siguiente sección estará dedicada a aplicar este procedimiento a situaciones representativas del análisis de mecanismos planos, con énfasis en el cálculo de reacciones y pares de accionamiento.
+
 
 ## 5. Aplicaciones a mecanismos planos
 
@@ -1567,4 +1556,4 @@ El ejemplo anterior muestra que la cinética de un mecanismo plano puede abordar
 
 En nuestro mecanismo, las condiciones de la guía y el orden elegido permitieron resolver las incógnitas de forma progresiva: primero la corredera, después la biela y finalmente la manivela. En otros mecanismos, como el de cuatro barras, puede resultar más conveniente plantear y resolver simultáneamente el sistema de ecuaciones de todos los eslabones móviles.
 
-En ambos casos, la idea fundamental es la misma: **la cinemática proporciona las aceleraciones; la cinética relaciona esas aceleraciones con las fuerzas y los pares que producen el movimiento**.
+En ambos casos, es necesario representar correctamente las fuerzas de interacción entre los eslabones y mantener una convención de signos coherente. Así pueden determinarse las reacciones en las articulaciones y los pares de accionamiento del mecanismo.
