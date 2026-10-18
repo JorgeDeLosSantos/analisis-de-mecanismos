@@ -1,5 +1,9 @@
 # Cinética del cuerpo rígido
 
+En el análisis cinemático de mecanismos estudiamos el movimiento de los eslabones a partir de su geometría y de las restricciones impuestas por las articulaciones. Sin embargo, conocer sus posiciones, velocidades y aceleraciones no basta para determinar las fuerzas de reacción ni los pares necesarios para producir ese movimiento.
+
+Para abordar estos problemas incorporaremos las **propiedades de masa del cuerpo rígido** y las relaciones entre fuerzas, momentos y aceleraciones establecidas mediante las ecuaciones de **Newton–Euler**. Nos concentraremos en el movimiento plano y aplicaremos los resultados al análisis de eslabones y mecanismos articulados.
+
 ## 1. Fundamentos de la cinética del cuerpo rígido
 
 ### 1.1. De la cinemática a la cinética
@@ -8,10 +12,6 @@ La **dinámica** es la rama de la mecánica que estudia el movimiento de los cue
 
 - **Cinemática:** describe el movimiento de los cuerpos mediante variables como posición, velocidad y aceleración, sin considerar las fuerzas que lo producen.
 - **Cinética:** establece las relaciones entre el movimiento de los cuerpos y las fuerzas y momentos que actúan sobre ellos.
-
-En el análisis cinemático de mecanismos estudiamos cómo se mueven sus eslabones a partir de la geometría del sistema y de las restricciones impuestas por las articulaciones. Sin embargo, conocer el movimiento de un mecanismo no nos indica directamente qué fuerzas se desarrollan en sus articulaciones o qué par debe proporcionar un motor para producir dicho movimiento.
-
-Para responder estas preguntas es necesario incorporar la cinética.
 
 ### 1.2. El modelo de cuerpo rígido
 
@@ -41,8 +41,6 @@ donde $\mathbf r_{P/O}$ es el vector que va desde $O$ hasta un punto $P$ de la l
 
 Además de los momentos producidos por fuerzas, sobre un cuerpo pueden actuar **pares aplicados**, como el par que transmite un motor. En el movimiento plano, los momentos se representan mediante magnitudes escalares con signo, de acuerdo con una convención de sentidos.
 
-Más adelante utilizaremos estas acciones para construir diagramas de cuerpo libre y formular las ecuaciones de movimiento.
-
 ### 1.4. Fundamento físico: leyes de Newton
 
 La cinética clásica se fundamenta en las leyes del movimiento de Newton.
@@ -62,7 +60,7 @@ Por tanto, para estudiar su cinética necesitaremos establecer dos relaciones fu
 1. Una relación entre las fuerzas externas y el movimiento del centro de masa.
 2. Una relación entre los momentos externos y el movimiento de rotación del cuerpo.
 
-Estas relaciones se obtienen aplicando los principios de Newton al sistema de partículas que constituye el cuerpo rígido. Después de estudiar las propiedades de masa, deduciremos estas relaciones en la [sección de ecuaciones de movimiento](#ecuaciones-de-movimiento).
+Estas relaciones se obtienen aplicando los principios de Newton al sistema de partículas que constituye el cuerpo rígido.
 
 ### 1.5. Dinámica directa e inversa
 
@@ -74,16 +72,14 @@ Al estudiar la dinámica de un sistema mecánico pueden plantearse dos tipos de 
 
 En el análisis de mecanismos, la dinámica inversa tiene especial importancia porque frecuentemente conocemos las posiciones, velocidades y aceleraciones de los eslabones mediante el análisis cinemático, y deseamos determinar las fuerzas de reacción y los pares de accionamiento correspondientes.
 
-Así, el análisis cinético complementa al análisis cinemático y permite avanzar hacia el estudio dinámico de mecanismos completos.
-
 (propiedades-de-masa)=
 ## 2. Propiedades de masa del cuerpo rígido
 
-Las propiedades de masa permiten describir cómo está distribuida la materia de un cuerpo y desempeñan un papel fundamental en su análisis dinámico. En esta sección estudiaremos el **centro de masa** y el **momento de inercia de masa**, con énfasis en los cuerpos y eslabones que intervienen en mecanismos planos.
+Las propiedades de masa describen cómo está distribuida la materia de un cuerpo. Estudiaremos el **centro de masa**, el **momento de inercia de masa** y los procedimientos para calcularlos en cuerpos de geometría sencilla y compuesta.
 
 ### 2.1. Centro de masa
 
-El centro de masa permite representar la distribución de masa de un cuerpo mediante un punto característico. Su posición resulta de especial interés porque la resultante de las fuerzas externas determina la aceleración de ese punto, como veremos al estudiar las ecuaciones de movimiento de Newton–Euler.
+El centro de masa es un punto característico de la distribución de masa de un cuerpo. Su posición depende de la geometría y de cómo se distribuye la materia.
 
 #### 2.1.1. Concepto de centro de masa
 
@@ -234,7 +230,6 @@ si uno de sus extremos se toma como origen y el eje $x$ sigue la dirección de l
 
 La simetría geométrica por sí sola no es suficiente si la densidad varía de manera asimétrica: un cuerpo de forma simétrica puede tener su centro de masa desplazado hacia la región más pesada.
 
-**Relación con los mecanismos.** Al analizar un eslabón, conocer $G$ permite ubicar su peso en un campo gravitatorio uniforme y determinar la aceleración de su centro de masa a partir de las relaciones cinemáticas. En las secciones siguientes estudiaremos otra propiedad complementaria —el momento de inercia de masa— y después aprenderemos a calcular ambas propiedades en cuerpos compuestos.
 
 
 ### 2.2. Momento de inercia de masa
@@ -302,15 +297,9 @@ $$
 
 Aquí $x_{i/G}$ y $y_{i/G}$ son las componentes del vector relativo $\mathbf r_{i/G}$ definido en la sección anterior. La abreviatura $I_G$ siempre se referirá, en nuestro estudio del movimiento plano, al eje perpendicular al plano que pasa por $G$.
 
-La importancia dinámica de esta propiedad aparecerá en las [ecuaciones de Newton–Euler para movimiento plano](#ecuaciones-de-movimiento), donde se utiliza la relación
 
-$$
-\sum M_G=I_G\alpha
-$$
 
-No es necesario extender esta relación escalar a la rotación tridimensional general: en ese caso, la descripción completa de la inercia rotacional requiere considerar también cómo se distribuye la masa respecto a distintas direcciones.
-
-#### 2.2.3. Cálculo por integración: barra delgada homogénea
+### 2.2.3. Cálculo por integración: barra delgada homogénea
 
 Calculemos el momento de inercia de masa de una **barra delgada y homogénea**, de masa $m$ y longitud $L$, respecto al eje perpendicular al plano $xy$ que pasa por su centro de masa $G$.
 
@@ -357,7 +346,7 @@ I_G=\frac{1}{12}(3)(0.80)^2
 =\boxed{0.16\ \mathrm{kg\,m^2}}
 $$
 
-Este valor corresponde al eje perpendicular que pasa por $G$. Si se requiere el momento de inercia respecto al eje de una articulación situada en un extremo, el resultado será distinto. En el apartado 2.3 estudiaremos cómo relacionar ambos mediante el **teorema de ejes paralelos**.
+Este valor corresponde al eje perpendicular que pasa por $G$. Para un eje paralelo situado en otro punto, el resultado será distinto.
 
 #### 2.2.4. Radio de giro
 
@@ -387,7 +376,6 @@ Para $L=0.80\ \mathrm m$, resulta $k_G\approx 0.231\ \mathrm m$.
 
 > **Distinción de terminología.** El *momento de inercia de masa*, utilizado en dinámica, se expresa en $\mathrm{kg\,m^2}$. El *segundo momento de área*, frecuente en resistencia de materiales, se expresa en $\mathrm{m^4}$. Aunque sus expresiones matemáticas se parecen, corresponden a cantidades físicas diferentes.
 
-**Relación con los mecanismos.** La masa $m$, la posición del centro de masa $G$ y el momento de inercia $I_G$ son datos esenciales para plantear las ecuaciones de movimiento de un eslabón plano. En la siguiente sección utilizaremos el teorema de ejes paralelos para obtener momentos de inercia respecto a otros ejes, como los que pasan por las articulaciones.
 
 
 ### 2.3. Teorema de ejes paralelos
@@ -522,20 +510,11 @@ $$
 
 El momento de inercia respecto al eje de la articulación es cuatro veces el correspondiente al eje paralelo que pasa por $G$.
 
-**Conexión con Newton–Euler.** Si la barra gira alrededor de un **pivote fijo $O$** en un plano, el momento de inercia $I_O$ interviene en la ecuación
-
-$$
-\sum M_O=I_O\alpha
-$$
-
-Esta relación aparece en el [ejemplo de la barra con pivote fijo](#ejemplo-barra-pivote). Conviene distinguir dos afirmaciones: el teorema de ejes paralelos es una relación **geométrica de propiedades de masa**, válida independientemente del movimiento; en cambio, para utilizar la ecuación dinámica $\sum M_O=I_O\alpha$ en esta forma se requiere que $O$ sea un punto fijo de rotación en un sistema de referencia inercial.
-
-En la siguiente sección utilizaremos el teorema para calcular el momento de inercia de **cuerpos compuestos**, a partir de los momentos de inercia de sus componentes.
 
 
 ### 2.4. Centro de masa y momento de inercia de cuerpos compuestos
 
-En el diseño de mecanismos es habitual encontrar eslabones formados por varias regiones geométricas: placas con salientes, barras unidas entre sí o piezas con perforaciones. Si conocemos las propiedades de masa de figuras sencillas, podemos combinarlas para obtener las del cuerpo completo, **sin integrar nuevamente sobre toda su geometría**.
+Muchos cuerpos están formados por varias regiones geométricas: placas con salientes, barras unidas entre sí o piezas con perforaciones. Si conocemos las propiedades de masa de figuras sencillas, podemos combinarlas para obtener las del cuerpo completo, **sin integrar nuevamente sobre toda su geometría**.
 
 El procedimiento consiste en calcular primero la masa y el centro de masa del conjunto y, después, su momento de inercia respecto al eje deseado.
 
@@ -722,12 +701,11 @@ $$
 
 También debemos comprobar que las unidades sean consistentes: las masas se expresan en $\mathrm{kg}$, las coordenadas en $\mathrm m$ y los momentos de inercia de masa en $\mathrm{kg\,m^2}$.
 
-**Conexión con mecanismos.** El procedimiento permite obtener las propiedades $m$, $G$ e $I_G$ de un eslabón de geometría compuesta. En la siguiente sección lo aplicaremos a un **eslabón plano**, calculando después su momento de inercia respecto al eje de una articulación. Estos datos podrán utilizarse directamente en las ecuaciones de Newton–Euler.
 
 
 ### 2.5. Aplicación a mecanismos: propiedades de masa de un eslabón compuesto
 
-En las secciones anteriores estudiamos cómo localizar el centro de masa y calcular el momento de inercia de un cuerpo. A continuación aplicaremos ambos procedimientos a un **eslabón plano de geometría compuesta**. El objetivo es obtener las propiedades que posteriormente necesitaremos para plantear sus ecuaciones de movimiento.
+Consideremos un **eslabón plano de geometría compuesta** y determinemos su masa, su centro de masa y sus momentos de inercia respecto a dos ejes paralelos.
 
 #### 2.5.1. Planteamiento y descomposición geométrica
 
@@ -883,7 +861,7 @@ $$
 
 Ambos procedimientos coinciden. Esta equivalencia constituye una buena verificación del cálculo y recuerda que **todas las contribuciones al momento de inercia deben referirse al mismo eje antes de sumarse**.
 
-#### 2.5.5. Interpretación y conexión con el análisis dinámico
+#### 2.5.5. Resultados y observaciones
 
 Las propiedades de masa obtenidas para el eslabón son
 
@@ -898,24 +876,9 @@ I_O&=0.677376\ \mathrm{kg\,m^2}
 }
 $$
 
-Estas cantidades describen aspectos diferentes del mismo cuerpo:
-
-- La **masa** determina su inercia traslacional.
-- La posición de $G$ permite localizar el centro de masa y, en un campo gravitatorio uniforme, el punto de aplicación equivalente del peso.
-- $I_G$ caracteriza su inercia rotacional respecto al eje perpendicular que pasa por el centro de masa.
-- $I_O$ es útil cuando el eslabón gira alrededor de una **articulación fija en $O$**.
-
-Por ejemplo, si el eslabón tiene movimiento plano alrededor de ese pivote fijo, sus ecuaciones dinámicas permiten relacionar los momentos externos y la aceleración angular mediante
-
-$$
-\sum M_O=I_O\alpha
-$$
-
-Esta ecuación, junto con el análisis del peso y de las fuerzas aplicadas, se desarrolla en los [ecuaciones de movimiento del cuerpo rígido](#ecuaciones-de-movimiento).
+El resultado $I_O>I_G$ es consistente con el teorema de ejes paralelos. Además, como vimos al calcular su posición, el centro de masa $G$ se encuentra fuera del material de esta placa.
 
 **Para ampliar el ejercicio.** Si el eslabón tuviera una perforación circular contenida por completo en una de sus regiones rectangulares, podríamos calcular las nuevas propiedades restando la masa, los primeros momentos y el momento de inercia de la región removida, tal como estudiamos en el apartado 2.4.4.
-
-En conjunto, el procedimiento utilizado muestra cómo pasar de una **descripción geométrica del eslabón** a los parámetros de masa necesarios para el análisis dinámico de mecanismos.
 
 (ecuaciones-de-movimiento)=
 ## 3. Ecuaciones de movimiento del cuerpo rígido
