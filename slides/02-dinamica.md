@@ -351,6 +351,7 @@ Diagrama de cuerpo libre del eslabón 2:
 
 ::right::
 
+<v-click>
 Ecuaciones de Newton-Euler:
 
 $$ \sum F_x = m_2 a_{G_{2x}} $$
@@ -368,10 +369,14 @@ $$
 O_x(0.1) - A_x(0.1) + \tau = I_{G_2} \alpha_2  \tag{3}
 $$
 
+</v-click>
+
+<v-click>
+
 Momento de inercia del eslabón 2:
 
 $$ I_{G_2} = \frac{1}{12}(0.672)(0.2^2) = 2.24\times 10^{-3} \text{ kg}\cdot\text{m}^2 $$
-
+</v-click>
 ---
 layout: two-cols-example-wide-right
 ---
@@ -382,6 +387,8 @@ Diagrama de cuerpo libre del eslabón 3:
 
 ::right::
 
+<v-click>
+
 Ecuaciones de Newton-Euler:
 
 $$ \sum F_x = m_3 a_{G_{3x}} $$
@@ -390,20 +397,30 @@ $$ \sum F_y = m_3 a_{G_{3y}} $$
 $$ -A_y + B_y - m_3 g = m_3 a_{G_{3y}}  \tag{5} $$
 $$ \sum M_{G_3} = I_{G_3} \alpha_3 $$ 
 $$ \begin{aligned} -A_x(0.15) + A_y(0.2) - \\ B_x(0.15) + B_y(0.2) = I_{G_3} \alpha_3 \tag{6} \end{aligned} $$
+</v-click>
+
+<v-click>
 
 Momento de inercia del eslabón 3:
 
 $$ I_{G_3} = \frac{1}{12}(1.608)(0.5^2) = 33.5\times 10^{-3} \text{ kg}\cdot\text{m}^2 $$
+</v-click>
 
 ---
 layout: two-cols-example-wide-right
 ---
 
+<v-click>
+
 Diagrama de cuerpo libre del eslabón 4:
 
 <img src="/images/u2/four_bar_dcl_link_04.png" width="180px">
 
+</v-click>
+
 ::right::
+
+<v-click>
 
 Ecuaciones de Newton-Euler:
 
@@ -413,14 +430,20 @@ $$ \sum F_y = m_4 a_{G_{4y}} $$
 $$ C_y - B_y - m_4 g = m_4 a_{G_{4y}} \tag{8} $$
 $$ \sum M_{G_4} = I_{G_4} \alpha_4 $$ 
 $$ C_x(0.25) + B_x(0.25) = I_{G_4} \alpha_4  \tag{9} $$
+</v-click>
+
+<v-click>
 
 Momento de inercia del eslabón 4:
 
 $$ I_{G_4} = \frac{1}{12}(1.608)(0.5^2) = 33.5\times 10^{-3} \text{ kg}\cdot\text{m}^2 $$
+</v-click>
 
 ---
 layout: two-cols-example
 ---
+
+<v-click>
 
 Sustituyendo valores y reescribiendo las ecuaciones:
 
@@ -436,8 +459,11 @@ $$ C_x - B_x = -8.04 \tag{7} $$
 $$ C_y - B_y = 9.342 \tag{8} $$
 $$ C_x + B_x = 2.68 \tag{9} $$
 </div>
+</v-click>
 
 ::right::
+
+<v-click>
 
 <div class="text-sm">
 
@@ -474,6 +500,7 @@ $$
 $$
 
 </div>
+</v-click>
 ---
 
 # Fuentes de información
