@@ -259,6 +259,209 @@ Los centros de masa de las barras $OA$ y $AB$ se encuentran en sus respectivos p
 </div>
 
 ---
+layout: two-cols-example
+---
+
+Diagrama de cuerpo libre del eslabón 1:
+
+<img src="/images/u2/slider_crank_dcl_link_01.png" width="160px">
+
+::right::
+
+Ecuaciones de Newton-Euler:
+
+$$ \sum F_x = m_1 a_{G_{1x}} $$
+$$ A_x + O_x =  m_1 a_{G_{1x}} $$
+
+---
+layout: two-cols-example
+---
+
+Diagrama de cuerpo libre del eslabón 2:
+
+<img src="/images/u2/slider_crank_dcl_link_02.png" width="390px">
+
+::right::
+
+Ecuaciones de Newton-Euler:
+
+
+
+---
+layout: two-cols-example
+---
+
+Diagrama de cuerpo libre del eslabón 3:
+
+<img src="/images/u2/slider_crank_dcl_link_03.png" width="180px">
+
+::right::
+
+Ecuaciones de Newton-Euler:
+
+
+
+
+
+
+---
+layout: two-cols-example
+---
+
+# Ejemplo
+
+En el instante mostrado, la barra $OA$ gira con una velocidad angular $\omega_2=10\,\text{rad/s}$ y una aceleración angular $\alpha_2=5\,\text{rad/s}^2$, ambas en sentido antihorario. Determine las componentes de las reacciones en las uniones de pasador, así como el torque $\tau$ que debe aplicarse a la barra $OA$ para producir dicho movimiento.
+
+Los eslabones son barras delgadas y homogéneas, cuyos centros de masa se encuentran en sus respectivos puntos medios. Considere que las articulaciones son ideales, sin fricción, y que la aceleración de la gravedad está dirigida verticalmente hacia abajo. La tabla proporciona las masas, aceleraciones angulares y aceleraciones de los centros de masa de los eslabones en el instante mostrado.
+
+::right::
+
+<img src="/images/u2/four_bar.svg" width="320px">
+
+<div class="text-sm">
+
+| Eslabón | Masa (kg) | $\alpha$ (rad/s$^2$) | $\vec{a}_{G}$ (m/s$^2$)|
+|:--------:|:------:|:--------:|:-------:|
+| $2$ | $0.672$ | $5$  | $-0.5\ihat - 10\jhat$ |
+| $3$ | $1.608$ | $30$ | $-5.5\ihat-14\jhat$ |
+| $4$ | $1.608$ | $20$ | $-5\ihat - 4\jhat$ |
+
+</div>
+
+---
+layout: two-cols-example
+---
+
+Diagrama de cuerpo libre del eslabón 2:
+
+<img src="/images/u2/four_bar_dcl_link_02.png" width="200px">
+
+::right::
+
+Ecuaciones de Newton-Euler:
+
+$$ \sum F_x = m_2 a_{G_{2x}} $$
+$$ O_x + A_x = m_2 a_{G_{2x}} \tag{1} $$
+$$
+\sum F_y = m_2 a_{G_{2y}} 
+$$
+$$
+O_y + A_y - m_2 g = m_2 a_{G_{2y}} \tag{2}
+$$
+$$
+\sum M_{G_2} = I_{G_2} \alpha_2  
+$$
+$$
+O_x(0.1) - A_x(0.1) + \tau = I_{G_2} \alpha_2  \tag{3}
+$$
+
+Momento de inercia del eslabón 2:
+
+$$ I_{G_2} = \frac{1}{12}(0.672)(0.2^2) = 2.24\times 10^{-3} \text{ kg}\cdot\text{m}^2 $$
+
+---
+layout: two-cols-example
+---
+
+Diagrama de cuerpo libre del eslabón 3:
+
+<img src="/images/u2/four_bar_dcl_link_03.png" width="350px">
+
+::right::
+
+Ecuaciones de Newton-Euler:
+
+$$ \sum F_x = m_3 a_{G_{3x}} $$
+$$ -A_x + B_x = m_3 a_{G_{3x}} \tag{4} $$
+$$ \sum F_y = m_3 a_{G_{3y}} $$
+$$ -A_y + B_y - m_3 g = m_3 a_{G_{3y}}  \tag{5} $$
+$$ \sum M_{G_3} = I_{G_3} \alpha_3 $$ 
+$$ \begin{aligned} -A_x(0.15) + A_y(0.2) - \\ B_x(0.15) + B_y(0.2) = I_{G_3} \alpha_3 \tag{6} \end{aligned} $$
+
+Momento de inercia del eslabón 3:
+
+$$ I_{G_3} = \frac{1}{12}(1.608)(0.5^2) = 33.5\times 10^{-3} \text{ kg}\cdot\text{m}^2 $$
+
+---
+layout: two-cols-example
+---
+
+Diagrama de cuerpo libre del eslabón 4:
+
+<img src="/images/u2/four_bar_dcl_link_04.png" width="180px">
+
+::right::
+
+Ecuaciones de Newton-Euler:
+
+$$ \sum F_x = m_4 a_{G_{4x}} $$
+$$ C_x - B_x = m_4 a_{G_{4x}}   \tag{7} $$
+$$ \sum F_y = m_4 a_{G_{4y}} $$
+$$ C_y - B_y - m_4 g = m_4 a_{G_{4y}} \tag{8} $$
+$$ \sum M_{G_4} = I_{G_4} \alpha_4 $$ 
+$$ C_x(0.25) + B_x(0.25) = I_{G_4} \alpha_4  \tag{9} $$
+
+Momento de inercia del eslabón 4:
+
+$$ I_{G_4} = \frac{1}{12}(1.608)(0.5^2) = 33.5\times 10^{-3} \text{ kg}\cdot\text{m}^2 $$
+
+---
+layout: two-cols-example
+---
+
+Sustituyendo valores y reescribiendo las ecuaciones:
+
+<div class="text-sm">
+
+$$ O_x + A_x = -0.336 \tag{1} $$
+$$ O_y + A_y = -0.1277 \tag{2} $$
+$$ 0.1 O_x - 0.1 A_x + \tau = 0.0112 \tag{3} $$
+$$ - A_x + B_x = -8.844 \tag{4} $$
+$$ -A_y + B_y = -6.738 \tag{5} $$
+$$ -0.15 A_x + 0.2 A_y - 0.15 B_x + 0.2 B_y = 1.005 \tag{6} $$
+$$ C_x - B_x = -8.04 \tag{7} $$
+$$ C_y - B_y = 9.342 \tag{8} $$
+$$ C_x + B_x = 2.68 \tag{9} $$
+</div>
+
+::right::
+
+<div class="text-sm">
+
+De (7) y (9):
+
+$$
+-8.04 + B_x = 2.68 - B_x \rightarrow \quad \boxed{ B_x = 5.36 \text{ N} }
+$$
+$$
+\boxed{ C_x = -2.68 \text{ N} }
+$$
+
+De (4):
+
+$$
+\boxed{ A_x = 14.204 \text{ N} }
+$$
+
+Resolviendo (5) y (6) para $A_y$ y $B_y$:
+
+$$ B_y + 6.738 = 19.698 - B_y  \rightarrow \quad \boxed{ B_y = 6.48 \text{ N} } $$
+$$ \boxed{ A_y = 13.218 \text{ N} } $$
+
+De (1), (2) y (8):
+
+$$ 
+\boxed{O_x = -14.54 \text{ N} } \quad \boxed{O_y = -13.346 \text{ N}} \quad \boxed{C_y = 15.822 \text{ N}}
+$$
+
+De (3):
+
+$$ 
+\boxed{ \tau = 2.8856 \text{ N}\cdot\text{m} }
+$$
+
+</div>
+---
 
 # Fuentes de información
 
