@@ -11,6 +11,7 @@ project:
   toc:
     - file: index.md
     - file: 02-cinetica-cuerpo-rigido.md
+    - file: 02-problems.md
 
 site:
   template: book-theme
