@@ -883,6 +883,149 @@ La barra $AB$ presenta el movimiento angular indicado en la figura. Determina la
 Fuente: Hibbeler, 2015.
 </Footnote>
 
+::right::
+<div class="text-sm">
+
+Analizando la barra $AB$:
+
+$$
+\vec{v}_B = \vec{\omega}_{AB} \times \vec{r}_{B/A} =
+\begin{vmatrix}
+\ihat & \jhat & \khat \\
+0 & 0 & 4 \\
+\frac{\sqrt{2}}{4} & \frac{\sqrt{2}}{4} & 0
+\end{vmatrix}
+$$
+$$
+\vec{v}_B = \left( - 1.414 \ihat + 1.414 \jhat \right) \text{ m/s}
+$$
+
+Analizando el elemento $BC$:
+
+$$
+\vec{v}_C = \vec{v}_B + \vec{\omega}_{AB} \times \vec{r}_{C/B}
+$$
+
+$$
+v_C \ihat = \left( - 1.414 \ihat + 1.414 \jhat \right) + 
+\begin{vmatrix}
+\ihat & \jhat & \khat \\
+0 & 0 & \omega_{BC} \\
+0.5 & -0.866 & 0
+\end{vmatrix}
+$$
+
+$$
+v_C \ihat = - 1.414 \ihat + 1.414 \jhat + 0.866 \omega_{BC} \ihat + 0.5 \omega_{BC} \jhat
+$$
+
+De lo anterior resultan las sig. ecuaciones escalares:
+
+$$
+v_C = -1.414 + 0.866 \omega_{BC} \tag{i}
+$$
+$$
+0 = 1.414 + 0.5 \omega_{BC} \tag{ii}
+$$
+
+</div>
+
+---
+layout: two-cols
+---
+
+<div class="text-sm">
+
+Resolviendo (i) y (ii):
+
+$$
+\omega_{BC} = -2.828 \text{ rad/s}  \quad ; \quad \vec{v}_C =  -3.863 \text{ m/s}
+$$
+
+Por lo tanto:
+
+<div style="background-color: #d0f0f0; margin-left: 20px; border-radius: 5px;">
+
+$$
+\color{green}{ \vec{v}_C = -3.863 \ihat \text{ m/s} }
+$$
+</div>
+
+Para la aceleración de $B$, analizando la barra $AB$:
+
+$$
+\vec{a}_B = \vec{\alpha}_{AB} \times \vec{r}_{B/A} - \omega_{AB}^2 \vec{r}_{B/A}
+$$
+$$
+\vec{a}_B = 
+\begin{vmatrix}
+\ihat & \jhat & \khat \\
+0 & 0 & 6 \\
+\frac{\sqrt{2}}{4} & \frac{\sqrt{2}}{4} & 0
+\end{vmatrix} - 
+(4^2) \left( \frac{\sqrt{2}}{4} \ihat + \frac{\sqrt{2}}{4} \jhat \right)
+$$
+$$
+\vec{a}_B = -2.121 \ihat + 2.121 \jhat - 5.657\ihat - 5.657\jhat
+$$
+
+$$ \vec{a}_B = \left( -7.778\ihat - 3.536\jhat \right) \text{ m/s}^2 $$
+
+</div>
+
+::right::
+
+<div class="text-sm">
+
+Analizando la aceleración de la barra $BC$:
+
+$$
+\vec{a}_C = \vec{a}_B + \vec{\alpha}_{BC} \times \vec{r}_{C/B} - \omega_{BC}^2 \vec{r}_{C/B} 
+$$
+
+$$
+a_C \ihat = \left( -7.778\ihat - 3.536\jhat \right) + \begin{vmatrix}
+\ihat & \jhat & \khat \\
+0 & 0 & \alpha_{BC} \\
+0.5 & -0.866 & 0
+\end{vmatrix} - \cdots \\ 
+\cdots (2.828^2) \left( 0.5\ihat - 0.866\jhat \right)
+$$
+
+<div class="text-xs">
+
+$$
+a_C\ihat = -7.778\ihat - 3.536\jhat + 0.866 \alpha_{BC}\ihat + 0.5\alpha_{BC}\jhat - 4\ihat + 6.926\jhat
+$$
+</div>
+
+Ecuaciones escalares:
+
+$$
+a_C = -7.778 + 0.866 \alpha_{BC} - 4 \tag{iii}
+$$
+$$
+0 = - 3.536 + 0.5\alpha_{BC} + 6.926 \tag{iv}
+$$
+
+Resolviendo (iii) y (iv):
+
+$$
+\alpha_{BC} = -6.78 \text{ rad/s}^2 \quad ; \quad a_C = -17.65 \text{ m/s}^2
+$$
+
+Entonces:
+
+<div style="background-color: #d0f0f0; margin-left: 20px; border-radius: 5px;">
+
+$$
+\color{teal}{ \vec{a}_C =  \left( -17.65 \ihat \right) \text{ m/s}^2 }
+$$
+</div>
+
+
+</div>
+
 ---
 
 # Fuentes de información
