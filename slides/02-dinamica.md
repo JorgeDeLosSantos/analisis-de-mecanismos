@@ -259,7 +259,7 @@ Los centros de masa de las barras $OA$ y $AB$ se encuentran en sus respectivos p
 </div>
 
 ---
-layout: two-cols-example
+layout: two-cols-example-wide-right
 ---
 
 Diagrama de cuerpo libre del eslabón 1:
@@ -271,10 +271,14 @@ Diagrama de cuerpo libre del eslabón 1:
 Ecuaciones de Newton-Euler:
 
 $$ \sum F_x = m_1 a_{G_{1x}} $$
-$$ A_x + O_x =  m_1 a_{G_{1x}} $$
+$$ A_x + O_x =  m_1 a_{G_{1x}} \tag{1} $$
+$$ \sum F_y = m_1 a_{G_{1y}} $$
+$$ O_y + A_y - m_1 g = m_1 a_{G_{1y}} \tag{2} $$
+$$ \sum M_O = I_O \alpha_1 $$
+$$ - A_x (0.3) + \tau = I_O \alpha_1 \tag{3} $$
 
 ---
-layout: two-cols-example
+layout: two-cols-example-wide-right
 ---
 
 Diagrama de cuerpo libre del eslabón 2:
@@ -285,10 +289,19 @@ Diagrama de cuerpo libre del eslabón 2:
 
 Ecuaciones de Newton-Euler:
 
+$$ \sum F_x = m_2 a_{G_{2x}} $$
+$$ - A_x + B_x =  m_2 a_{G_{2x}} \tag{4} $$
+$$ \sum F_y = m_2 a_{G_{2y}} $$
+$$ -A_y + B_y - m_2 g = m_2 a_{G_{2y}} \tag{5} $$
+$$ \sum M_{G_2} = I_{G_2} \alpha_2 $$
+<div class="text-sm">
+
+$$ A_x(0.15) + A_y(0.2) + B_x(0.15) + B_y(0.2) = I_{G_2} \alpha_2 \tag{6} $$
+</div>
 
 
 ---
-layout: two-cols-example
+layout: two-cols-example-wide-right
 ---
 
 Diagrama de cuerpo libre del eslabón 3:
@@ -299,10 +312,10 @@ Diagrama de cuerpo libre del eslabón 3:
 
 Ecuaciones de Newton-Euler:
 
-
-
-
-
+$$ \sum F_x = m_3 a_{G_{3x}} $$
+$$ F_N - B_x =  m_3 a_{G_{3x}} \tag{7} $$
+$$ \sum F_y = m_3 a_{G_{3y}} $$
+$$ - B_y - m_3 g = m_3 a_{G_{3y}} \tag{8} $$
 
 ---
 layout: two-cols-example
@@ -329,7 +342,7 @@ Los eslabones son barras delgadas y homogéneas, cuyos centros de masa se encuen
 </div>
 
 ---
-layout: two-cols-example
+layout: two-cols-example-wide-right
 ---
 
 Diagrama de cuerpo libre del eslabón 2:
@@ -360,7 +373,7 @@ Momento de inercia del eslabón 2:
 $$ I_{G_2} = \frac{1}{12}(0.672)(0.2^2) = 2.24\times 10^{-3} \text{ kg}\cdot\text{m}^2 $$
 
 ---
-layout: two-cols-example
+layout: two-cols-example-wide-right
 ---
 
 Diagrama de cuerpo libre del eslabón 3:
@@ -383,7 +396,7 @@ Momento de inercia del eslabón 3:
 $$ I_{G_3} = \frac{1}{12}(1.608)(0.5^2) = 33.5\times 10^{-3} \text{ kg}\cdot\text{m}^2 $$
 
 ---
-layout: two-cols-example
+layout: two-cols-example-wide-right
 ---
 
 Diagrama de cuerpo libre del eslabón 4:
