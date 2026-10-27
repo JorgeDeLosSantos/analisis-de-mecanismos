@@ -10,8 +10,8 @@ project:
   # Las secciones dentro de las notas ya están numeradas en los títulos.
   toc:
     - file: index.md
-    - file: 02-cinetica-cuerpo-rigido.md
-    - file: 02-problems.md
+    # - file: 02-cinetica-cuerpo-rigido.md
+    - file: problems-02.md
 
 site:
   template: book-theme
