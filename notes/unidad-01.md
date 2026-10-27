@@ -1,0 +1,1 @@
+# I. Cinemática de cuerpo rígido
