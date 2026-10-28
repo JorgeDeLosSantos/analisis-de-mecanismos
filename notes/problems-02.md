@@ -9,6 +9,18 @@ Los problemas están organizados utilizando la siguiente nomenclatura:
 
 ## Centro de masa y momentos de inercia
 
+### PI-00 
+
+En la figura se muestra una placa triangular de espesor delgado y homogénea. Utilice integración para determinar el centro de masa y los momentos de inercia $I_{xx}$, $I_{yy}$, $I_{zz}$.
+
+<img src="/figures/u2/PI-00.svg">
+
+### PI-01
+
+En la figura se muestra una placa semicircular de espesor delgado y homogénea. Utilice integración para determinar el centro de masa y los momentos de inercia $I_{xx}$, $I_{yy}$, $I_{zz}$.
+
+<img src="/figures/u2/PI-01.svg">
+
 ### PI-10
 
 Calcule $I_{xx}$, $I_{yy}$ e $I_{zz}$ para el componente mostrado en la figura, el cual está fabricado con una lámina de acero ($\rho = 7 850 \text{ kg/m}^3$) de espesor delgado (3 mm) y uniforme. Las unidades de longitud están dadas en metros.
@@ -34,15 +46,13 @@ Para los siguientes ejercicios, salvo que se especifique lo contrario, considere
 :::
 
 
-### NE-01
+### NE-00
 
 En el instante mostrado la placa rectangular ($0.25 \text{m}\times0.15 \text{m}$) está rotando con una velocidad angular constante $\omega = 30 \text{ rad/s}$ en sentido antihorario. Determine las reacciones en el soporte de pasador y la fuerza $F$ necesaria para producir dicho movimiento. Considere que la placa tiene un espesor de $3 \text{ mm}$ y está fabricada con un acero cuya densidad es de $7 850 \text{ kg/m}^3$.
 
 <img src="/figures/u2/rectangular_plate.svg">
 
-### NE-02
-
-### NE-11
+### NE-10
 
 En el instante mostrado, la barra $OA$ tiene una velocidad angular $\omega_2 = 10 \text{ rad/s}$ y una aceleración angular $\alpha_2 = 5 \text{ rad/s}^2$, ambas en sentido antihorario. Determine las componentes de la reacción en $O$ y el torque $\tau$ que debe aplicarse a la barra $OA$ para producir dicho movimiento.
 
@@ -58,7 +68,7 @@ Los centros de masa de las barras $OA$ y $AB$ se encuentran en sus respectivos p
 <img src="/figures/u2/slider_crank_with_offset.svg">
 
 
-### NE-12
+### NE-11
 
 En el instante mostrado, cuando $\theta_2 = 60°$, la barra $OA$ tiene una velocidad angular $\omega_2 = 60 \text{ rad/s}$ y una aceleración angular $\alpha_2 = 20 \text{ rad/s}^2$, ambas en sentido antihorario. Determine las componentes de la reacción en $O$ y el torque $\tau$ que debe aplicarse a la barra $OA$ para producir dicho movimiento.
 
@@ -72,7 +82,7 @@ Los centros de masa de las barras $OA$ y $AB$ se encuentran en sus respectivos p
 
 <img src="/figures/u2/slider_crank_with_offset_general_torque.svg">
 
-### NE-13
+### NE-12
 
 En el instante mostrado, la barra $OA$ gira con una velocidad angular $\omega_2 = 24\,\text{rad/s}$ y una aceleración angular $\alpha_2 = 7 \,\text{rad/s}^2$, ambas en sentido antihorario. Determine las componentes de las reacciones en las uniones de pasador, así como el torque $\tau$ que debe aplicarse a la barra $OA$ para producir dicho movimiento.
 
