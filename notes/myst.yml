@@ -10,12 +10,19 @@ project:
   # Las secciones dentro de las notas ya están numeradas en los títulos.
   toc:
     - file: index.md
-    - file: 02-cinetica-cuerpo-rigido.md
-    - file: 02-problems.md
+    - file: unidad-01.md
+    - file: problems-01.md
+    - file: unidad-02.md
+    - file: problems-02.md
+    - file: unidad-03.md
+    - file: problems-03.md
+    - file: unidad-04.md
+    - file: problems-04.md
 
 site:
   template: book-theme
   title: Apuntes de Análisis de Mecanismos
+  logo: https://jorgedelossantos.github.io/apuntes-python/build/logo-2938ef6bf78f5a06356dad575ba3a05b.png
   options:
     hide_authors: true
     folders: true
