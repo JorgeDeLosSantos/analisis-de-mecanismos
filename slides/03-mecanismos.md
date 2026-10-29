@@ -77,9 +77,110 @@ De acuerdo con la naturaleza del contacto entre las superficies de los eslabones
 
 # Pares inferiores
 
-Existen seis pares inferiores:
+<img src="/images/u3/lower_pairs.png" width="700px">
 
-<img src="/images/u3/lower_pairs.png" width="600px">
+---
+
+# Cadenas cinemáticas
+
+Una **cadena cinemática** se define como un ensamble de eslabones y juntas interconectados de modo que produzcan un movimiento controlado en respuesta a un movimiento suministrado. 
+
+En este contexto, un **mecanismo** es una cadena cinemática en la cual por lo menos un eslabón se ha fijado o sujetado al marco de referencia (el cual por sí mismo puede estar en movimiento).
+
+Las cadenas cinemáticas o mecanismos pueden ser abiertos o cerrados.
+
+<img src="/images/u3/kinematic_chain.png" width="500px">
+
+---
+
+# Terminología habitual en mecanismos
+
+- **Bancada:** cualquier eslabón o eslabones que están fijos con respecto al marco de referencia.
+- **Manivela:** eslabón que realiza una revolución completa y está pivotado a la bancada.
+- **Balancín:** eslabón que tiene una rotación oscilatoria y está pivotado a la bancada.
+- **Acoplador (biela)**: eslabón que tiene movimiento complejo y no está pivotado a la bancada.
+
+---
+
+# Diagramas cinemáticos
+
+<img src="/images/u3/kinematic_diagrams.png" width="600px">
+
+---
+
+# Diagramas cinemáticos
+
+<img src="/images/u3/kidi_example_01.png" width="400px">
+
+---
+
+# Diagramas cinemáticos
+
+<img src="/images/u3/kidi_example_02.png" width="400px">
+
+---
+
+# Diagramas cinemáticos
+
+<img src="/images/u3/kidi_example_03.png" width="400px">
+
+---
+
+# Diagramas cinemáticos
+
+<img src="/images/u3/kidi_example_04.png" width="400px">
+
+---
+
+# Grados de libertad
+
+El concepto de grados de libertad o movilidad en mecánica se puede establecer como el número de parámetros independientes que son requeridos para definir de manera unívoca la posición y orientación de un sistema de cuerpos rígidos o partículas.
+
+<img src="/images/u3/gdl_rigid_body.png" width="800px">
+
+---
+
+# GDL en mecanismos planos
+
+<div class="grid grid-cols-2 gap-4 items-start">
+    <img src="/images/u3/gdl_count_01.svg" width="300px">
+    <v-click> <img src="/images/u3/gdl_count_02.svg" width="300px"> </v-click>
+</div>
+
+---
+
+# GDL en mecanismos planos
+
+<div class="grid grid-cols-2 gap-4 items-start">
+    <img src="/images/u3/gdl_count_03.svg" width="300px">
+    <v-click> <img src="/images/u3/gdl_count_04.svg" width="300px"> </v-click>
+</div>
+
+---
+
+# Ecuación de Grübler-Kutzbach
+
+La ecuación de Grübler-Kutzbach permite determinar los GDL de un mecanismo plano:
+
+$$ M = 3(L-1) - 2J_1 - J_2 $$
+
+Donde:
+
+- $L$ es el número de eslabones, incluyendo la bancada.
+- $J_1$ son los pares cinemáticos de 1 GDL.
+- $J_2$ son los pares cinemáticos de 2 GDL.
+
+---
+
+# Grados de libertad 
+
+La determinación de los grados de libertad de un sistema mecánico establece su naturaleza cinemática. Existen tres posibilidades, a saber:
+
+- $GDL > 0$ es un mecanismo.
+- $GDL = 0$ es una estructura isostática.
+- $GDL < 0$ es una estructura hiperestática.
+
+<img src="/images/u3/gdl_types.svg" width="700px">
 
 ---
 
