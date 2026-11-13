@@ -7,7 +7,6 @@ project:
     - name: Pedro Jorge De Los Santos
   copyright: "2026"
   github: JorgeDeLosSantos/analisis-de-mecanismos
-  # Las secciones dentro de las notas ya están numeradas en los títulos.
   toc:
     - file: index.md
     - file: unidad-01.md
@@ -26,6 +25,7 @@ site:
   options:
     hide_authors: true
     folders: true
+    hide_outline: true
   nav:
     - title: Inicio del curso
       url: https://jorgedelossantos.github.io/analisis-de-mecanismos/
