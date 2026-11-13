@@ -183,6 +183,36 @@ La determinación de los grados de libertad de un sistema mecánico establece su
 <img src="/images/u3/gdl_types.svg" width="700px">
 
 ---
+layout: two-cols
+---
+
+# GDL: casos especiales
+
+Debemos considerar que existen casos en los que la ecuación de Grübler-Kutzbach predice un comportamiento que no corresponde con lo observado.
+
+<!-- <div class="grid grid-cols-2 gap-4 items-start"> -->
+<img src="/images/u3/gdl_caso_especial_i.svg" width="400px">
+    <!-- <img src="/images/u3/gdl_caso_especial_ii.svg" width="400px"> -->
+<!-- </div> -->
+
+::right::
+
+<Callout type="warning">
+La ecuación de Grübler es una herramienta útil para estimar los grados de libertad de mecanismos convencionales, pero no siempre representa la movilidad real. Su principal limitación es que considera que todas las restricciones cinemáticas son independientes. Cuando existen restricciones redundantes, geometrías especiales, singularidades o mecanismos sobrerrestringidos, es necesario recurrir a métodos más completos
+</Callout>
+
+---
+layout: section
+---
+
+# Análisis cinemático de mecanismos
+
+---
+
+# Análisis de posición
+
+
+---
 
 # Fuentes de información
 
